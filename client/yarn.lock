@@ -16,9 +16,19 @@
     esutils "^2.0.2"
     js-tokens "^3.0.0"
 
+"@types/history@*":
+  version "4.6.2"
+  resolved "https://registry.yarnpkg.com/@types/history/-/history-4.6.2.tgz#12cfaba693ba20f114ed5765467ff25fdf67ddb0"
+
 "@types/jest@^22.2.3":
   version "22.2.3"
   resolved "https://registry.yarnpkg.com/@types/jest/-/jest-22.2.3.tgz#0157c0316dc3722c43a7b71de3fdf3acbccef10d"
+
+"@types/muicss@^0.9.0":
+  version "0.9.0"
+  resolved "https://registry.yarnpkg.com/@types/muicss/-/muicss-0.9.0.tgz#c8a05e89b1fab8c658d9e65a1d87ce95e78e29bd"
+  dependencies:
+    "@types/react" "*"
 
 "@types/node@*", "@types/node@^9.6.5":
   version "9.6.5"
@@ -38,17 +48,42 @@
     "@types/react" "*"
     redux "^3.6.0"
 
+"@types/react-router-dom@^4.2.6":
+  version "4.2.6"
+  resolved "https://registry.yarnpkg.com/@types/react-router-dom/-/react-router-dom-4.2.6.tgz#9f7eb3c0e6661a9607d878ff8675cc4ea95cd276"
+  dependencies:
+    "@types/history" "*"
+    "@types/react" "*"
+    "@types/react-router" "*"
+
+"@types/react-router@*":
+  version "4.0.23"
+  resolved "https://registry.yarnpkg.com/@types/react-router/-/react-router-4.0.23.tgz#d0509dcbdb1c686aed8f3d5cb186f42e5fbe7c2a"
+  dependencies:
+    "@types/history" "*"
+    "@types/react" "*"
+
 "@types/react@*", "@types/react@^16.3.11":
   version "16.3.11"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-16.3.11.tgz#345a17f1c96420f10b9f0dc696c31091ff9d66ea"
   dependencies:
     csstype "^2.2.0"
 
+"@types/redux-logger@^3.0.5":
+  version "3.0.5"
+  resolved "https://registry.yarnpkg.com/@types/redux-logger/-/redux-logger-3.0.5.tgz#d1a02758f90845899cd304aa0912daeba2028eb6"
+  dependencies:
+    redux "^3.6.0"
+
 "@types/redux-persist@^4.3.1":
   version "4.3.1"
   resolved "https://registry.yarnpkg.com/@types/redux-persist/-/redux-persist-4.3.1.tgz#aa4c876859e0bea5155e5f7980e5b8c4699dc2e6"
   dependencies:
     redux-persist "*"
+
+"@types/seamless-immutable@^7.1.1":
+  version "7.1.1"
+  resolved "https://registry.yarnpkg.com/@types/seamless-immutable/-/seamless-immutable-7.1.1.tgz#44e91ea708a9b16565f8fab2f2d108bb99c41aea"
 
 abab@^1.0.4:
   version "1.0.4"

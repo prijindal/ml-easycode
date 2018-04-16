@@ -3,8 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@types/react-redux": "^5.0.16",
-    "@types/redux-persist": "^4.3.1",
     "muicss": "^0.9.38",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
@@ -27,9 +25,15 @@
   },
   "devDependencies": {
     "@types/jest": "^22.2.3",
+    "@types/muicss": "^0.9.0",
     "@types/node": "^9.6.5",
     "@types/react": "^16.3.11",
     "@types/react-dom": "^16.0.5",
+    "@types/react-redux": "^5.0.16",
+    "@types/react-router-dom": "^4.2.6",
+    "@types/redux-logger": "^3.0.5",
+    "@types/redux-persist": "^4.3.1",
+    "@types/seamless-immutable": "^7.1.1",
     "typescript": "^2.8.1"
   }
 }
