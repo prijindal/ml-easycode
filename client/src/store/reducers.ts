@@ -1,9 +1,7 @@
 import { combineReducers } from 'redux';
 
-const test = (a: string = "") => {
-  return a;
-}
+import templates from './templates';
 
 export default combineReducers({
-  test
+  templates: templates.createReducer([]),
 });

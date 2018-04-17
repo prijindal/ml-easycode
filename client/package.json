@@ -34,6 +34,7 @@
     "@types/redux-logger": "^3.0.5",
     "@types/redux-persist": "^4.3.1",
     "@types/seamless-immutable": "^7.1.1",
+    "redux-saga-request": "^0.1.1",
     "typescript": "^2.8.1"
   }
 }

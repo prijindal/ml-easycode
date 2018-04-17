@@ -5,7 +5,7 @@ import {
   Route
 } from 'react-router-dom';
 
-const HomePage = () => (
+const TemplatePage = () => (
   <div>
     <Button>Ok</Button>
   </div>
@@ -14,7 +14,7 @@ const HomePage = () => (
 const AppComponent = () => (
   <Router>
     <div>
-      <Route exact={true} path="/" component={HomePage}/>
+      <Route exact={true} path="/" component={TemplatePage}/>
     </div>
   </Router>
 )
