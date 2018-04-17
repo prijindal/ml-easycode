@@ -5,7 +5,10 @@ class StateTemplates extends State<Template[]> {
   public api() {
     // return fetch('/templates').then(r => r.json());
     return new Promise<Template[]>((resolve) => {
-      setTimeout(() => resolve([]), 1000);
+      setTimeout(() => resolve([{
+        id: '1',
+        title: '',
+      }]), 1000);
     });
   }
 }

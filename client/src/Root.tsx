@@ -1,20 +1,17 @@
 import * as React from 'react';
 import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react'
 
 import AppComponent from './routes/app';
 import configureStore from './store/configureStore';
 
-import templates from './store/templates';
-
-const { store } = configureStore();
-
-setTimeout(() => {
-  store.dispatch(templates.start());
-}, 1000);
+const { store, persistor } = configureStore();
 
 const Root = () => (
   <Provider store={store}>
-    <AppComponent/>
+    <PersistGate loading={null} persistor={persistor}>
+      <AppComponent/>
+    </PersistGate>
   </Provider>
 );
 

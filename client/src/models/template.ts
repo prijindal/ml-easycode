@@ -1,3 +1,4 @@
-export class Template {
-  public id: string;
+export interface Template {
+  id: string;
+  title: string;
 }

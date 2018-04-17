@@ -1,4 +1,4 @@
-export class Action {
-  public type: string;
-  public payload: any;
+export interface Action {
+  type: string;
+  payload: any;
 }
