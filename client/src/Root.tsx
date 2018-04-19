@@ -1,3 +1,4 @@
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import * as React from 'react';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react'
@@ -10,7 +11,9 @@ const { store, persistor } = configureStore();
 const Root = () => (
   <Provider store={store}>
     <PersistGate loading={null} persistor={persistor}>
-      <AppComponent/>
+      <MuiThemeProvider>
+        <AppComponent/>
+      </MuiThemeProvider>
     </PersistGate>
   </Provider>
 );
