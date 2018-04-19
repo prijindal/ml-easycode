@@ -6,8 +6,8 @@
       "node_modules/**/*.ts"
     ]
   },
+  "defaultSeverity": "warning",
   "rules": {
-    "interface-name": false,
-    "no-console": false
+    "interface-name": false
   }
 }

@@ -16,6 +16,12 @@
     esutils "^2.0.2"
     js-tokens "^3.0.0"
 
+"@material-ui/icons@^1.0.0-beta.42":
+  version "1.0.0-beta.42"
+  resolved "https://registry.yarnpkg.com/@material-ui/icons/-/icons-1.0.0-beta.42.tgz#1e0e45e8f4de533071c7e4532508fa79bf1f29d9"
+  dependencies:
+    recompose "^0.26.0"
+
 "@storybook/addon-actions@3.4.2", "@storybook/addon-actions@^3.4.2":
   version "3.4.2"
   resolved "https://registry.yarnpkg.com/@storybook/addon-actions/-/addon-actions-3.4.2.tgz#ab45c37f57027257530577a9c1af6896ffb40156"
@@ -235,6 +241,10 @@
     "@tensorflow/tfjs-core" "0.7.1"
     "@tensorflow/tfjs-layers" "0.4.1"
 
+"@types/classnames@^2.2.3":
+  version "2.2.3"
+  resolved "https://registry.yarnpkg.com/@types/classnames/-/classnames-2.2.3.tgz#3f0ff6873da793870e20a260cada55982f38a9e5"
+
 "@types/history@*":
   version "4.6.2"
   resolved "https://registry.yarnpkg.com/@types/history/-/history-4.6.2.tgz#12cfaba693ba20f114ed5765467ff25fdf67ddb0"
@@ -250,22 +260,9 @@
     csstype "^2.0.0"
     indefinite-observable "^1.0.1"
 
-"@types/material-ui@^0.21.1":
-  version "0.21.1"
-  resolved "https://registry.yarnpkg.com/@types/material-ui/-/material-ui-0.21.1.tgz#ddb6aaa7659cbf58b448c405e4872def2650cbab"
-  dependencies:
-    "@types/react" "*"
-    "@types/react-addons-linked-state-mixin" "*"
-
 "@types/node@*", "@types/node@^9.6.5":
   version "9.6.5"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-9.6.5.tgz#ee700810fdf49ac1c399fc5980b7559b3e5a381d"
-
-"@types/react-addons-linked-state-mixin@*":
-  version "0.14.19"
-  resolved "https://registry.yarnpkg.com/@types/react-addons-linked-state-mixin/-/react-addons-linked-state-mixin-0.14.19.tgz#7ef00a5618a089da4a99e1f58c9aa4c1781d46d5"
-  dependencies:
-    "@types/react" "*"
 
 "@types/react-dom@^16.0.5":
   version "16.0.5"
@@ -329,6 +326,16 @@
 "@types/seamless-immutable@^7.1.1":
   version "7.1.1"
   resolved "https://registry.yarnpkg.com/@types/seamless-immutable/-/seamless-immutable-7.1.1.tgz#44e91ea708a9b16565f8fab2f2d108bb99c41aea"
+
+"@types/storybook__addon-actions@^3.0.3":
+  version "3.0.3"
+  resolved "https://registry.yarnpkg.com/@types/storybook__addon-actions/-/storybook__addon-actions-3.0.3.tgz#99287c0b9ee6b84ea571ee4cb42d0779c56af208"
+
+"@types/storybook__addon-links@^3.3.0":
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/@types/storybook__addon-links/-/storybook__addon-links-3.3.0.tgz#750ee3422ceb88af3090bf8e4bc565ca341595a4"
+  dependencies:
+    "@types/react" "*"
 
 "@types/storybook__react@^3.0.7":
   version "3.0.7"
@@ -7521,10 +7528,6 @@ redux-logger@^3.0.6:
 redux-persist@*, redux-persist@^5.9.1:
   version "5.9.1"
   resolved "https://registry.yarnpkg.com/redux-persist/-/redux-persist-5.9.1.tgz#83bd4abd526ef768f63fceee338fa9d8ed6552d6"
-
-redux-saga-request@^0.1.1:
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/redux-saga-request/-/redux-saga-request-0.1.1.tgz#4fe2df42ee7212aca90fb18af23711c45e2230eb"
 
 redux-saga@^0.16.0:
   version "0.16.0"

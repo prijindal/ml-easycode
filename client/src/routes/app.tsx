@@ -4,13 +4,13 @@ import {
   Route
 } from 'react-router-dom';
 
-import TemplatePage from '../screens/template';
+import TemplatesPage from '../screens/Templates';
 import TrainingPage from '../screens/training';
 
 const AppComponent = () => (
   <Router>
     <div>
-      <Route exact={true} path="/" component={TemplatePage}/>
+      <Route exact={true} path="/" component={TemplatesPage}/>
       <Route path="/training" component={TrainingPage}/>
     </div>
   </Router>
