@@ -23,9 +23,15 @@
     "start": "react-scripts-ts start",
     "build": "react-scripts-ts build",
     "test": "react-scripts-ts test --env=jsdom",
-    "eject": "react-scripts-ts eject"
+    "eject": "react-scripts-ts eject",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "devDependencies": {
+    "@storybook/addon-actions": "^3.4.2",
+    "@storybook/addon-links": "^3.4.2",
+    "@storybook/addons": "^3.4.2",
+    "@storybook/react": "^3.4.2",
     "@types/jest": "^22.2.3",
     "@types/material-ui": "^0.21.1",
     "@types/node": "^9.6.5",
@@ -37,7 +43,11 @@
     "@types/redux-logger": "^3.0.5",
     "@types/redux-persist": "^4.3.1",
     "@types/seamless-immutable": "^7.1.1",
+    "@types/storybook__react": "^3.0.7",
+    "babel-core": "^6.26.0",
+    "babel-runtime": "^6.26.0",
     "redux-saga-request": "^0.1.1",
+    "ts-loader": "3.5.0",
     "typescript": "^2.8.1"
   }
 }
