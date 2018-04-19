@@ -1,5 +1,5 @@
 import * as tf from '@tensorflow/tfjs';
-import RaisedButton from 'material-ui/RaisedButton';
+import Button from 'material-ui/Button';
 import * as React from 'react';
 import { Legend, LineChart } from 'react-easy-chart';
 
@@ -120,7 +120,7 @@ class TrainingPage extends React.Component<any, any> {
 			<div>{Math.floor(this.state.progress*100/this.state.epochs)} %</div> :
 			<div>Completed Training</div>
 		  }
-          <RaisedButton onClick={this.toggleTestCases} label="Toggle Test Cases"/>
+          <Button onClick={this.toggleTestCases}>Toggle Test Cases</Button>
           {this.state.showTestCases ? 
 			  <table className="mui-table">
 				<thead>

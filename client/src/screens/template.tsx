@@ -1,4 +1,4 @@
-import RaisedButton from 'material-ui/RaisedButton';
+import Button from 'material-ui/Button';
 import * as React from 'react';
 import { connect } from 'react-redux';
 
@@ -21,7 +21,7 @@ class TemplatePage extends React.PureComponent<TemplatePageProps, any> {
   public render() {
     return (
       <div>
-        <RaisedButton label="Ok" />
+        <Button>Ok</Button>
         {this.props.templates.map(
           (i: Template) => (
             <span key={i.id}>{i.title}</span>
