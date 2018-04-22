@@ -1,4 +1,5 @@
+import connect from './connect';
 import StepperBarComponent from './StepperBar';
 export * from './StepperBar';
 
-export default StepperBarComponent;
+export default connect(StepperBarComponent);

@@ -87,14 +87,14 @@ class StepperBarStep extends React.PureComponent<StepperBarStepProps & WithStyle
             fontWeight: state === "pending" ? ("normal") : ("bold"),
           }}
         >
-          <Hidden smDown>
+          <Hidden implementation="css" smDown>
             {desktopText || text}
           </Hidden>
-          <Hidden smUp>
+          <Hidden implementation="css" mdUp>
             {text}
           </Hidden>
         </Typography>
-        <Hidden smDown>
+        <Hidden implementation="css" smDown>
           {divider &&
             <div className={classes.horizontaldivider}/>
           }

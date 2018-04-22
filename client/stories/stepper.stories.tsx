@@ -7,5 +7,5 @@ import StepperBarComponent from '../src/components/StepperBar/StepperBar';
 
 storiesOf('StepperBar', module)
   .add('StepperBarComponent', () => (
-    <StepperBarComponent />
+    <StepperBarComponent router={{location: {pathname: '/', search: "", state: "", hash: ""}}}/>
   ));
