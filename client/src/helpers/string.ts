@@ -1,6 +1,9 @@
 import { Template } from '../models/template';
 
-function compare(a: string, b: string) {
+function compare(a: string, b: string):boolean {
+  if(a == null) {
+    return false;
+  }
   return a.toLowerCase().includes(b);
 }
 
