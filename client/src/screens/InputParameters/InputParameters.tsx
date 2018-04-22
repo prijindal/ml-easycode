@@ -1,3 +1,4 @@
+import { Button } from 'material-ui';
 import { withStyles, WithStyles } from 'material-ui/styles';
 import * as React from 'react';
 
@@ -22,11 +23,21 @@ class InputParametersScreen extends React.PureComponent<InputParametersScreenPro
     }
     this.props.fetchParameters(this.props.templateid);
   }
+
+  public goToTraining = () => {
+    this.props.history.push('/training');
+  }
+
   public render() {
     const {classes } = this.props;    
     return (
       <div className={classes.root}>
         {this.props.templateid}
+        <div>
+          <Button onClick={this.goToTraining}>
+            Go To Training
+          </Button>
+        </div>
       </div>
     );
   }
