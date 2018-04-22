@@ -1,5 +1,5 @@
 import DoneIcon from '@material-ui/icons/Done';
-import { Typography } from 'material-ui';
+import { Hidden, Typography } from 'material-ui';
 import { withStyles, WithStyles } from 'material-ui/styles';
 import * as React from 'react';
 
@@ -41,9 +41,6 @@ const decorate = withStyles((theme) => ({
     backgroundColor: 'rgba(0, 0, 0, 0.37)',
     height: 1,
     marginLeft: '0.5em',
-    '@media (max-width: 800px)': {
-      display: 'none'
-    }
   },
 }));
 
@@ -54,6 +51,7 @@ const colorBuilder = (color: string, alpha: number) => {
 interface StepperBarStepProps {
   stepnumber: number;
   text: string;
+  desktopText?: string;
   divider?: boolean;
   state?: "active" | "done" | "pending"
 }
@@ -61,11 +59,11 @@ interface StepperBarStepProps {
 class StepperBarStep extends React.PureComponent<StepperBarStepProps & WithStyles<'step' | 'stepnumber' | 'steptext' | 'horizontaldivider' | 'doneicon'>, null> {
   public static defaultProps: Partial<StepperBarStepProps> = {
     divider: true,
-    state: "pending"
+    state: "pending",
   }
 
   public render() {
-    const { classes, stepnumber, text, divider, state } = this.props;    
+    const { classes, stepnumber, text, divider, state, desktopText } = this.props;    
     return (
       <div className={classes.step}>
         <Typography
@@ -89,11 +87,18 @@ class StepperBarStep extends React.PureComponent<StepperBarStepProps & WithStyle
             fontWeight: state === "pending" ? ("normal") : ("bold"),
           }}
         >
-          {text}
+          <Hidden smDown>
+            {desktopText || text}
+          </Hidden>
+          <Hidden smUp>
+            {text}
+          </Hidden>
         </Typography>
-        {divider &&
-          <div className={classes.horizontaldivider}/>
-        }
+        <Hidden smDown>
+          {divider &&
+            <div className={classes.horizontaldivider}/>
+          }
+        </Hidden>
       </div>
     );
   }

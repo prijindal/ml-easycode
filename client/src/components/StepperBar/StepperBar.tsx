@@ -27,17 +27,20 @@ class StepperBarComponent extends React.PureComponent<StepperBarComponentProps &
           <div className={classes.stepper}>
             <StepperBarStep
               stepnumber={1}
-              text="Choose a template"
+              text="Select template"
+              desktopText="Select a template"
               state="active"
             />
             <StepperBarStep
               stepnumber={2}
-              text="Fine Tune Your parameters"
+              text="Fine Tune"
+              desktopText="Fine Tune the parameters"
               state="pending"
             />
             <StepperBarStep
               stepnumber={3}
-              text="Run your model"
+              text="Run It!"
+              desktopText="Run your model"
               state="pending"              
               divider={false}
             />
