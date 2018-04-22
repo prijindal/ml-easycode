@@ -3,11 +3,21 @@ import {
   Route
 } from 'react-router-dom';
 
-import asyncComponent from '../components/AsyncComponent';
+import Loadable from 'react-loadable';
+import Loading from '../components/Loading'
 
-const TemplatesPage = asyncComponent(() => import('../screens/Templates'));
-const InputParametersPage = asyncComponent(() => import('../screens/InputParameters'));
-const TrainingPage = asyncComponent(() => import('../screens/training'));
+const TemplatesPage = Loadable({
+  loader: () => import('../screens/Templates'),
+  loading: Loading,
+});
+const InputParametersPage = Loadable({
+  loader: () => import('../screens/InputParameters'),
+  loading: Loading,  
+})
+const TrainingPage = Loadable({
+  loader: () => import('../screens/training'),
+  loading: Loading,
+});
 
 const AppComponent = () => (
   <div>
