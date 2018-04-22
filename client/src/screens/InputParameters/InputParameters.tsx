@@ -6,8 +6,13 @@ const decorate = withStyles((theme) => ({
 }));
 
 export interface InputParametersScreenProps {
+  fetchParameters: (t: string) => ({ type: string });
+  runCode?: () => ({type: string}); // TODO
+  downloadCode?: () => ({type: string}); // TODO
   templateid: string;
-  history?: any;
+  parameters?: any; // TODO
+  isLoading?: boolean; // TODO
+  history?: any; // TODO: Better type
 };
 
 class InputParametersScreen extends React.PureComponent<InputParametersScreenProps & WithStyles<'root'>, null> {
@@ -15,6 +20,7 @@ class InputParametersScreen extends React.PureComponent<InputParametersScreenPro
     if(this.props.templateid == null || this.props.templateid === "") {
       this.props.history.push('/')
     }
+    this.props.fetchParameters(this.props.templateid);
   }
   public render() {
     const {classes } = this.props;    

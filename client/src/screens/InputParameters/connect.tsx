@@ -7,4 +7,7 @@ const mapStateToProps = (state: State) => ({
 
 export default connect(
   mapStateToProps,
+  dispatch => ({
+    fetchParameters: (t: string) => ({}),
+  })
 );
