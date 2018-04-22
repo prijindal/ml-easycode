@@ -1,18 +1,18 @@
-import { Toolbar } from 'material-ui';
+import { AppBar, Toolbar } from 'material-ui';
 import { WithStyles, withStyles } from 'material-ui/styles';
 import * as React from 'react';
 import StepperBarStep from './StepperBarStep';
 
 const decorate = withStyles((theme) => ({
   root: {
-    maxWidth: 960,
-    display: 'flex',
-    justifyContent: 'center',
-    margin: "0 auto",
+    marginBottom: 20
   },
   stepper: {
     display: 'flex',
     flexDirection: 'row' as 'row',
+    width: 960,
+    justifyContent: 'flex-start',
+    margin: "0 auto",
   },
 }));
 
@@ -22,18 +22,18 @@ class StepperBarComponent extends React.PureComponent<StepperBarComponentProps &
   public render() {
     const {classes } = this.props;    
     return (
-      <div className={classes.root}>
+      <AppBar position="sticky" color="default" className={classes.root}>
         <Toolbar>
           <div className={classes.stepper}>
             <StepperBarStep
               stepnumber={1}
               text="Choose a template"
-              state="done"
+              state="active"
             />
             <StepperBarStep
               stepnumber={2}
               text="Fine Tune Your parameters"
-              state="active"
+              state="pending"
             />
             <StepperBarStep
               stepnumber={3}
@@ -43,7 +43,7 @@ class StepperBarComponent extends React.PureComponent<StepperBarComponentProps &
             />
           </div>
         </Toolbar>
-      </div>
+      </AppBar>
     );
   }
 }

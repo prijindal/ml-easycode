@@ -1,4 +1,4 @@
-import { Template } from "../src/models/template";
+import { Template } from "../models/template";
 
 export const demoTemplates: Template[] = [
   {

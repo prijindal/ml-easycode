@@ -40,8 +40,11 @@ const decorate = withStyles((theme) => ({
     width: 100,
     backgroundColor: 'rgba(0, 0, 0, 0.37)',
     height: 1,
-    marginLeft: '0.5em'
-  }
+    marginLeft: '0.5em',
+    '@media (max-width: 800px)': {
+      display: 'none'
+    }
+  },
 }));
 
 const colorBuilder = (color: string, alpha: number) => {

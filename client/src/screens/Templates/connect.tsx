@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { filterTemplates } from '../../helpers/string';
 import { Creators } from '../../store/search';
 import { State } from '../../store/state.type';
-// import templates from '../../store/templates';
+import templates from '../../store/templates';
 
 const mapStateToProps = (state: State) => ({
   isLoading: state.templates.isLoading,
@@ -13,7 +13,7 @@ const mapStateToProps = (state: State) => ({
 export default connect(
   mapStateToProps,
   dispatch => ({
-    fetchTemplates: () => dispatch({type: 'NULL'}),
+    fetchTemplates: () => dispatch(templates.start()),
     setSearch: (term: string) => dispatch(Creators.setSearch(term)),    
   })
 );
