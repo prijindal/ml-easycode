@@ -25,7 +25,7 @@ interface TemplatesGridProps {
 
 const TemplatesGrid = decorate<TemplatesGridProps>(({ classes, templates, onTemplateSelected }) => (
   <div className={classes.root}>
-    {templates.map(
+    {templates != null && templates.map(
       (i: Template) => (
         <TemplateComponent
           key={i.id}
@@ -34,7 +34,9 @@ const TemplatesGrid = decorate<TemplatesGridProps>(({ classes, templates, onTemp
         />
       )
     )}
-    <div className={classes.additionaldiv}/>
+    {templates != null && templates.length > 2 && 
+      <div className={classes.additionaldiv}/>
+    }
   </div>
 ));
 

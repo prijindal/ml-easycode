@@ -35,7 +35,7 @@ export abstract class State<T> {
         isLoading: true,
       }),
       [this.ERROR]: (state: object = INITIAL_STATE, action: Action) => ({
-        // error: action.payload,
+        error: action.payload,
         isLoading: true,
       }),
     };

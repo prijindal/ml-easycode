@@ -1,13 +1,23 @@
-import { demoTemplates } from '../../demodata/templates';
+import { getFirestore } from '../../helpers/firebase';
+// import { demoTemplates } from '../../demodata/templates';
 import { State } from '../../models/state';
 import { Template } from '../../models/template';
 
 export class StateTemplates extends State<Template[]> {
-  public api() {
+  public async api() {
+    const db = await getFirestore();
     // return fetch('/templates').then(r => r.json());
-    return new Promise<Template[]>((resolve) => {
-      setTimeout(() => resolve(demoTemplates), 1000);
-    });
+    const querySnaphot = await db.collection('templates').get();
+    const templates:Template[] = [];
+    querySnaphot.forEach((template) => {
+      const templateData = template.data();
+      templates.push({
+        id: template.id,
+        title: templateData.title,
+        about: templateData.about,
+      });
+    })
+    return templates;
   }
 }
 
