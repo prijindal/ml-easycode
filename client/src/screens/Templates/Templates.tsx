@@ -1,6 +1,7 @@
 import { withStyles, WithStyles } from 'material-ui/styles';
 import * as React from 'react';
 
+import { RouterAction } from 'react-router-redux';
 import SearchBar from '../../components/SearchBar/SearchBar';
 import TemplatesGrid from '../../components/TemplatesGrid';
 import { Template } from '../../models/template';
@@ -15,6 +16,7 @@ const decorate = withStyles(({ palette, spacing }) => ({
 interface TemplatePageProps {
   fetchTemplates: () => { type: string };
   setSearch: (s: string) => { type: string };
+  selectTemplate: (s: Template) => RouterAction;
   templates: Template[];
   search: string;
   isLoading: boolean;
@@ -25,8 +27,8 @@ class TemplatesPage extends React.PureComponent<TemplatePageProps & WithStyles<'
     this.props.fetchTemplates();
   }
 
-  public onTemplateSelected():void {
-    
+  public onTemplateSelected = (template: Template):void => {
+    this.props.selectTemplate(template);
   }
 
   public render() {

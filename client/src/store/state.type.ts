@@ -7,4 +7,5 @@ export interface State {
   router: RouterState;
   templates: GenericState<Template[]>;
   search: string;
+  selectedtemplate: string;
 }

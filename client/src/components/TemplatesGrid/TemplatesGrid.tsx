@@ -22,7 +22,6 @@ interface TemplatesGridProps {
   onTemplateSelected: TemplateComponentProps["onSelected"]
 }
 
-
 const TemplatesGrid = decorate<TemplatesGridProps>(({ classes, templates, onTemplateSelected }) => (
   <div className={classes.root}>
     {templates != null && templates.map(

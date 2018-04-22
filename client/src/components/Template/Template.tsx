@@ -50,7 +50,7 @@ const decorate = withStyles((theme) => ({
 
 export interface TemplateComponentProps {
   template: Template;
-  onSelected: () => void;
+  onSelected: (t: Template) => void;
 };
 
 interface TemplateComponentState {
@@ -67,7 +67,7 @@ class TemplateComponent extends React.Component<TemplateComponentProps & WithSty
 
   public onSelected = () => {
     if(this.state.ripple) {
-      this.props.onSelected();
+      this.props.onSelected(this.props.template);
     }
   }
 
