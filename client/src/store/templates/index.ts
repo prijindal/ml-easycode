@@ -1,7 +1,7 @@
 import { State } from '../../models/state';
 import { Template } from '../../models/template';
 
-class StateTemplates extends State<Template[]> {
+export class StateTemplates extends State<Template[]> {
   public api() {
     // return fetch('/templates').then(r => r.json());
     return new Promise<Template[]>((resolve) => {

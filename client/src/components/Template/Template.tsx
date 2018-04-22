@@ -1,6 +1,7 @@
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import * as classnames from 'classnames';
 import Button from 'material-ui/Button';
+import ButtonBase from 'material-ui/ButtonBase';
 import Card, { CardActions, CardContent } from 'material-ui/Card';
 import IconButton from 'material-ui/IconButton';
 import { withStyles, WithStyles } from 'material-ui/styles';
@@ -20,9 +21,13 @@ const decorate = withStyles((theme) => ({
   root: {
     padding: PADDING,
     display: 'inline-block',
+    // flex: 1,
+  },
+  base: {
+    width: WIDTH,
   },
   card: {
-    width: WIDTH,
+    width: '100%'
   },
   content: {
     height: HEIGHT,
@@ -50,50 +55,77 @@ export interface TemplateComponentProps {
 
 interface TemplateComponentState {
   expanded: boolean
+  ripple: boolean
 }
 
-class TemplateComponent extends React.PureComponent<TemplateComponentProps & WithStyles<'root' | 'card' | 'content' | 'contentOpen' | 'expand' | 'expandOpen'>, TemplateComponentState> {
+class TemplateComponent extends React.Component<TemplateComponentProps & WithStyles<'root' | 'base' | 'card' | 'content' | 'contentOpen' | 'expand' | 'expandOpen'>, TemplateComponentState> {
+  public static expandIconId = "expand-icon";
   public state = {
-    expanded: false
+    expanded: false,
+    ripple: true
   }
 
-  public handleExpandClick = () => {
-    this.setState({ expanded: !this.state.expanded });
-  };
+  public onSelected = () => {
+    if(this.state.ripple) {
+      this.props.onSelected();
+    }
+  }
+
+  public handleExpandClick = (e:Event | any):void => 
+    this.setState({ expanded: !this.state.expanded })
+
+  public disableRipple = () =>
+    this.setState({
+      ripple: false
+    })
+
+  public enableRipple = () => 
+    this.setState({
+      ripple: true
+    })
 
   public render() {
-    const { classes, template, onSelected } = this.props;
+    const { classes, template } = this.props;
     return (
       <div className={classes.root}>
-        <Card className={classes.card} onClick={onSelected}>
-          <CardContent
-            className={classnames(classes.content, {
-              [classes.contentOpen]: this.state.expanded
-            })}
-          >
-            <Typography variant="title" gutterBottom={true}>
-              {template.title}
-            </Typography>
-            <Typography variant="body1">
-              {template.about}
-            </Typography>
-          </CardContent>
-          <CardActions>
-            <Button>
-              Choose Template
-            </Button>
-            {(template.about && template.about.length > 50) ?
-              <IconButton
-                className={classnames(classes.expand, {
-                  [classes.expandOpen]: this.state.expanded
-                })}
-                onClick={this.handleExpandClick}
-              >
-                <ExpandMoreIcon />
-              </IconButton> : <IconButton disabled={true} />
-            }
-          </CardActions>
-        </Card>
+        <ButtonBase
+          disableRipple={!this.state.ripple} 
+          className={classes.base} 
+          onClick={this.onSelected} 
+          component="div"
+        >
+          <Card className={classes.card}>
+            <CardContent
+              className={classnames(classes.content, {
+                [classes.contentOpen]: this.state.expanded
+              })}
+            >
+              <Typography variant="title" gutterBottom={true}>
+                {template.title}
+              </Typography>
+              <Typography variant="body1">
+                {template.about}
+              </Typography>
+            </CardContent>
+            <CardActions>
+              <Button disableRipple={true}>
+                Choose Template
+              </Button>
+              {(template.about && template.about.length > 50) ?
+                <IconButton
+                  className={classnames(classes.expand, {
+                    [classes.expandOpen]: this.state.expanded
+                  })}
+                  onMouseEnter={this.disableRipple}
+                  onMouseLeave={this.enableRipple}
+                  onClick={this.handleExpandClick}
+                >
+                  <ExpandMoreIcon id="expand-icon"/>
+                </IconButton> : <IconButton disabled={true} />
+              }
+            </CardActions>
+          </Card>
+        </ButtonBase>
       </div>
     );
   }

@@ -1,17 +1,8 @@
 import { connect } from 'react-redux';
-
 import { filterTemplates } from '../../helpers/string';
-import { Template } from '../../models/template';
-import templates from '../../store/templates';
-
-// TODO: Move this to store folder
-interface State {
-  templates: {
-    isLoading: boolean,
-    data: Template[]
-  };
-  search: any;
-}
+import { Creators } from '../../store/search';
+import { State } from '../../store/state.type';
+// import templates from '../../store/templates';
 
 const mapStateToProps = (state: State) => ({
   isLoading: state.templates.isLoading,
@@ -22,6 +13,7 @@ const mapStateToProps = (state: State) => ({
 export default connect(
   mapStateToProps,
   dispatch => ({
-    fetchTemplates: () => dispatch(templates.start()),
+    fetchTemplates: () => dispatch({type: 'NULL'}),
+    setSearch: (term: string) => dispatch(Creators.setSearch(term)),    
   })
 );

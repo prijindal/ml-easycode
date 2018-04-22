@@ -4,6 +4,12 @@ import * as Immutable from 'seamless-immutable';
 
 import { Action } from '../models/base';
 
+export interface GenericState<T> {
+  data: T;
+  error: void | Error;
+  isLoading: boolean
+}
+
 export abstract class State<T> {
   public START: string;
   private SUCCESS: string;
@@ -16,7 +22,7 @@ export abstract class State<T> {
   }
 
   public createReducer(initData: any) {
-    const INITIAL_STATE = Immutable({
+    const INITIAL_STATE:GenericState<T> = Immutable({
       data: initData,
       error: null,
       isLoading: false,

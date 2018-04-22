@@ -8,10 +8,13 @@ const decorate = withStyles(({ palette, spacing }) => ({
   root: {
     display: 'flex',
     flexWrap: 'wrap' as 'wrap',
-    justifyContent: 'flex-start',
-    maxWidth: 960,
-    margin: '0 auto',
+    justifyContent: 'center',
   },
+  additionaldiv: {
+    flex: 1,
+    display: 'inline-block',
+    minWidth: 320,
+  }
 }));
 
 interface TemplatesGridProps {
@@ -31,6 +34,7 @@ const TemplatesGrid = decorate<TemplatesGridProps>(({ classes, templates, onTemp
         />
       )
     )}
+    <div className={classes.additionaldiv}/>
   </div>
 ));
 
