@@ -9,7 +9,7 @@ export class StateTemplates extends State<Template[]> {
     // return fetch('/templates').then(r => r.json());
     const querySnaphot = await db.collection('templates').get();
     const templates:Template[] = [];
-    querySnaphot.forEach((template) => {
+    querySnaphot.forEach((template: any) => {
       const templateData = template.data();
       templates.push({
         id: template.id,

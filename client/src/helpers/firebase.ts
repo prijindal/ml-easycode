@@ -1,7 +1,7 @@
+import { firebase } from '@firebase/app';
 import '@firebase/firestore';
-import * as firebase from 'firebase';
 
-let firebaseApp:firebase.app.App;
+let firebaseApp: any;
 
 const config = {
   apiKey: "AIzaSyA_lf_1eMfFjlUeiSHD5v0ysmjG5TBME4M",
@@ -11,7 +11,7 @@ const config = {
 };
 
 
-export const initFirebase = async ():Promise<firebase.app.App> => {
+export const initFirebase = async ():Promise<any> => {
   firebaseApp = await firebase.initializeApp(config);
   firebaseApp.firestore().settings({
     timestampsInSnapshots: true
@@ -19,7 +19,7 @@ export const initFirebase = async ():Promise<firebase.app.App> => {
   return firebaseApp;
 }
 
-export const getFirebase = async ():Promise<firebase.app.App> => {
+export const getFirebase = async ():Promise<any> => {
   if(firebaseApp === null) {
     return await initFirebase();
   } else {
