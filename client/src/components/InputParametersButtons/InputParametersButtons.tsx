@@ -24,7 +24,9 @@ export interface InputParametersButtonsProps {
 };
 
 class InputParametersButtons extends React.PureComponent<InputParametersButtonsProps & WithStyles<'root' | 'toolbar'>, null> {
-
+  public downloadCode = () => {
+    alert('Downloaded');
+  }
   public render() {
     const { classes } = this.props;    
     return (
@@ -32,6 +34,9 @@ class InputParametersButtons extends React.PureComponent<InputParametersButtonsP
         <Toolbar className={classes.toolbar}>
           <Button onClick={this.props.goToTraining} variant="raised">
             Run Code
+          </Button>
+          <Button onClick={this.downloadCode} variant="raised">
+            Download Code
           </Button>
         </Toolbar>
       </AppBar>
