@@ -5,11 +5,8 @@ import {
 
 import Loadable from 'react-loadable';
 import Loading from '../components/Loading'
+import TemplatesPage from '../screens/Templates';
 
-const TemplatesPage = Loadable({
-  loader: () => import('../screens/Templates'),
-  loading: Loading,
-});
 const InputParametersPage = Loadable({
   loader: () => import('../screens/InputParameters'),
   loading: Loading,  
