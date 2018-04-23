@@ -12,7 +12,9 @@ const config = {
 
 
 export const initFirebase = async ():Promise<any> => {
-  firebaseApp = await firebase.initializeApp(config);
+  if(firebaseApp == null) {
+    firebaseApp = await firebase.initializeApp(config);
+  }
   firebaseApp.firestore().settings({
     timestampsInSnapshots: true
   })

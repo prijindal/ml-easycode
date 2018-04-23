@@ -5,6 +5,10 @@ import Root from './Root';
 
 import './registerServiceWorker';
 
+if (module.hot) {
+  module.hot.accept();
+}
+
 ReactDOM.render(
   <Root />,
   document.getElementById('root') as HTMLElement
