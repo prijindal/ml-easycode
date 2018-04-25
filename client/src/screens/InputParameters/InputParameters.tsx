@@ -2,8 +2,9 @@
 import { WithStyles, withStyles } from 'material-ui/styles';
 import * as React from 'react';
 import InputParametersButtons from '../../components/InputParametersButtons';
-import InputParametersList from '../../components/InputParametersList';
-import NeuralNetworkDiagram from '../../components/NeuralNetworkDiagram';
+import InputParametersList from '../../components/InputParametersList';;
+import Loadable from 'react-loadable';
+import Loading from '../../components/Loading';
 
 const decorate = withStyles((theme) => ({
   root: {
@@ -26,6 +27,15 @@ export interface InputParametersScreenProps {
   history?: any; // TODO: Better type
 };
 
+const NeuralNetworkDiagramComponent = Loadable({
+  loader: () => import('../../components/NeuralNetworkDiagram'),
+  loading: () => (
+    <div style={{minWidth: 320, flex: 1}}>
+      <Loading />
+    </div>
+  ),
+})
+
 class InputParametersScreen extends React.PureComponent<InputParametersScreenProps & WithStyles<'root'>, null> {
   public componentWillMount() {
     // if(this.props.templateid == null || this.props.templateid === "") {
@@ -43,7 +53,7 @@ class InputParametersScreen extends React.PureComponent<InputParametersScreenPro
     return (
       <div className={classes.root}>
         <InputParametersList />
-        <NeuralNetworkDiagram />
+        <NeuralNetworkDiagramComponent />
         <InputParametersButtons goToTraining={this.goToTraining}/>
       </div>
     );
