@@ -6,6 +6,8 @@ import {
 import Loadable from 'react-loadable';
 import Loading from '../components/Loading'
 import TemplatesPage from '../screens/Templates';
+// import InputParametersPage from '../screens/InputParameters';
+// import TrainingPage from '../screens/training';
 
 const InputParametersPage = Loadable({
   loader: () => import('../screens/InputParameters'),
