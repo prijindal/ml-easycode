@@ -3,6 +3,7 @@ import { WithStyles, withStyles } from 'material-ui/styles';
 import * as React from 'react';
 import InputParametersButtons from '../../components/InputParametersButtons';
 import InputParametersList from '../../components/InputParametersList';
+import NeuralNetworkDiagram from '../../components/NeuralNetworkDiagram';
 
 const decorate = withStyles((theme) => ({
   root: {
@@ -42,9 +43,7 @@ class InputParametersScreen extends React.PureComponent<InputParametersScreenPro
     return (
       <div className={classes.root}>
         <InputParametersList />
-        <div style={{flex: 1}}>
-          Neural Network representation
-        </div>
+        <NeuralNetworkDiagram />
         <InputParametersButtons goToTraining={this.goToTraining}/>
       </div>
     );
