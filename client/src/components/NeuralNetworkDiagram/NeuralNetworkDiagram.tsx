@@ -17,11 +17,10 @@ interface Edge {
 const decorate = withStyles((theme) => ({
   root: {
     flex: 1,
+    minWidth: 320
   },
   svg: {
-    height: '100%',
     width: '100%',
-    minHeight: '500px',
   }
 }));
 
@@ -29,10 +28,17 @@ export interface NeuralNetworkDiagramProps {
   layers? : number[]
 };
 
-class NeuralNetworkDiagram extends React.PureComponent<NeuralNetworkDiagramProps & WithStyles<'root' | 'svg'>, null> {
+export interface NeuralNetworkDiagramState {
+  minHeight: number
+};
 
+class NeuralNetworkDiagram extends React.Component<NeuralNetworkDiagramProps & WithStyles<'root' | 'svg'>, NeuralNetworkDiagramState> {
   public static defaultProps: Partial<NeuralNetworkDiagramProps> = {
     layers: [3, 4, 2]
+  }
+
+  public state: NeuralNetworkDiagramState = {
+    minHeight: 500
   }
 
   public componentDidMount() {
@@ -41,13 +47,32 @@ class NeuralNetworkDiagram extends React.PureComponent<NeuralNetworkDiagramProps
       nodes: [],
       edges: []
     }
+    const BREAKPOINT = 960;
+    let RADIUS = window.innerWidth > BREAKPOINT ? 40 : 20;
+    let X_PADDING = window.innerWidth > BREAKPOINT ? 150 : 75;
+    let Y_PADDING = window.innerWidth > BREAKPOINT ? 100 : 50;
+    const biggestLayer = Math.max(...layers);
+    const BREAK_NODES = [5,10,15,20];
+    for (const N_NODES of BREAK_NODES) {
+      if (biggestLayer > N_NODES) {
+        RADIUS/=2;
+        X_PADDING/=2;
+        Y_PADDING/=2;
+      }
+    }
+    const biggestHeight = biggestLayer*Y_PADDING + 50
+    this.setState({
+      minHeight: biggestHeight
+    });
     for(let k = 0;k < layers.length; k+=1) {
+      const X_INIT = 50;
+      const Y_INIT = 50 + (biggestHeight - (layers[k]*Y_PADDING + 50))/2;
       for(let i = 0; i < layers[k]; i+= 1) {
         const node = {
           name: `${k + 1}.${i}`,
-          x: (k)*150 + 50,
-          y: (i)*100 + 50,
-          r: 40,
+          x: (k)*X_PADDING + X_INIT,
+          y: (i)*Y_PADDING + Y_INIT,
+          r: RADIUS,
         };
         graph.nodes.push(node);
         if (k > 0) {
@@ -90,7 +115,13 @@ class NeuralNetworkDiagram extends React.PureComponent<NeuralNetworkDiagramProps
     const { classes } = this.props;    
     return (
       <div className={classes.root}>
-        <svg id="canvas" className={classes.svg}/>
+        <svg
+          id="canvas"
+          className={classes.svg}
+          style={{
+            minHeight: this.state.minHeight
+          }}
+        />
       </div>
     );
   }

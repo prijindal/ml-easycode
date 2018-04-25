@@ -7,11 +7,11 @@ import NeuralNetworkDiagram from '../../components/NeuralNetworkDiagram';
 
 const decorate = withStyles((theme) => ({
   root: {
-    maxWidth: 960,
-    margin: '0 auto',
     display: 'flex',
-    justifyContent: 'space-evenly',
     flexWrap: 'wrap' as 'wrap',
+    justifyContent: 'space-evenly',
+    margin: '0 auto',
+    maxWidth: 960,
     paddingBottom: '72px'
   },
 }));
