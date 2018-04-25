@@ -164,6 +164,22 @@ module.exports = {
               },
             ],
           },
+          // Compile Worker .ts?
+          {
+            test: /\.worker\.ts$/,
+            use: [
+              {
+                loader: require.resolve('ts-loader'),
+                options: {
+                  // disable type checker - we will use it in fork plugin
+                  transpileOnly: true,
+                },
+              },
+              {
+                loader: 'worker-loader'
+              }
+            ],
+          },
           // "postcss" loader applies autoprefixer to our CSS.
           // "css" loader resolves paths in CSS and adds assets as dependencies.
           // "style" loader turns CSS into JS modules that inject <style> tags.

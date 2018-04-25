@@ -30,6 +30,7 @@
     "history": "^4.7.2",
     "html-webpack-plugin": "2.29.0",
     "jest": "22.1.4",
+    "lodash": "^4.17.10",
     "material-ui": "^1.0.0-beta.42",
     "object-assign": "4.1.1",
     "postcss-flexbugs-fixes": "3.2.0",
@@ -85,6 +86,7 @@
     "@storybook/react": "^3.4.2",
     "@types/classnames": "^2.2.3",
     "@types/jest": "^22.2.3",
+    "@types/lodash": "^4.14.108",
     "@types/node": "^9.6.5",
     "@types/react": "^16.3.11",
     "@types/react-dom": "^16.0.5",
@@ -101,7 +103,8 @@
     "babel-runtime": "^6.26.0",
     "babili-webpack-plugin": "^0.1.2",
     "ts-loader": "3.5.0",
-    "typescript": "^2.8.1"
+    "typescript": "^2.8.1",
+    "worker-loader": "^1.1.1"
   },
   "jest": {
     "collectCoverageFrom": [
