@@ -7,7 +7,6 @@ import storage from 'redux-persist/lib/storage'; // defaults to localStorage for
 
 import createHistory from 'history/createBrowserHistory';
 import { routerMiddleware } from 'react-router-redux';
-import { initFirebase } from '../helpers/firebase';
 import reducer from './reducers';
 import sagaMiddleware, { registerSagas } from './sagas';
 
@@ -20,7 +19,6 @@ const persistConfig = {
 const persistedReducer = persistReducer(persistConfig, reducer)
 
 export default () => {
-  initFirebase();
   const history = createHistory()
   const routerMid = routerMiddleware(history);
   const middleware = applyMiddleware(
