@@ -296,7 +296,7 @@ module.exports = {
     // Otherwise React will be compiled in the very slow development mode.
     new webpack.DefinePlugin(env.stringified),
     // // Minify the code.
-    new BabiliPlugin(),
+    // new BabiliPlugin(),
     new UglifyJsPlugin({
       uglifyOptions: {
         parse: {
