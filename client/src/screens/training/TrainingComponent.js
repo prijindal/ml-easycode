@@ -1,5 +1,6 @@
 import Button from 'material-ui/Button';
 import { LinearProgress } from 'material-ui/Progress';
+import Snackbar from 'material-ui/Snackbar';
 import { withStyles } from 'material-ui/styles';
 import * as React from 'react';
 
@@ -19,6 +20,9 @@ const decorate = withStyles((theme) => ({
   },
   actions: {
     margin: '0 20px'
+  },
+  progress: {
+    marginBottom: 20
   }
 }))
 
@@ -50,6 +54,33 @@ export type TrainingPageProps = {
   downloadModel: () => void
 }
 
+class CustomSnackBar extends React.Component<{ open: boolean }, any> {
+  state = {
+    open: this.props.open
+  }
+
+  hideSnackBar = () => {
+    this.setState({
+      open: false
+    })
+  }
+
+  render() {
+    return (
+      <Snackbar
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'left',
+        }}
+        open={this.state.open}
+        autoHideDuration={2000}
+        onClose={this.hideSnackBar}
+        message={<span>Training completed</span>}
+      />
+    )
+  }
+}
+
 const TrainingComponent = decorate(({
   classes,
   isTraining,
@@ -61,7 +92,7 @@ const TrainingComponent = decorate(({
   logs,
   chartData,
   toggleTestCases,
-  downloadModel
+  downloadModel,
 }: TrainingPageProps) => (
   <div className={classes.root}>
     <div className={classes.graphs}>
@@ -97,7 +128,7 @@ const TrainingComponent = decorate(({
       />
     </div>
     <div className={classes.actions}>
-      <LinearProgress variant="determinate" value={Math.ceil(progress*100/epochs)} />
+      <LinearProgress className={classes.progress} variant="determinate" value={isTraining ? (progress*100/epochs) : 100} />
       <Button disabled={isTraining} onClick={downloadModel}>
         {isTraining ? "Training in progress" : "Download Model"}
       </Button>
@@ -107,6 +138,9 @@ const TrainingComponent = decorate(({
         toggleTestCases={toggleTestCases}
         values={values}
       />
+      {!isTraining &&
+        <CustomSnackBar open={!isTraining}/>
+      }
     </div>
   </div>
 ))
