@@ -24,6 +24,12 @@ export type StepperBarComponentProps = {
 };
 
 class StepperBarComponent extends React.PureComponent<StepperBarComponentProps & WithStyles<'root' | 'stepper'>, null> {
+  static defaultProps = {
+    router: {
+      location: null
+    }
+  }
+
   getState = (stepnumber: number): "active" | "pending" | "done" => {
     const { router: {  location } } = this.props;
     if(location === null) {

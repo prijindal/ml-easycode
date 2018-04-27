@@ -25,6 +25,9 @@ type TemplatePageProps = {
 }
 
 class TemplatesPage extends React.PureComponent<TemplatePageProps & WithStyles<'root'>, any> {
+  static defaultProps = {
+    fetchTemplates: () => ({}),
+  }
   componentWillMount() {
     this.props.fetchTemplates();
   }
