@@ -2,7 +2,6 @@
 import * as React from 'react';
 import Worker from 'worker-loader!./background.worker'; // eslint-disable-line import/no-webpack-loader-syntax
 
-import Loading from '../../components/Loading';
 import TrainingComponent, { type TrainingPageProps, type Logs } from './TrainingComponent';
 
 class TrainingPage extends React.Component<any, TrainingPageProps> {
@@ -24,7 +23,6 @@ class TrainingPage extends React.Component<any, TrainingPageProps> {
     },
     // maxY: 100,
     progress: 0,
-    isWaiting: true,
     showTestCases: false,
     testinputs: [[1,2]],    
     values: []
@@ -62,7 +60,6 @@ class TrainingPage extends React.Component<any, TrainingPageProps> {
       if (type === "generated") {
         this.setState({
           testinputs: data.numbers,
-          isWaiting: false,
         })
         this.worker.postMessage({
           type: 'train',
@@ -98,9 +95,6 @@ class TrainingPage extends React.Component<any, TrainingPageProps> {
   }
 
   render() {
-    if(this.state.isWaiting) {
-      return <Loading />
-    }
     return (
       <TrainingComponent {...this.state} toggleTestCases={this.toggleTestCases}/>
     )

@@ -9,16 +9,7 @@ import Loadable from 'react-loadable';
 import Loading from '../components/Loading'
 import InputParametersPage from '../screens/InputParameters';
 import TemplatesPage from '../screens/Templates';
-// import TrainingPage from '../screens/training';
-
-// const InputParametersPage = Loadable({
-//   loader: () => import('../screens/InputParameters'),
-//   loading: Loading,  
-// })
-const TrainingPage = Loadable({
-  loader: () => import('../screens/training'),
-  loading: Loading,
-});
+import TrainingPage from '../screens/training';
 
 const AppComponent = () => (
   <div>

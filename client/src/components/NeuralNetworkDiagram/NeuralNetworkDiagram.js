@@ -43,7 +43,7 @@ class NeuralNetworkDiagram extends React.Component<NeuralNetworkDiagramProps & W
     minHeight: 500
   }
 
-  componentDidMount() {
+  componentWillMount() {
     const { layers } = this.props;
     const graph:{nodes: Node[], edges: Edge[]} = {
       nodes: [],
@@ -86,7 +86,10 @@ class NeuralNetworkDiagram extends React.Component<NeuralNetworkDiagramProps & W
         }
       }
     }
+    this.drawDiagram(graph);
+  }
 
+  drawDiagram = async (graph) => {
     const width = 2000;
     const height = 2000;
 
