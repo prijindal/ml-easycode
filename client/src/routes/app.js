@@ -5,8 +5,6 @@ import {
   Route
 } from 'react-router-dom';
 
-import Loadable from 'react-loadable';
-import Loading from '../components/Loading'
 import InputParametersPage from '../screens/InputParameters';
 import TemplatesPage from '../screens/Templates';
 import TrainingPage from '../screens/training';

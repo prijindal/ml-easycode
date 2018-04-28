@@ -7,9 +7,9 @@ import Root from './Root';
 
 import './registerServiceWorker';
 
-if (module.hot) {
-  module.hot.accept();
-}
+// if (module.hot) {
+//   module.hot.accept();
+// }
 
 ReactDOM.render(
   <Root />,
