@@ -5,17 +5,81 @@ type Template @model {
   id: ID! @isUnique
   title: String!
   about: String
+  parameters: Parameters @relation(name: "TemplateParameter")
 }
 
-# type User @model {
-#   id: ID! @isUnique
-#   name: String
-#   dateOfBirth: DateTime
+enum ParameterType {
+  CLASSIFICATION
+  REGRESSION
+}
 
-#   # Uncomment below - you can declare relations between models like this
+type Parameters @model {
+  id: ID! @isUnique
+  template: Template! @relation(name: "TemplateParameter")
+  layers: [Layer!]! @relation(name: "ParameterLayers")
+  type: ParameterType!
+  shouldNormalize: Boolean!
+  epochs: Int!
+  loss: LossFunction!
+  optimizer: Optimizer! @relation(name: "ParameterOptimizer")
+  regularizer: Regularizer!
+  initializer: Initializer!
+}
 
-#   posts: [Post!]! @relation(name: "UserPosts")
-# }
+enum Initializer {
+  GLOROT_UNIFORM
+  RANDOM_UNIFORM
+}
+
+enum Regularizer {
+  L1
+  L2
+  L1_L2
+}
+
+enum LossFunction {
+  MEAN_SQUARED_ERROR
+  HINGE
+}
+
+enum OptimizerFunction {
+  SGD
+  RMSPROP
+  ADAGRAD
+}
+
+enum LayerType {
+  INPUT
+  HIDDEN
+  OUTPUT
+}
+
+enum ActivationFunction {
+  SIGMOID
+  LINEAR
+}
+
+type Optimizer @model {
+  id: ID! @isUnique
+  function: OptimizerFunction!  
+  learningRate: Float!
+  momentum: Float
+  decay: Float
+  nesterov: Boolean
+
+  associatedParameter: Parameters @relation(name: "ParameterOptimizer")
+}
+
+type Layer @model {
+  id: ID! @isUnique
+  activationFunction: ActivationFunction!
+  type: LayerType!
+  associatedParameter: Parameters @relation(name: "ParameterLayers")
+}
+
+type User @model {
+  id: ID! @isUnique
+}
 
 
 # # Uncomment the model below as well
