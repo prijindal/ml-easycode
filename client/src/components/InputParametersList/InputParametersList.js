@@ -101,6 +101,15 @@ class InputParametersList extends React.PureComponent<InputParametersListProps &
         </div>
         <div className={classes.subheading}>
           <FormControl>
+            <InputLabel>Optimizer</InputLabel>
+            <Select value="sgd">
+              <MenuItem value="sgd">Stochastic Gradient Descent</MenuItem>
+              <MenuItem value="RMSprop">RMSProp</MenuItem>
+            </Select>
+          </FormControl>
+        </div>
+        <div className={classes.subheading}>
+          <FormControl>
             <InputLabel>Regularizer</InputLabel>
             <Select value="l1">
               <MenuItem value="l1">l1</MenuItem>
