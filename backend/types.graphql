@@ -6,6 +6,7 @@ type Template @model {
   title: String!
   about: String
   parameters: Parameters @relation(name: "TemplateParameter")
+  sampleData: DataSet @relation(name: "TemplateSampleData")
 }
 
 enum ParameterType {
@@ -70,6 +71,13 @@ type Optimizer @model {
   associatedParameter: Parameters @relation(name: "ParameterOptimizer")
 }
 
+type DataSet @model {
+  id: ID! @isUnique
+  trainingfile: File! @relation(name: "DatasetFile")
+
+  associatedTemplate: Template @relation(name: "TemplateSampleData")
+}
+
 type Layer @model {
   id: ID! @isUnique
   activationFunction: ActivationFunction!
@@ -79,6 +87,20 @@ type Layer @model {
 
 type User @model {
   id: ID! @isUnique
+}
+
+
+type File @model {
+  contentType: String!
+  createdAt: DateTime!
+  id: ID! @isUnique
+  name: String!
+  secret: String! @isUnique
+  size: Int!
+  updatedAt: DateTime!
+  url: String! @isUnique
+
+  dataset: DataSet @relation(name: "DatasetFile")
 }
 
 
