@@ -13,26 +13,26 @@ ctx.postMessage({ foo: 'foo' });
 
 // Respond to message from parent thread
 ctx.addEventListener('message', (event: any) => {
-  const { data:  { type, ...data } } = event;
-  if(type === "train") {
+  const { data: { type, ...data } } = event;
+  if (type === "train") {
     const { epochs, testinputs } = data;
     startTraining(epochs, testinputs);
-  } else if(type === "generateNumbers") {
+  } else if (type === "generateNumbers") {
     ctx.postMessage({
-      numbers: generateNumbers(data.length).xs.map((y:number[]) => y.map((x:number) => x*HIGHEST)),
+      numbers: generateNumbers(data.length).xs.map((y: number[]) => y.map((x: number) => x * HIGHEST)),
       type: 'generated',
     })
   }
-})  
+})
 
 const HIGHEST = 10;
 
 const generateNumbers = (N: number = 1000) => {
-  const xs:number[][] = [];
-  const ys:number[] = [];
-  for (let i = 0;i < N; i+=1) {
-    const a = Math.floor(Math.random() * HIGHEST)/HIGHEST;
-    const b = Math.floor(Math.random() * HIGHEST)/HIGHEST;
+  const xs: number[][] = [];
+  const ys: number[] = [];
+  for (let i = 0; i < N; i += 1) {
+    const a = Math.floor(Math.random() * HIGHEST) / HIGHEST;
+    const b = Math.floor(Math.random() * HIGHEST) / HIGHEST;
     xs.push([a, b]);
     ys.push(a + b);
   }
@@ -40,9 +40,9 @@ const generateNumbers = (N: number = 1000) => {
   return { xs, ys };
 }
 
-const startTraining = async (epochs:number, testinputs:number[][]) => {
+const startTraining = async (epochs: number, testinputs: number[][]) => {
   const model = tf.sequential();
-  model.add(tf.layers.dense({units: 1, inputShape: [2,]}));
+  model.add(tf.layers.dense({ units: 1, inputShape: [2,] }));
 
   model.compile({ loss: 'meanSquaredError', optimizer: 'sgd', metrics: ['accuracy', 'MSE'] });
 
@@ -59,12 +59,12 @@ const startTraining = async (epochs:number, testinputs:number[][]) => {
     {
       callbacks: {
         onEpochEnd: async (epoch, logs) => {
-          const values: any = model.predict(tf.tensor(testinputs.map((y:number[]) => y.map((x:number) => x/HIGHEST))));        
+          const values: any = model.predict(tf.tensor(testinputs.map((y: number[]) => y.map((x: number) => x / HIGHEST))));
           ctx.postMessage({
             type: "trainingepochend",
             epoch,
             logs,
-            values: values.dataSync().map((value:any) => value*HIGHEST)
+            values: values.dataSync().map((value: any) => value * HIGHEST)
           })
         }
       },
@@ -72,11 +72,11 @@ const startTraining = async (epochs:number, testinputs:number[][]) => {
       validationSplit: 0.2,
     }
   )
-  .then(() => {
-    const values: any = model.predict(tf.tensor(testinputs.map((y:number[]) => y.map((x:number) => x/HIGHEST))));        
-    ctx.postMessage({
-      type: 'trainingcompleted',
-      values: values.dataSync().map((value:any) => value*HIGHEST)
+    .then(() => {
+      const values: any = model.predict(tf.tensor(testinputs.map((y: number[]) => y.map((x: number) => x / HIGHEST))));
+      ctx.postMessage({
+        type: 'trainingcompleted',
+        values: values.dataSync().map((value: any) => value * HIGHEST)
+      })
     })
-  })
 }
