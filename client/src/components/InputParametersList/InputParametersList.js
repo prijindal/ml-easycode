@@ -19,12 +19,10 @@ import {
   Switch,
   TextField,
 } from 'material-ui';
-import { WithStyles, withStyles } from 'material-ui/styles';
 import * as React from 'react';
+import injectSheet, { type JSSProps } from 'react-jss';
 
-import styles from './styles.css';
-
-const decorate = withStyles(theme => ({
+const styles = {
   root: {
     minWidth: 280,
     flex: 1,
@@ -38,12 +36,12 @@ const decorate = withStyles(theme => ({
   listitem: {
     paddingLeft: 8,
   },
-}));
+};
 
 export type InputParametersListProps = {};
 
 class InputParametersList extends React.PureComponent<
-  InputParametersListProps & WithStyles<'root' | 'subheading' | 'listitem'>,
+  InputParametersListProps & JSSProps<typeof styles>,
   null
 > {
   render() {
@@ -162,4 +160,4 @@ class InputParametersList extends React.PureComponent<
   }
 }
 
-export default decorate(InputParametersList);
+export default injectSheet(styles)(InputParametersList);
