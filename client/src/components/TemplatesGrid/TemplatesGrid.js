@@ -23,25 +23,23 @@ type TemplatesGridProps = {
   onTemplateSelected: (t: Template) => void,
 };
 
-const TemplatesGrid = injectSheet(
-  ({
-    classes,
-    templates,
-    onTemplateSelected,
-  }: TemplatesGridProps & JSSProps<typeof styles>) => (
-    <div className={classes.root}>
-      {templates != null &&
-        templates.map((i: Template) => (
-          <TemplateComponent
-            key={i.id}
-            template={i}
-            onSelected={onTemplateSelected}
-          />
-        ))}
-      {templates != null &&
-        templates.length > 2 && <div className={classes.additionaldiv} />}
-    </div>
-  )
+const TemplatesGrid = ({
+  classes,
+  templates,
+  onTemplateSelected,
+}: TemplatesGridProps & JSSProps<typeof styles>) => (
+  <div className={classes.root}>
+    {templates != null &&
+      templates.map((i: Template) => (
+        <TemplateComponent
+          key={i.id}
+          template={i}
+          onSelected={onTemplateSelected}
+        />
+      ))}
+    {templates != null &&
+      templates.length > 2 && <div className={classes.additionaldiv} />}
+  </div>
 );
 
-export default (TemplatesGrid: FunctionComponent<TemplatesGridProps>);
+export default injectSheet(styles)(TemplatesGrid);
