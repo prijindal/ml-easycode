@@ -2,13 +2,15 @@
 
 import { call, put, takeEvery } from 'redux-saga/effects';
 import { createReducer, Handlers } from 'reduxsauce';
-import * as Immutable from 'seamless-immutable';
 
-import { type Action } from '../models/base';
+type Action<T> = {
+  payload: T | Error,
+  type: string,
+};
 
 export type GenericState<T> = {
   data: T,
-  error: void | Error,
+  error: null | Error,
   isLoading: boolean,
 };
 
@@ -23,20 +25,20 @@ export class State<T> {
     this.START = actionString + '_START';
   }
 
-  createReducer(initData: any) {
-    const INITIAL_STATE: GenericState<T> = Immutable({
+  createReducer(initData: T) {
+    const INITIAL_STATE: GenericState<T> = {
       data: initData,
       error: null,
       isLoading: false,
-    });
+    };
 
     const HANDLERS: Handlers = {
-      [this.SUCCESS]: (state: Object = INITIAL_STATE, action: Action) => ({
+      [this.SUCCESS]: (state: Object = INITIAL_STATE, action: Action<T>) => ({
         data: action.payload,
         error: null,
         isLoading: true,
       }),
-      [this.ERROR]: (state: Object = INITIAL_STATE, action: Action) => ({
+      [this.ERROR]: (state: Object = INITIAL_STATE, action: Action<T>) => ({
         error: action.payload,
         isLoading: true,
       }),

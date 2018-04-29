@@ -1,6 +1,6 @@
 /* @flow */
 import * as React from 'react';
-import Worker from 'worker-loader!./background.worker'; // eslint-disable-line import/no-webpack-loader-syntax
+import TFWorker from 'worker-loader!./background.worker'; // eslint-disable-line import/no-webpack-loader-syntax
 
 import TrainingComponent, { type Logs } from './TrainingComponent';
 
@@ -56,12 +56,15 @@ class TrainingPage extends React.Component<any, any> {
 
   componentWillMount() {
     // setTimeout(this.trainNetwork, 500);
-    this.worker = new Worker();
+    this.worker = new TFWorker();
     this.worker.postMessage({
       type: 'generateNumbers',
       length: 10,
     });
-    this.worker.addEventListener('message', ({ data: { type, ...data } }) => {
+    this.worker.addEventListener('message', (event: any) => {
+      const {
+        data: { type, ...data },
+      } = event;
       if (type === 'generated') {
         this.setState({
           testinputs: data.numbers,

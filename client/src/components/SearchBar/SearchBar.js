@@ -1,10 +1,10 @@
 /* @flow */
 
 import Input from 'material-ui/Input';
-import { withStyles, WithStyles } from 'material-ui/styles';
+import injectSheet, { type JSSProps } from 'react-jss';
 import * as React from 'react';
 
-const decorate = withStyles(theme => ({
+const styles = {
   root: {
     padding: '0 20px',
     marginBottom: 20,
@@ -12,7 +12,7 @@ const decorate = withStyles(theme => ({
   searchinput: {
     width: '100%',
   },
-}));
+};
 
 export type SearchBarComponentProps = {
   search: string,
@@ -20,10 +20,12 @@ export type SearchBarComponentProps = {
 };
 
 class SearchBarComponent extends React.PureComponent<
-  SearchBarComponentProps & WithStyles<'root' | 'searchinput'>,
+  SearchBarComponentProps & JSSProps<typeof styles>,
   null
 > {
-  onChange = (e: any) => this.props.setSearch(e.target.value);
+  onChange = (e: SyntheticKeyboardEvent<HTMLInputElement>) => {
+    this.props.setSearch(e.currentTarget.value);
+  };
 
   render() {
     const { classes, search } = this.props;
@@ -42,4 +44,4 @@ class SearchBarComponent extends React.PureComponent<
   }
 }
 
-export default decorate(SearchBarComponent);
+export default (injectSheet(styles)(SearchBarComponent): any);

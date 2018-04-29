@@ -1,21 +1,23 @@
 /* @flow */
 
 import { CircularProgress } from 'material-ui/Progress';
-import { withStyles } from 'material-ui/styles';
 import * as React from 'react';
+import injectSheet, { type JSSProps } from 'react-jss';
 
-const decorate = withStyles(theme => ({
+const styles = {
   root: {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
   },
-}));
+};
 
-const Loading = decorate(({ classes }) => (
-  <div className={classes.root}>
-    <CircularProgress />
-  </div>
-));
+const Loading = injectSheet(styles)(
+  ({ classes }: JSSProps<typeof styles>): React$Element<any> => (
+    <div className={classes.root}>
+      <CircularProgress />
+    </div>
+  )
+);
 
 export default Loading;

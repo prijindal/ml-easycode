@@ -6,7 +6,7 @@ import Button from 'material-ui/Button';
 import ButtonBase from 'material-ui/ButtonBase';
 import Card, { CardActions, CardContent } from 'material-ui/Card';
 import IconButton from 'material-ui/IconButton';
-import { withStyles, WithStyles } from 'material-ui/styles';
+import injectSheet, { type JSSProps } from 'react-jss';
 import Typography from 'material-ui/Typography';
 import * as React from 'react';
 
@@ -19,7 +19,7 @@ const PER_ELEMENT = TOTAL_SIZE / NUMBER;
 const WIDTH = PER_ELEMENT - 2 * PADDING;
 const HEIGHT = 30;
 
-const decorate = withStyles(theme => ({
+const styles = {
   root: {
     padding: PADDING,
     display: 'inline-block',
@@ -40,15 +40,15 @@ const decorate = withStyles(theme => ({
   },
   expand: {
     transform: 'rotate(0deg)',
-    transition: theme.transitions.create('transform', {
-      duration: theme.transitions.duration.shortest,
-    }),
+    // transition: theme.transitions.create('transform', {
+    //   duration: theme.transitions.duration.shortest,
+    // }),
     marginLeft: 'auto',
   },
   expandOpen: {
     transform: 'rotate(180deg)',
   },
-}));
+};
 
 export type TemplateComponentProps = {
   template: Template,
@@ -61,16 +61,7 @@ type TemplateComponentState = {
 };
 
 class TemplateComponent extends React.Component<
-  TemplateComponentProps &
-    WithStyles<
-      | 'root'
-      | 'base'
-      | 'card'
-      | 'content'
-      | 'contentOpen'
-      | 'expand'
-      | 'expandOpen'
-    >,
+  TemplateComponentProps & JSSProps<typeof styles>,
   TemplateComponentState
 > {
   static expandIconId = 'expand-icon';
@@ -143,4 +134,4 @@ class TemplateComponent extends React.Component<
   }
 }
 
-export default decorate(TemplateComponent);
+export default injectSheet(styles)(TemplateComponent);

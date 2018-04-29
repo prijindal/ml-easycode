@@ -1,16 +1,22 @@
 /* @flow */
 
 import * as tf from '@tensorflow/tfjs';
-const ctx: Worker = self; //eslint-disable-line no-restricted-globals
+const ctx: Worker = (self: Worker); //eslint-disable-line no-restricted-globals
 
 // Post data to parent thread
 ctx.postMessage({ foo: 'foo' });
 
+type EventResponseData = {
+  type: 'train',
+  epochs: number,
+  testinputs: number[][],
+  length: number,
+};
+
 // Respond to message from parent thread
 ctx.addEventListener('message', (event: any) => {
-  const {
-    data: { type, ...data },
-  } = event;
+  const data: EventResponseData = event.data;
+  const type = data.type;
   if (type === 'train') {
     const { epochs, testinputs } = data;
     startTraining(epochs, testinputs);

@@ -194,62 +194,40 @@ declare module 'react-easy-chart/lib/legend/index.js' {
   declare module.exports: $Exports<'react-easy-chart/lib/legend/index'>;
 }
 declare module 'react-easy-chart/lib/line-chart/hybrid/index.js' {
-  declare module.exports: $Exports<
-    'react-easy-chart/lib/line-chart/hybrid/index'
-  >;
+  declare module.exports: $Exports<'react-easy-chart/lib/line-chart/hybrid/index'>;
 }
 declare module 'react-easy-chart/lib/line-chart/hybrid/LineChart/common.js' {
-  declare module.exports: $Exports<
-    'react-easy-chart/lib/line-chart/hybrid/LineChart/common'
-  >;
+  declare module.exports: $Exports<'react-easy-chart/lib/line-chart/hybrid/LineChart/common'>;
 }
 declare module 'react-easy-chart/lib/line-chart/hybrid/LineChart/common/defaultAxisStyles.js' {
-  declare module.exports: $Exports<
-    'react-easy-chart/lib/line-chart/hybrid/LineChart/common/defaultAxisStyles'
-  >;
+  declare module.exports: $Exports<'react-easy-chart/lib/line-chart/hybrid/LineChart/common/defaultAxisStyles'>;
 }
 declare module 'react-easy-chart/lib/line-chart/hybrid/LineChart/common/defaultColors.js' {
-  declare module.exports: $Exports<
-    'react-easy-chart/lib/line-chart/hybrid/LineChart/common/defaultColors'
-  >;
+  declare module.exports: $Exports<'react-easy-chart/lib/line-chart/hybrid/LineChart/common/defaultColors'>;
 }
 declare module 'react-easy-chart/lib/line-chart/hybrid/LineChart/common/defaultStyles.js' {
-  declare module.exports: $Exports<
-    'react-easy-chart/lib/line-chart/hybrid/LineChart/common/defaultStyles'
-  >;
+  declare module.exports: $Exports<'react-easy-chart/lib/line-chart/hybrid/LineChart/common/defaultStyles'>;
 }
 declare module 'react-easy-chart/lib/line-chart/hybrid/LineChart/index.js' {
-  declare module.exports: $Exports<
-    'react-easy-chart/lib/line-chart/hybrid/LineChart/index'
-  >;
+  declare module.exports: $Exports<'react-easy-chart/lib/line-chart/hybrid/LineChart/index'>;
 }
 declare module 'react-easy-chart/lib/line-chart/index.js' {
   declare module.exports: $Exports<'react-easy-chart/lib/line-chart/index'>;
 }
 declare module 'react-easy-chart/lib/line-chart/static/index.js' {
-  declare module.exports: $Exports<
-    'react-easy-chart/lib/line-chart/static/index'
-  >;
+  declare module.exports: $Exports<'react-easy-chart/lib/line-chart/static/index'>;
 }
 declare module 'react-easy-chart/lib/pie-chart/hybrid/index.js' {
-  declare module.exports: $Exports<
-    'react-easy-chart/lib/pie-chart/hybrid/index'
-  >;
+  declare module.exports: $Exports<'react-easy-chart/lib/pie-chart/hybrid/index'>;
 }
 declare module 'react-easy-chart/lib/pie-chart/static/index.js' {
-  declare module.exports: $Exports<
-    'react-easy-chart/lib/pie-chart/static/index'
-  >;
+  declare module.exports: $Exports<'react-easy-chart/lib/pie-chart/static/index'>;
 }
 declare module 'react-easy-chart/lib/scatterplot-chart/hybrid/index.js' {
-  declare module.exports: $Exports<
-    'react-easy-chart/lib/scatterplot-chart/hybrid/index'
-  >;
+  declare module.exports: $Exports<'react-easy-chart/lib/scatterplot-chart/hybrid/index'>;
 }
 declare module 'react-easy-chart/lib/scatterplot-chart/static/index.js' {
-  declare module.exports: $Exports<
-    'react-easy-chart/lib/scatterplot-chart/static/index'
-  >;
+  declare module.exports: $Exports<'react-easy-chart/lib/scatterplot-chart/static/index'>;
 }
 declare module 'react-easy-chart/lib/shared.js' {
   declare module.exports: $Exports<'react-easy-chart/lib/shared'>;
@@ -267,70 +245,46 @@ declare module 'react-easy-chart/modules/interpolate.js' {
   declare module.exports: $Exports<'react-easy-chart/modules/interpolate'>;
 }
 declare module 'react-easy-chart/modules/legend/defaultStyles.js' {
-  declare module.exports: $Exports<
-    'react-easy-chart/modules/legend/defaultStyles'
-  >;
+  declare module.exports: $Exports<'react-easy-chart/modules/legend/defaultStyles'>;
 }
 declare module 'react-easy-chart/modules/legend/index.js' {
   declare module.exports: $Exports<'react-easy-chart/modules/legend/index'>;
 }
 declare module 'react-easy-chart/modules/line-chart/hybrid/index.js' {
-  declare module.exports: $Exports<
-    'react-easy-chart/modules/line-chart/hybrid/index'
-  >;
+  declare module.exports: $Exports<'react-easy-chart/modules/line-chart/hybrid/index'>;
 }
 declare module 'react-easy-chart/modules/line-chart/hybrid/LineChart/common.js' {
-  declare module.exports: $Exports<
-    'react-easy-chart/modules/line-chart/hybrid/LineChart/common'
-  >;
+  declare module.exports: $Exports<'react-easy-chart/modules/line-chart/hybrid/LineChart/common'>;
 }
 declare module 'react-easy-chart/modules/line-chart/hybrid/LineChart/common/defaultAxisStyles.js' {
-  declare module.exports: $Exports<
-    'react-easy-chart/modules/line-chart/hybrid/LineChart/common/defaultAxisStyles'
-  >;
+  declare module.exports: $Exports<'react-easy-chart/modules/line-chart/hybrid/LineChart/common/defaultAxisStyles'>;
 }
 declare module 'react-easy-chart/modules/line-chart/hybrid/LineChart/common/defaultColors.js' {
-  declare module.exports: $Exports<
-    'react-easy-chart/modules/line-chart/hybrid/LineChart/common/defaultColors'
-  >;
+  declare module.exports: $Exports<'react-easy-chart/modules/line-chart/hybrid/LineChart/common/defaultColors'>;
 }
 declare module 'react-easy-chart/modules/line-chart/hybrid/LineChart/common/defaultStyles.js' {
-  declare module.exports: $Exports<
-    'react-easy-chart/modules/line-chart/hybrid/LineChart/common/defaultStyles'
-  >;
+  declare module.exports: $Exports<'react-easy-chart/modules/line-chart/hybrid/LineChart/common/defaultStyles'>;
 }
 declare module 'react-easy-chart/modules/line-chart/hybrid/LineChart/index.js' {
-  declare module.exports: $Exports<
-    'react-easy-chart/modules/line-chart/hybrid/LineChart/index'
-  >;
+  declare module.exports: $Exports<'react-easy-chart/modules/line-chart/hybrid/LineChart/index'>;
 }
 declare module 'react-easy-chart/modules/line-chart/index.js' {
   declare module.exports: $Exports<'react-easy-chart/modules/line-chart/index'>;
 }
 declare module 'react-easy-chart/modules/line-chart/static/index.js' {
-  declare module.exports: $Exports<
-    'react-easy-chart/modules/line-chart/static/index'
-  >;
+  declare module.exports: $Exports<'react-easy-chart/modules/line-chart/static/index'>;
 }
 declare module 'react-easy-chart/modules/pie-chart/hybrid/index.js' {
-  declare module.exports: $Exports<
-    'react-easy-chart/modules/pie-chart/hybrid/index'
-  >;
+  declare module.exports: $Exports<'react-easy-chart/modules/pie-chart/hybrid/index'>;
 }
 declare module 'react-easy-chart/modules/pie-chart/static/index.js' {
-  declare module.exports: $Exports<
-    'react-easy-chart/modules/pie-chart/static/index'
-  >;
+  declare module.exports: $Exports<'react-easy-chart/modules/pie-chart/static/index'>;
 }
 declare module 'react-easy-chart/modules/scatterplot-chart/hybrid/index.js' {
-  declare module.exports: $Exports<
-    'react-easy-chart/modules/scatterplot-chart/hybrid/index'
-  >;
+  declare module.exports: $Exports<'react-easy-chart/modules/scatterplot-chart/hybrid/index'>;
 }
 declare module 'react-easy-chart/modules/scatterplot-chart/static/index.js' {
-  declare module.exports: $Exports<
-    'react-easy-chart/modules/scatterplot-chart/static/index'
-  >;
+  declare module.exports: $Exports<'react-easy-chart/modules/scatterplot-chart/static/index'>;
 }
 declare module 'react-easy-chart/modules/shared.js' {
   declare module.exports: $Exports<'react-easy-chart/modules/shared'>;

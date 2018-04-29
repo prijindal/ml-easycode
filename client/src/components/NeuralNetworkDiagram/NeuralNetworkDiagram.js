@@ -1,8 +1,8 @@
 /* @flow */
 
 import * as d3 from 'd3';
-import { withStyles, WithStyles } from 'material-ui/styles';
 import * as React from 'react';
+import injectSheet, { type JSSProps } from 'react-jss';
 
 type Node = {
   name: string,
@@ -15,7 +15,7 @@ type Edge = {
   nodes: Node[],
 };
 
-const decorate = withStyles(theme => ({
+const styles = {
   root: {
     flex: 1,
     minWidth: 320,
@@ -23,10 +23,10 @@ const decorate = withStyles(theme => ({
   svg: {
     width: '100%',
   },
-}));
+};
 
 export type NeuralNetworkDiagramProps = {
-  layers: number[],
+  layers?: number[],
 };
 
 export type NeuralNetworkDiagramState = {
@@ -34,7 +34,7 @@ export type NeuralNetworkDiagramState = {
 };
 
 class NeuralNetworkDiagram extends React.Component<
-  NeuralNetworkDiagramProps & WithStyles<'root' | 'svg'>,
+  NeuralNetworkDiagramProps & JSSProps<typeof styles>,
   NeuralNetworkDiagramState
 > {
   static defaultProps = {
@@ -47,6 +47,9 @@ class NeuralNetworkDiagram extends React.Component<
 
   componentDidMount() {
     const { layers } = this.props;
+    if (layers == null) {
+      return;
+    }
     const graph: { nodes: Node[], edges: Edge[] } = {
       nodes: [],
       edges: [],
@@ -112,10 +115,10 @@ class NeuralNetworkDiagram extends React.Component<
       .enter()
       .append('line')
       .style('stroke', 'gray')
-      .attr('x1', (d, i) => d.nodes[0].x)
-      .attr('y1', (d, i) => d.nodes[0].y)
-      .attr('x2', (d, i) => d.nodes[1].x)
-      .attr('y2', (d, i) => d.nodes[1].y);
+      .attr('x1', (d: Edge) => d.nodes[0].x)
+      .attr('y1', (d: Edge) => d.nodes[0].y)
+      .attr('x2', (d: Edge) => d.nodes[1].x)
+      .attr('y2', (d: Edge) => d.nodes[1].y);
 
     svg
       .selectAll('circle')
@@ -124,9 +127,9 @@ class NeuralNetworkDiagram extends React.Component<
       .append('circle')
       .style('stroke', 'gray')
       .style('fill', 'white')
-      .attr('r', (d, i) => d.r)
-      .attr('cx', (d, i) => d.x)
-      .attr('cy', (d, i) => d.y);
+      .attr('r', (d: Node) => d.r)
+      .attr('cx', (d: Node) => d.x)
+      .attr('cy', (d: Node) => d.y);
   };
   render() {
     const { classes } = this.props;
@@ -144,4 +147,4 @@ class NeuralNetworkDiagram extends React.Component<
   }
 }
 
-export default decorate(NeuralNetworkDiagram);
+export default injectSheet(styles)(NeuralNetworkDiagram);

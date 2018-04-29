@@ -1,12 +1,11 @@
 /* @flow */
-
-import { withStyles } from 'material-ui/styles';
+import injectSheet, { type JSSProps, type FunctionComponent } from 'react-jss';
 import * as React from 'react';
 
 import TemplateComponent from '../../components/Template';
 import { type Template } from '../../models/template';
 
-const decorate = withStyles(({ palette, spacing }) => ({
+const styles = {
   root: {
     display: 'flex',
     flexWrap: 'wrap',
@@ -17,16 +16,19 @@ const decorate = withStyles(({ palette, spacing }) => ({
     display: 'inline-block',
     minWidth: 320,
   },
-}));
+};
 
 type TemplatesGridProps = {
   templates: Template[],
   onTemplateSelected: (t: Template) => void,
-  classes: decorate.classes,
 };
 
-const TemplatesGrid = decorate(
-  ({ classes, templates, onTemplateSelected }: TemplatesGridProps) => (
+const TemplatesGrid = injectSheet(
+  ({
+    classes,
+    templates,
+    onTemplateSelected,
+  }: TemplatesGridProps & JSSProps<typeof styles>) => (
     <div className={classes.root}>
       {templates != null &&
         templates.map((i: Template) => (
@@ -42,4 +44,4 @@ const TemplatesGrid = decorate(
   )
 );
 
-export default TemplatesGrid;
+export default (TemplatesGrid: FunctionComponent<TemplatesGridProps>);

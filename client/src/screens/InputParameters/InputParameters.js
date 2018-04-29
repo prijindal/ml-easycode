@@ -1,13 +1,12 @@
 /* @flow */
-
-import { WithStyles, withStyles } from 'material-ui/styles';
+import injectSheet, { type JSSProps } from 'react-jss';
 import * as React from 'react';
 import InputParametersButtons from '../../components/InputParametersButtons';
 import InputParametersList from '../../components/InputParametersList';
 import Loading from '../../components/Loading';
 import NeuralNetworkDiagram from '../../components/NeuralNetworkDiagram';
 
-const decorate = withStyles(theme => ({
+const styles = {
   root: {
     display: 'flex',
     flexWrap: 'wrap',
@@ -16,7 +15,7 @@ const decorate = withStyles(theme => ({
     maxWidth: 960,
     paddingBottom: '72px',
   },
-}));
+};
 
 export type InputParametersScreenProps = {
   runCode?: () => { type: string }, // TODO
@@ -32,7 +31,7 @@ export type InputParametersScreenProps = {
 };
 
 class InputParametersScreen extends React.Component<
-  InputParametersScreenProps & WithStyles<'root'>,
+  InputParametersScreenProps & JSSProps<typeof styles>,
   null
 > {
   static defaultProps = {
@@ -81,4 +80,4 @@ class InputParametersScreen extends React.Component<
   }
 }
 
-export default decorate(InputParametersScreen);
+export default injectSheet(styles)(InputParametersScreen);

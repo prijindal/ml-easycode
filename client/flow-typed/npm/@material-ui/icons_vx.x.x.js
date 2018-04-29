@@ -7787,34 +7787,22 @@ declare module '@material-ui/icons/AirlineSeatFlatAngled.js' {
   declare module.exports: $Exports<'@material-ui/icons/AirlineSeatFlatAngled'>;
 }
 declare module '@material-ui/icons/AirlineSeatIndividualSuite.js' {
-  declare module.exports: $Exports<
-    '@material-ui/icons/AirlineSeatIndividualSuite'
-  >;
+  declare module.exports: $Exports<'@material-ui/icons/AirlineSeatIndividualSuite'>;
 }
 declare module '@material-ui/icons/AirlineSeatLegroomExtra.js' {
-  declare module.exports: $Exports<
-    '@material-ui/icons/AirlineSeatLegroomExtra'
-  >;
+  declare module.exports: $Exports<'@material-ui/icons/AirlineSeatLegroomExtra'>;
 }
 declare module '@material-ui/icons/AirlineSeatLegroomNormal.js' {
-  declare module.exports: $Exports<
-    '@material-ui/icons/AirlineSeatLegroomNormal'
-  >;
+  declare module.exports: $Exports<'@material-ui/icons/AirlineSeatLegroomNormal'>;
 }
 declare module '@material-ui/icons/AirlineSeatLegroomReduced.js' {
-  declare module.exports: $Exports<
-    '@material-ui/icons/AirlineSeatLegroomReduced'
-  >;
+  declare module.exports: $Exports<'@material-ui/icons/AirlineSeatLegroomReduced'>;
 }
 declare module '@material-ui/icons/AirlineSeatReclineExtra.js' {
-  declare module.exports: $Exports<
-    '@material-ui/icons/AirlineSeatReclineExtra'
-  >;
+  declare module.exports: $Exports<'@material-ui/icons/AirlineSeatReclineExtra'>;
 }
 declare module '@material-ui/icons/AirlineSeatReclineNormal.js' {
-  declare module.exports: $Exports<
-    '@material-ui/icons/AirlineSeatReclineNormal'
-  >;
+  declare module.exports: $Exports<'@material-ui/icons/AirlineSeatReclineNormal'>;
 }
 declare module '@material-ui/icons/AirplanemodeActive.js' {
   declare module.exports: $Exports<'@material-ui/icons/AirplanemodeActive'>;
@@ -8561,9 +8549,7 @@ declare module '@material-ui/icons/es/AccountBalance.js' {
   declare module.exports: $Exports<'@material-ui/icons/es/AccountBalance'>;
 }
 declare module '@material-ui/icons/es/AccountBalanceWallet.js' {
-  declare module.exports: $Exports<
-    '@material-ui/icons/es/AccountBalanceWallet'
-  >;
+  declare module.exports: $Exports<'@material-ui/icons/es/AccountBalanceWallet'>;
 }
 declare module '@material-ui/icons/es/AccountBox.js' {
   declare module.exports: $Exports<'@material-ui/icons/es/AccountBox'>;
@@ -8617,47 +8603,31 @@ declare module '@material-ui/icons/es/AirlineSeatFlat.js' {
   declare module.exports: $Exports<'@material-ui/icons/es/AirlineSeatFlat'>;
 }
 declare module '@material-ui/icons/es/AirlineSeatFlatAngled.js' {
-  declare module.exports: $Exports<
-    '@material-ui/icons/es/AirlineSeatFlatAngled'
-  >;
+  declare module.exports: $Exports<'@material-ui/icons/es/AirlineSeatFlatAngled'>;
 }
 declare module '@material-ui/icons/es/AirlineSeatIndividualSuite.js' {
-  declare module.exports: $Exports<
-    '@material-ui/icons/es/AirlineSeatIndividualSuite'
-  >;
+  declare module.exports: $Exports<'@material-ui/icons/es/AirlineSeatIndividualSuite'>;
 }
 declare module '@material-ui/icons/es/AirlineSeatLegroomExtra.js' {
-  declare module.exports: $Exports<
-    '@material-ui/icons/es/AirlineSeatLegroomExtra'
-  >;
+  declare module.exports: $Exports<'@material-ui/icons/es/AirlineSeatLegroomExtra'>;
 }
 declare module '@material-ui/icons/es/AirlineSeatLegroomNormal.js' {
-  declare module.exports: $Exports<
-    '@material-ui/icons/es/AirlineSeatLegroomNormal'
-  >;
+  declare module.exports: $Exports<'@material-ui/icons/es/AirlineSeatLegroomNormal'>;
 }
 declare module '@material-ui/icons/es/AirlineSeatLegroomReduced.js' {
-  declare module.exports: $Exports<
-    '@material-ui/icons/es/AirlineSeatLegroomReduced'
-  >;
+  declare module.exports: $Exports<'@material-ui/icons/es/AirlineSeatLegroomReduced'>;
 }
 declare module '@material-ui/icons/es/AirlineSeatReclineExtra.js' {
-  declare module.exports: $Exports<
-    '@material-ui/icons/es/AirlineSeatReclineExtra'
-  >;
+  declare module.exports: $Exports<'@material-ui/icons/es/AirlineSeatReclineExtra'>;
 }
 declare module '@material-ui/icons/es/AirlineSeatReclineNormal.js' {
-  declare module.exports: $Exports<
-    '@material-ui/icons/es/AirlineSeatReclineNormal'
-  >;
+  declare module.exports: $Exports<'@material-ui/icons/es/AirlineSeatReclineNormal'>;
 }
 declare module '@material-ui/icons/es/AirplanemodeActive.js' {
   declare module.exports: $Exports<'@material-ui/icons/es/AirplanemodeActive'>;
 }
 declare module '@material-ui/icons/es/AirplanemodeInactive.js' {
-  declare module.exports: $Exports<
-    '@material-ui/icons/es/AirplanemodeInactive'
-  >;
+  declare module.exports: $Exports<'@material-ui/icons/es/AirplanemodeInactive'>;
 }
 declare module '@material-ui/icons/es/Airplay.js' {
   declare module.exports: $Exports<'@material-ui/icons/es/Airplay'>;
@@ -9065,9 +9035,7 @@ declare module '@material-ui/icons/es/CheckBox.js' {
   declare module.exports: $Exports<'@material-ui/icons/es/CheckBox'>;
 }
 declare module '@material-ui/icons/es/CheckBoxOutlineBlank.js' {
-  declare module.exports: $Exports<
-    '@material-ui/icons/es/CheckBoxOutlineBlank'
-  >;
+  declare module.exports: $Exports<'@material-ui/icons/es/CheckBoxOutlineBlank'>;
 }
 declare module '@material-ui/icons/es/CheckCircle.js' {
   declare module.exports: $Exports<'@material-ui/icons/es/CheckCircle'>;
@@ -9175,9 +9143,7 @@ declare module '@material-ui/icons/es/ControlPoint.js' {
   declare module.exports: $Exports<'@material-ui/icons/es/ControlPoint'>;
 }
 declare module '@material-ui/icons/es/ControlPointDuplicate.js' {
-  declare module.exports: $Exports<
-    '@material-ui/icons/es/ControlPointDuplicate'
-  >;
+  declare module.exports: $Exports<'@material-ui/icons/es/ControlPointDuplicate'>;
 }
 declare module '@material-ui/icons/es/Copyright.js' {
   declare module.exports: $Exports<'@material-ui/icons/es/Copyright'>;
@@ -9636,14 +9602,10 @@ declare module '@material-ui/icons/es/FormatColorText.js' {
   declare module.exports: $Exports<'@material-ui/icons/es/FormatColorText'>;
 }
 declare module '@material-ui/icons/es/FormatIndentDecrease.js' {
-  declare module.exports: $Exports<
-    '@material-ui/icons/es/FormatIndentDecrease'
-  >;
+  declare module.exports: $Exports<'@material-ui/icons/es/FormatIndentDecrease'>;
 }
 declare module '@material-ui/icons/es/FormatIndentIncrease.js' {
-  declare module.exports: $Exports<
-    '@material-ui/icons/es/FormatIndentIncrease'
-  >;
+  declare module.exports: $Exports<'@material-ui/icons/es/FormatIndentIncrease'>;
 }
 declare module '@material-ui/icons/es/FormatItalic.js' {
   declare module.exports: $Exports<'@material-ui/icons/es/FormatItalic'>;
@@ -9673,14 +9635,10 @@ declare module '@material-ui/icons/es/FormatStrikethrough.js' {
   declare module.exports: $Exports<'@material-ui/icons/es/FormatStrikethrough'>;
 }
 declare module '@material-ui/icons/es/FormatTextdirectionLToR.js' {
-  declare module.exports: $Exports<
-    '@material-ui/icons/es/FormatTextdirectionLToR'
-  >;
+  declare module.exports: $Exports<'@material-ui/icons/es/FormatTextdirectionLToR'>;
 }
 declare module '@material-ui/icons/es/FormatTextdirectionRToL.js' {
-  declare module.exports: $Exports<
-    '@material-ui/icons/es/FormatTextdirectionRToL'
-  >;
+  declare module.exports: $Exports<'@material-ui/icons/es/FormatTextdirectionRToL'>;
 }
 declare module '@material-ui/icons/es/FormatUnderlined.js' {
   declare module.exports: $Exports<'@material-ui/icons/es/FormatUnderlined'>;
@@ -9857,9 +9815,7 @@ declare module '@material-ui/icons/es/Inbox.js' {
   declare module.exports: $Exports<'@material-ui/icons/es/Inbox'>;
 }
 declare module '@material-ui/icons/es/IndeterminateCheckBox.js' {
-  declare module.exports: $Exports<
-    '@material-ui/icons/es/IndeterminateCheckBox'
-  >;
+  declare module.exports: $Exports<'@material-ui/icons/es/IndeterminateCheckBox'>;
 }
 declare module '@material-ui/icons/es/index.js' {
   declare module.exports: $Exports<'@material-ui/icons/es/index'>;
@@ -10039,9 +9995,7 @@ declare module '@material-ui/icons/es/LocalCarWash.js' {
   declare module.exports: $Exports<'@material-ui/icons/es/LocalCarWash'>;
 }
 declare module '@material-ui/icons/es/LocalConvenienceStore.js' {
-  declare module.exports: $Exports<
-    '@material-ui/icons/es/LocalConvenienceStore'
-  >;
+  declare module.exports: $Exports<'@material-ui/icons/es/LocalConvenienceStore'>;
 }
 declare module '@material-ui/icons/es/LocalDining.js' {
   declare module.exports: $Exports<'@material-ui/icons/es/LocalDining'>;
@@ -10410,9 +10364,7 @@ declare module '@material-ui/icons/es/PermDataSetting.js' {
   declare module.exports: $Exports<'@material-ui/icons/es/PermDataSetting'>;
 }
 declare module '@material-ui/icons/es/PermDeviceInformation.js' {
-  declare module.exports: $Exports<
-    '@material-ui/icons/es/PermDeviceInformation'
-  >;
+  declare module.exports: $Exports<'@material-ui/icons/es/PermDeviceInformation'>;
 }
 declare module '@material-ui/icons/es/PermIdentity.js' {
   declare module.exports: $Exports<'@material-ui/icons/es/PermIdentity'>;
@@ -10454,9 +10406,7 @@ declare module '@material-ui/icons/es/PhoneAndroid.js' {
   declare module.exports: $Exports<'@material-ui/icons/es/PhoneAndroid'>;
 }
 declare module '@material-ui/icons/es/PhoneBluetoothSpeaker.js' {
-  declare module.exports: $Exports<
-    '@material-ui/icons/es/PhoneBluetoothSpeaker'
-  >;
+  declare module.exports: $Exports<'@material-ui/icons/es/PhoneBluetoothSpeaker'>;
 }
 declare module '@material-ui/icons/es/PhoneForwarded.js' {
   declare module.exports: $Exports<'@material-ui/icons/es/PhoneForwarded'>;
@@ -10510,19 +10460,13 @@ declare module '@material-ui/icons/es/PhotoLibrary.js' {
   declare module.exports: $Exports<'@material-ui/icons/es/PhotoLibrary'>;
 }
 declare module '@material-ui/icons/es/PhotoSizeSelectActual.js' {
-  declare module.exports: $Exports<
-    '@material-ui/icons/es/PhotoSizeSelectActual'
-  >;
+  declare module.exports: $Exports<'@material-ui/icons/es/PhotoSizeSelectActual'>;
 }
 declare module '@material-ui/icons/es/PhotoSizeSelectLarge.js' {
-  declare module.exports: $Exports<
-    '@material-ui/icons/es/PhotoSizeSelectLarge'
-  >;
+  declare module.exports: $Exports<'@material-ui/icons/es/PhotoSizeSelectLarge'>;
 }
 declare module '@material-ui/icons/es/PhotoSizeSelectSmall.js' {
-  declare module.exports: $Exports<
-    '@material-ui/icons/es/PhotoSizeSelectSmall'
-  >;
+  declare module.exports: $Exports<'@material-ui/icons/es/PhotoSizeSelectSmall'>;
 }
 declare module '@material-ui/icons/es/PictureAsPdf.js' {
   declare module.exports: $Exports<'@material-ui/icons/es/PictureAsPdf'>;
@@ -10633,9 +10577,7 @@ declare module '@material-ui/icons/es/RadioButtonChecked.js' {
   declare module.exports: $Exports<'@material-ui/icons/es/RadioButtonChecked'>;
 }
 declare module '@material-ui/icons/es/RadioButtonUnchecked.js' {
-  declare module.exports: $Exports<
-    '@material-ui/icons/es/RadioButtonUnchecked'
-  >;
+  declare module.exports: $Exports<'@material-ui/icons/es/RadioButtonUnchecked'>;
 }
 declare module '@material-ui/icons/es/RateReview.js' {
   declare module.exports: $Exports<'@material-ui/icons/es/RateReview'>;
@@ -10803,9 +10745,7 @@ declare module '@material-ui/icons/es/Send.js' {
   declare module.exports: $Exports<'@material-ui/icons/es/Send'>;
 }
 declare module '@material-ui/icons/es/SentimentDissatisfied.js' {
-  declare module.exports: $Exports<
-    '@material-ui/icons/es/SentimentDissatisfied'
-  >;
+  declare module.exports: $Exports<'@material-ui/icons/es/SentimentDissatisfied'>;
 }
 declare module '@material-ui/icons/es/SentimentNeutral.js' {
   declare module.exports: $Exports<'@material-ui/icons/es/SentimentNeutral'>;
@@ -10814,27 +10754,19 @@ declare module '@material-ui/icons/es/SentimentSatisfied.js' {
   declare module.exports: $Exports<'@material-ui/icons/es/SentimentSatisfied'>;
 }
 declare module '@material-ui/icons/es/SentimentVeryDissatisfied.js' {
-  declare module.exports: $Exports<
-    '@material-ui/icons/es/SentimentVeryDissatisfied'
-  >;
+  declare module.exports: $Exports<'@material-ui/icons/es/SentimentVeryDissatisfied'>;
 }
 declare module '@material-ui/icons/es/SentimentVerySatisfied.js' {
-  declare module.exports: $Exports<
-    '@material-ui/icons/es/SentimentVerySatisfied'
-  >;
+  declare module.exports: $Exports<'@material-ui/icons/es/SentimentVerySatisfied'>;
 }
 declare module '@material-ui/icons/es/Settings.js' {
   declare module.exports: $Exports<'@material-ui/icons/es/Settings'>;
 }
 declare module '@material-ui/icons/es/SettingsApplications.js' {
-  declare module.exports: $Exports<
-    '@material-ui/icons/es/SettingsApplications'
-  >;
+  declare module.exports: $Exports<'@material-ui/icons/es/SettingsApplications'>;
 }
 declare module '@material-ui/icons/es/SettingsBackupRestore.js' {
-  declare module.exports: $Exports<
-    '@material-ui/icons/es/SettingsBackupRestore'
-  >;
+  declare module.exports: $Exports<'@material-ui/icons/es/SettingsBackupRestore'>;
 }
 declare module '@material-ui/icons/es/SettingsBluetooth.js' {
   declare module.exports: $Exports<'@material-ui/icons/es/SettingsBluetooth'>;
@@ -10849,19 +10781,13 @@ declare module '@material-ui/icons/es/SettingsEthernet.js' {
   declare module.exports: $Exports<'@material-ui/icons/es/SettingsEthernet'>;
 }
 declare module '@material-ui/icons/es/SettingsInputAntenna.js' {
-  declare module.exports: $Exports<
-    '@material-ui/icons/es/SettingsInputAntenna'
-  >;
+  declare module.exports: $Exports<'@material-ui/icons/es/SettingsInputAntenna'>;
 }
 declare module '@material-ui/icons/es/SettingsInputComponent.js' {
-  declare module.exports: $Exports<
-    '@material-ui/icons/es/SettingsInputComponent'
-  >;
+  declare module.exports: $Exports<'@material-ui/icons/es/SettingsInputComponent'>;
 }
 declare module '@material-ui/icons/es/SettingsInputComposite.js' {
-  declare module.exports: $Exports<
-    '@material-ui/icons/es/SettingsInputComposite'
-  >;
+  declare module.exports: $Exports<'@material-ui/icons/es/SettingsInputComposite'>;
 }
 declare module '@material-ui/icons/es/SettingsInputHdmi.js' {
   declare module.exports: $Exports<'@material-ui/icons/es/SettingsInputHdmi'>;
@@ -10882,9 +10808,7 @@ declare module '@material-ui/icons/es/SettingsRemote.js' {
   declare module.exports: $Exports<'@material-ui/icons/es/SettingsRemote'>;
 }
 declare module '@material-ui/icons/es/SettingsSystemDaydream.js' {
-  declare module.exports: $Exports<
-    '@material-ui/icons/es/SettingsSystemDaydream'
-  >;
+  declare module.exports: $Exports<'@material-ui/icons/es/SettingsSystemDaydream'>;
 }
 declare module '@material-ui/icons/es/SettingsVoice.js' {
   declare module.exports: $Exports<'@material-ui/icons/es/SettingsVoice'>;
@@ -10929,29 +10853,19 @@ declare module '@material-ui/icons/es/SignalCellular4Bar.js' {
   declare module.exports: $Exports<'@material-ui/icons/es/SignalCellular4Bar'>;
 }
 declare module '@material-ui/icons/es/SignalCellularConnectedNoInternet0Bar.js' {
-  declare module.exports: $Exports<
-    '@material-ui/icons/es/SignalCellularConnectedNoInternet0Bar'
-  >;
+  declare module.exports: $Exports<'@material-ui/icons/es/SignalCellularConnectedNoInternet0Bar'>;
 }
 declare module '@material-ui/icons/es/SignalCellularConnectedNoInternet1Bar.js' {
-  declare module.exports: $Exports<
-    '@material-ui/icons/es/SignalCellularConnectedNoInternet1Bar'
-  >;
+  declare module.exports: $Exports<'@material-ui/icons/es/SignalCellularConnectedNoInternet1Bar'>;
 }
 declare module '@material-ui/icons/es/SignalCellularConnectedNoInternet2Bar.js' {
-  declare module.exports: $Exports<
-    '@material-ui/icons/es/SignalCellularConnectedNoInternet2Bar'
-  >;
+  declare module.exports: $Exports<'@material-ui/icons/es/SignalCellularConnectedNoInternet2Bar'>;
 }
 declare module '@material-ui/icons/es/SignalCellularConnectedNoInternet3Bar.js' {
-  declare module.exports: $Exports<
-    '@material-ui/icons/es/SignalCellularConnectedNoInternet3Bar'
-  >;
+  declare module.exports: $Exports<'@material-ui/icons/es/SignalCellularConnectedNoInternet3Bar'>;
 }
 declare module '@material-ui/icons/es/SignalCellularConnectedNoInternet4Bar.js' {
-  declare module.exports: $Exports<
-    '@material-ui/icons/es/SignalCellularConnectedNoInternet4Bar'
-  >;
+  declare module.exports: $Exports<'@material-ui/icons/es/SignalCellularConnectedNoInternet4Bar'>;
 }
 declare module '@material-ui/icons/es/SignalCellularNoSim.js' {
   declare module.exports: $Exports<'@material-ui/icons/es/SignalCellularNoSim'>;
@@ -11071,17 +10985,13 @@ declare module '@material-ui/icons/es/Stars.js' {
   declare module.exports: $Exports<'@material-ui/icons/es/Stars'>;
 }
 declare module '@material-ui/icons/es/StayCurrentLandscape.js' {
-  declare module.exports: $Exports<
-    '@material-ui/icons/es/StayCurrentLandscape'
-  >;
+  declare module.exports: $Exports<'@material-ui/icons/es/StayCurrentLandscape'>;
 }
 declare module '@material-ui/icons/es/StayCurrentPortrait.js' {
   declare module.exports: $Exports<'@material-ui/icons/es/StayCurrentPortrait'>;
 }
 declare module '@material-ui/icons/es/StayPrimaryLandscape.js' {
-  declare module.exports: $Exports<
-    '@material-ui/icons/es/StayPrimaryLandscape'
-  >;
+  declare module.exports: $Exports<'@material-ui/icons/es/StayPrimaryLandscape'>;
 }
 declare module '@material-ui/icons/es/StayPrimaryPortrait.js' {
   declare module.exports: $Exports<'@material-ui/icons/es/StayPrimaryPortrait'>;
@@ -11114,14 +11024,10 @@ declare module '@material-ui/icons/es/Style.js' {
   declare module.exports: $Exports<'@material-ui/icons/es/Style'>;
 }
 declare module '@material-ui/icons/es/SubdirectoryArrowLeft.js' {
-  declare module.exports: $Exports<
-    '@material-ui/icons/es/SubdirectoryArrowLeft'
-  >;
+  declare module.exports: $Exports<'@material-ui/icons/es/SubdirectoryArrowLeft'>;
 }
 declare module '@material-ui/icons/es/SubdirectoryArrowRight.js' {
-  declare module.exports: $Exports<
-    '@material-ui/icons/es/SubdirectoryArrowRight'
-  >;
+  declare module.exports: $Exports<'@material-ui/icons/es/SubdirectoryArrowRight'>;
 }
 declare module '@material-ui/icons/es/Subject.js' {
   declare module.exports: $Exports<'@material-ui/icons/es/Subject'>;
@@ -11280,9 +11186,7 @@ declare module '@material-ui/icons/es/Tram.js' {
   declare module.exports: $Exports<'@material-ui/icons/es/Tram'>;
 }
 declare module '@material-ui/icons/es/TransferWithinAStation.js' {
-  declare module.exports: $Exports<
-    '@material-ui/icons/es/TransferWithinAStation'
-  >;
+  declare module.exports: $Exports<'@material-ui/icons/es/TransferWithinAStation'>;
 }
 declare module '@material-ui/icons/es/Transform.js' {
   declare module.exports: $Exports<'@material-ui/icons/es/Transform'>;
@@ -11795,14 +11699,10 @@ declare module '@material-ui/icons/FormatStrikethrough.js' {
   declare module.exports: $Exports<'@material-ui/icons/FormatStrikethrough'>;
 }
 declare module '@material-ui/icons/FormatTextdirectionLToR.js' {
-  declare module.exports: $Exports<
-    '@material-ui/icons/FormatTextdirectionLToR'
-  >;
+  declare module.exports: $Exports<'@material-ui/icons/FormatTextdirectionLToR'>;
 }
 declare module '@material-ui/icons/FormatTextdirectionRToL.js' {
-  declare module.exports: $Exports<
-    '@material-ui/icons/FormatTextdirectionRToL'
-  >;
+  declare module.exports: $Exports<'@material-ui/icons/FormatTextdirectionRToL'>;
 }
 declare module '@material-ui/icons/FormatUnderlined.js' {
   declare module.exports: $Exports<'@material-ui/icons/FormatUnderlined'>;
@@ -12924,9 +12824,7 @@ declare module '@material-ui/icons/SentimentSatisfied.js' {
   declare module.exports: $Exports<'@material-ui/icons/SentimentSatisfied'>;
 }
 declare module '@material-ui/icons/SentimentVeryDissatisfied.js' {
-  declare module.exports: $Exports<
-    '@material-ui/icons/SentimentVeryDissatisfied'
-  >;
+  declare module.exports: $Exports<'@material-ui/icons/SentimentVeryDissatisfied'>;
 }
 declare module '@material-ui/icons/SentimentVerySatisfied.js' {
   declare module.exports: $Exports<'@material-ui/icons/SentimentVerySatisfied'>;
@@ -13025,29 +12923,19 @@ declare module '@material-ui/icons/SignalCellular4Bar.js' {
   declare module.exports: $Exports<'@material-ui/icons/SignalCellular4Bar'>;
 }
 declare module '@material-ui/icons/SignalCellularConnectedNoInternet0Bar.js' {
-  declare module.exports: $Exports<
-    '@material-ui/icons/SignalCellularConnectedNoInternet0Bar'
-  >;
+  declare module.exports: $Exports<'@material-ui/icons/SignalCellularConnectedNoInternet0Bar'>;
 }
 declare module '@material-ui/icons/SignalCellularConnectedNoInternet1Bar.js' {
-  declare module.exports: $Exports<
-    '@material-ui/icons/SignalCellularConnectedNoInternet1Bar'
-  >;
+  declare module.exports: $Exports<'@material-ui/icons/SignalCellularConnectedNoInternet1Bar'>;
 }
 declare module '@material-ui/icons/SignalCellularConnectedNoInternet2Bar.js' {
-  declare module.exports: $Exports<
-    '@material-ui/icons/SignalCellularConnectedNoInternet2Bar'
-  >;
+  declare module.exports: $Exports<'@material-ui/icons/SignalCellularConnectedNoInternet2Bar'>;
 }
 declare module '@material-ui/icons/SignalCellularConnectedNoInternet3Bar.js' {
-  declare module.exports: $Exports<
-    '@material-ui/icons/SignalCellularConnectedNoInternet3Bar'
-  >;
+  declare module.exports: $Exports<'@material-ui/icons/SignalCellularConnectedNoInternet3Bar'>;
 }
 declare module '@material-ui/icons/SignalCellularConnectedNoInternet4Bar.js' {
-  declare module.exports: $Exports<
-    '@material-ui/icons/SignalCellularConnectedNoInternet4Bar'
-  >;
+  declare module.exports: $Exports<'@material-ui/icons/SignalCellularConnectedNoInternet4Bar'>;
 }
 declare module '@material-ui/icons/SignalCellularNoSim.js' {
   declare module.exports: $Exports<'@material-ui/icons/SignalCellularNoSim'>;

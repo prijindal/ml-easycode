@@ -1,12 +1,12 @@
 /* @flow */
 
 import { AppBar, Toolbar } from 'material-ui';
-import { WithStyles, withStyles } from 'material-ui/styles';
+import injectSheet, { type JSSProps } from 'react-jss';
 import * as React from 'react';
 import { RouterState } from 'react-router-redux';
 import StepperBarStep from './StepperBarStep';
 
-const decorate = withStyles(theme => ({
+const styles = {
   root: {
     marginBottom: 20,
   },
@@ -17,14 +17,14 @@ const decorate = withStyles(theme => ({
     justifyContent: 'flex-start',
     margin: '0 auto',
   },
-}));
+};
 
 export type StepperBarComponentProps = {
   router: RouterState,
 };
 
 class StepperBarComponent extends React.PureComponent<
-  StepperBarComponentProps & WithStyles<'root' | 'stepper'>,
+  StepperBarComponentProps & JSSProps<typeof styles>,
   null
 > {
   static defaultProps = {
@@ -34,9 +34,8 @@ class StepperBarComponent extends React.PureComponent<
   };
 
   getState = (stepnumber: number): 'active' | 'pending' | 'done' => {
-    const {
-      router: { location },
-    } = this.props;
+    const router: RouterState = this.props.router;
+    const location: Location = router.location;
     if (location === null) {
       return 'pending';
     }
@@ -99,4 +98,4 @@ class StepperBarComponent extends React.PureComponent<
   }
 }
 
-export default decorate(StepperBarComponent);
+export default injectSheet(styles)(StepperBarComponent);
