@@ -11,9 +11,9 @@ before_script:
   - gem install coveralls-lcov
   
 script:
+  - yarn run flow src/
   - yarn test --coverage
 
 after_script:
   - yarn run build  
-  - yarn run flow src/  
   - coveralls-lcov coverage/lcov.info

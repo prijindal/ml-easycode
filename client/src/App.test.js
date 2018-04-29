@@ -1,7 +1,7 @@
 /* @flow */
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './Root';
+import App from './App';
 
 it('renders withoutRootashing', () => {
   const div = document.createElement('div');

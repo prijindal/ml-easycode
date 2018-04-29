@@ -12,7 +12,7 @@ import { client } from './helpers/apollo';
 
 const { store, history } = configureStore();
 
-const Root = () => (
+const App = () => (
   <Provider store={store}>
     <ApolloProvider client={client}>
       <div>
@@ -25,4 +25,4 @@ const Root = () => (
   </Provider>
 );
 
-export default Root;
+export default App;
