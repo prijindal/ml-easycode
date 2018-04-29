@@ -1,9 +1,8 @@
 /* @flow */
 
 import { createActions, createReducer, Handlers } from 'reduxsauce';
-import * as Immutable from 'seamless-immutable';
 
-const INITIAL_STATE = Immutable('');
+const INITIAL_STATE = '';
 
 export const { Types, Creators } = createActions({
   resetTemplate: [],
