@@ -22,6 +22,8 @@ import {
 import { WithStyles, withStyles } from 'material-ui/styles';
 import * as React from 'react';
 
+import styles from './styles.css';
+
 const decorate = withStyles(theme => ({
   root: {
     minWidth: 280,
