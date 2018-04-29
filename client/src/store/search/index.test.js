@@ -10,3 +10,7 @@ it('should check changed state', () => {
     'Some Search'
   );
 });
+
+it('should reset search state', () => {
+  expect(reducer('Some search', { type: 'RESET_SEARCH' })).toBe('');
+});
