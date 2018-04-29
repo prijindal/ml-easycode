@@ -35,7 +35,6 @@ const generateNumbers = (N: number = 1000) => {
     xs.push([a, b]);
     ys.push(a + b);
   }
-  // console.log(xs);
   return { xs, ys };
 };
 
@@ -53,8 +52,6 @@ const startTraining = async (epochs: number, testinputs: number[][]) => {
 
   const xvalues = tf.tensor2d(xs);
   const yvalues = tf.tensor2d(ys);
-
-  console.log('start Training');
 
   model
     .fit(xvalues, yvalues, {

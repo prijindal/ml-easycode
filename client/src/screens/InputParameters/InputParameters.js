@@ -63,11 +63,14 @@ class InputParametersScreen extends React.Component<
 
   render() {
     const { classes, data } = this.props;
-    const { template, loading } = data;
+    const {
+      // template,
+      loading,
+    } = data;
     if (loading) {
       return <Loading />;
     }
-    console.log(template.parameters);
+    // console.log(template.parameters);
     return (
       <div className={classes.root}>
         <InputParametersList />

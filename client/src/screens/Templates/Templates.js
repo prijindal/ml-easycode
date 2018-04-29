@@ -29,10 +29,6 @@ class TemplatesPage extends React.PureComponent<
   TemplatePageProps & WithStyles<'root'>,
   any
 > {
-  componentWillMount() {
-    console.log(this.props);
-  }
-
   onTemplateSelected = (template: Template): void => {
     this.props.selectTemplate(template);
   };
