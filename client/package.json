@@ -44,8 +44,8 @@
   "scripts": {
     "start": "react-scripts start",
     "flow": "flow",
+    "flow-coverage": "flow-coverage-report -i 'src/**/*.js' -t json",
     "build": "react-scripts build",
-    "coverage": "flow-coverage-report -i 'src/**/*.js' -t json",
     "precommit": "pretty-quick --staged",
     "postbuild": "cp _redirects build/",
     "test": "react-scripts test --env=jsdom",

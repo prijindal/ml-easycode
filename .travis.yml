@@ -11,12 +11,12 @@ before_script:
   - gem install coveralls-lcov
   
 script:
-  - yarn test
+  - yarn test --coverage
   - yarn run build
-  - yarn run coverage
+  - yarn run flow-coverage
 
 after_success:
-- coveralls-lcov flow-coverage/flow-coverage.json
+- coveralls-lcov coverage/lcov.info
 
 after_failure:
-- coveralls-lcov flow-coverage/flow-coverage.json
+- coveralls-lcov coverage/lcov.info
