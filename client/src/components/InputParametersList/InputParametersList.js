@@ -40,9 +40,9 @@ const styles = {
 
 export type InputParametersListProps = {};
 
-type Props = InputParametersListProps & JSSProps<typeof styles>;
-
-const InputParametersList = ({ classes }: JSSProps<typeof styles>) => (
+const InputParametersList = ({
+  classes,
+}: InputParametersListProps & JSSProps<typeof styles>) => (
   <div className={classes.root}>
     <Button variant="raised">Upload Code</Button>
     <FormLabel component="legend" className={classes.subheading}>

@@ -1,5 +1,5 @@
 /* @flow */
-import injectSheet, { type JSSProps, type FunctionComponent } from 'react-jss';
+import injectSheet, { type JSSProps } from 'react-jss';
 import * as React from 'react';
 
 import TemplateComponent from '../../components/Template';
