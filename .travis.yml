@@ -16,9 +16,10 @@ script:
 
 after_success:
   - yarn run build  
+  - cd ../
 
 after_script:
-  - coveralls-lcov coverage/lcov.info
+  - coveralls-lcov client/coverage/lcov.info
 
 deploy:
   provider: firebase
