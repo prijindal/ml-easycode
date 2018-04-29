@@ -1,0 +1,23 @@
+language: node_js
+node_js:
+  - "stable"
+cache:
+  directories:
+  - node_modules
+
+before_script:
+  - cd client
+  - yarn install
+  - gem install coveralls-lcov
+  
+script:
+  - cd client
+  - yarn test
+  - yarn run build
+  - yarn run coverage
+
+after_success:
+- coveralls-lcov coverage/lcov.info
+
+after_failure:
+- coveralls-lcov coverage/lcov.info
