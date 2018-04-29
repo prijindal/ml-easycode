@@ -1,3 +1,5 @@
+/* @flow */
+
 import Button from 'material-ui/Button';
 import { LinearProgress } from 'material-ui/Progress';
 import Snackbar from 'material-ui/Snackbar';
@@ -52,6 +54,7 @@ export type TrainingPageProps = {
   classes: decorate.classes,
   toggleTestCases: () => void,
   downloadModel: () => void,
+  isWaiting: boolean,
 };
 
 class CustomSnackBar extends React.Component<{ open: boolean }, any> {

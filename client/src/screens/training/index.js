@@ -2,13 +2,10 @@
 import * as React from 'react';
 import Worker from 'worker-loader!./background.worker'; // eslint-disable-line import/no-webpack-loader-syntax
 
-import TrainingComponent, {
-  type TrainingPageProps,
-  type Logs,
-} from './TrainingComponent';
+import TrainingComponent, { type Logs } from './TrainingComponent';
 
-class TrainingPage extends React.Component<any, TrainingPageProps> {
-  state: TrainingPageProps = {
+class TrainingPage extends React.Component<any, any> {
+  state = {
     chartData: {
       mse: [[], []],
       loss: [[], []],

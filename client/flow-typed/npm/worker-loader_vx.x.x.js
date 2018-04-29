@@ -17,6 +17,10 @@ declare module 'worker-loader' {
   declare module.exports: any;
 }
 
+declare module 'worker-loader!./background.worker' {
+  declare module.exports: any;
+}
+
 /**
  * We include stubs for each file inside this npm package in case you need to
  * require those files directly. Feel free to delete any files that aren't

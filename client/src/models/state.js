@@ -70,9 +70,9 @@ export function getSaga(state: State<any>) {
     }
   }
 
-  function* saga() {
-    yield takeEvery(state.START, internalsaga);
-  }
+  const saga: * = function*(): any {
+    yield takeEvery(state.START, (internalsaga: any));
+  };
 
   return saga;
 }

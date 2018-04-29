@@ -3,7 +3,7 @@
 import * as React from 'react';
 import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'react-router-redux';
-import { ApolloProvider } from 'react-apollo'
+import { ApolloProvider } from 'react-apollo';
 
 import StepperBar from './components/StepperBar';
 import AppComponent from './routes/app';
@@ -16,9 +16,9 @@ const Root = () => (
   <Provider store={store}>
     <ApolloProvider client={client}>
       <div>
-        <StepperBar />  
-        <ConnectedRouter history={history}>      
-          <AppComponent/>
+        <StepperBar />
+        <ConnectedRouter history={history}>
+          <AppComponent />
         </ConnectedRouter>
       </div>
     </ApolloProvider>

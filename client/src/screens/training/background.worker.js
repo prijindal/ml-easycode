@@ -1,12 +1,7 @@
 /* @flow */
 
 import * as tf from '@tensorflow/tfjs';
-import * as _ from 'lodash';
 const ctx: Worker = self; //eslint-disable-line no-restricted-globals
-
-const obj = { foo: 'foo' };
-
-_.has(obj, 'foo');
 
 // Post data to parent thread
 ctx.postMessage({ foo: 'foo' });
