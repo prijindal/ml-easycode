@@ -55,7 +55,7 @@
     "precommit": "lint-staged",
     "postbuild": "cp _redirects build/",
     "test:lint:flow": "flow",
-    "test:lint:js": "eslint .",
+    "test:lint:js": "eslint src/",
     "test:lint:css": "stylelint 'src/**/*.css'",
     "test:lint":
       "npm run test:lint:css && npm run test:lint:js && npm run test:lint:flow",
