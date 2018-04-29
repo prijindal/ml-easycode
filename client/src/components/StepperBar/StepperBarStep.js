@@ -5,7 +5,7 @@ import { Hidden, Typography } from 'material-ui';
 import { withStyles, WithStyles } from 'material-ui/styles';
 import * as React from 'react';
 
-const decorate = withStyles((theme) => ({
+const decorate = withStyles(theme => ({
   step: {
     display: 'flex',
     flexDirection: 'row',
@@ -13,10 +13,10 @@ const decorate = withStyles((theme) => ({
     flexWrap: 'wrap',
     alignItems: 'center',
     justifyContent: 'center',
-    height: 72
+    height: 72,
   },
   doneicon: {
-    fontSize: 20
+    fontSize: 20,
   },
   stepnumber: {
     backgroundColor: theme.palette.primary.light,
@@ -48,45 +48,60 @@ const decorate = withStyles((theme) => ({
 
 const colorBuilder = (color: string, alpha: number) => {
   return `rgba(${color}, alpha)`;
-}
+};
 
 type StepperBarStepProps = {
-  stepnumber: number;
-  text: string;
-  desktopText?: string;
-  divider?: boolean;
-  state?: "active" | "done" | "pending"
-}
+  stepnumber: number,
+  text: string,
+  desktopText?: string,
+  divider?: boolean,
+  state?: 'active' | 'done' | 'pending',
+};
 
-class StepperBarStep extends React.PureComponent<StepperBarStepProps & WithStyles<'step' | 'stepnumber' | 'steptext' | 'horizontaldivider' | 'doneicon'>, null> {
+class StepperBarStep extends React.PureComponent<
+  StepperBarStepProps &
+    WithStyles<
+      'step' | 'stepnumber' | 'steptext' | 'horizontaldivider' | 'doneicon'
+    >,
+  null
+> {
   static defaultProps = {
     divider: true,
-    state: "pending",
-  }
+    state: 'pending',
+  };
 
   render() {
-    const { classes, stepnumber, text, divider, state, desktopText } = this.props;    
+    const {
+      classes,
+      stepnumber,
+      text,
+      divider,
+      state,
+      desktopText,
+    } = this.props;
     return (
       <div className={classes.step}>
         <Typography
           variant="subheading"
           className={classes.stepnumber}
           style={{
-            fontWeight: state === "done" ? ("bold") : ("normal"),
-            backgroundColor: state === "pending" ? 'rgba(0,0,0, 0.38)' : "#7986cb"
+            fontWeight: state === 'done' ? 'bold' : 'normal',
+            backgroundColor:
+              state === 'pending' ? 'rgba(0,0,0, 0.38)' : '#7986cb',
           }}
         >
-          {state === "done" ?
-            <DoneIcon className={classes.doneicon}/> :          
+          {state === 'done' ? (
+            <DoneIcon className={classes.doneicon} />
+          ) : (
             stepnumber
-          }
+          )}
         </Typography>
         <Typography
           variant="subheading"
           className={classes.steptext}
           style={{
-            color:colorBuilder('255,255,255', state === "done" ? 1.0 : 0.54),
-            fontWeight: state === "pending" ? ("normal") : ("bold"),
+            color: colorBuilder('255,255,255', state === 'done' ? 1.0 : 0.54),
+            fontWeight: state === 'pending' ? 'normal' : 'bold',
           }}
         >
           <Hidden implementation="css" smDown>
@@ -97,9 +112,7 @@ class StepperBarStep extends React.PureComponent<StepperBarStepProps & WithStyle
           </Hidden>
         </Typography>
         <Hidden implementation="css" smDown>
-          {divider &&
-            <div className={classes.horizontaldivider}/>
-          }
+          {divider && <div className={classes.horizontaldivider} />}
         </Hidden>
       </div>
     );

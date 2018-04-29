@@ -16,26 +16,29 @@ const decorate = withStyles(({ palette, spacing }) => ({
 }));
 
 type TemplatePageProps = {
-  setSearch: (s: string) => { type: string };
-  selectTemplate: (s: Template) => RouterAction;
-  search: string;
+  setSearch: (s: string) => { type: string },
+  selectTemplate: (s: Template) => RouterAction,
+  search: string,
   data: {
     templates: Template[],
-    loading: boolean
-  }
-}
+    loading: boolean,
+  },
+};
 
-class TemplatesPage extends React.PureComponent<TemplatePageProps & WithStyles<'root'>, any> {
+class TemplatesPage extends React.PureComponent<
+  TemplatePageProps & WithStyles<'root'>,
+  any
+> {
   componentWillMount() {
     console.log(this.props);
   }
 
-  onTemplateSelected = (template: Template):void => {
+  onTemplateSelected = (template: Template): void => {
     this.props.selectTemplate(template);
-  }
+  };
 
   render() {
-    const {  templates } = this.props.data
+    const { templates } = this.props.data;
     return (
       <div className={this.props.classes.root}>
         <SearchBar
@@ -47,7 +50,7 @@ class TemplatesPage extends React.PureComponent<TemplatePageProps & WithStyles<'
           onTemplateSelected={this.onTemplateSelected}
         />
       </div>
-    )
+    );
   }
 }
 

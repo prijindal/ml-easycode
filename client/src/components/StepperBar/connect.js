@@ -5,8 +5,6 @@ import { type State } from '../../store/state.type';
 
 const mapStateToProps = (state: State) => ({
   router: state.router,
-})
+});
 
-export default connect(
-  mapStateToProps,
-);
+export default connect(mapStateToProps);

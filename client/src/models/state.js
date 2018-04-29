@@ -7,10 +7,10 @@ import * as Immutable from 'seamless-immutable';
 import { type Action } from '../models/base';
 
 export type GenericState<T> = {
-  data: T;
-  error: void | Error;
-  isLoading: boolean
-}
+  data: T,
+  error: void | Error,
+  isLoading: boolean,
+};
 
 export class State<T> {
   START: string;
@@ -24,7 +24,7 @@ export class State<T> {
   }
 
   createReducer(initData: any) {
-    const INITIAL_STATE:GenericState<T> = Immutable({
+    const INITIAL_STATE: GenericState<T> = Immutable({
       data: initData,
       error: null,
       isLoading: false,
@@ -48,28 +48,28 @@ export class State<T> {
   success = (data: T) => ({
     payload: data,
     type: this.SUCCESS,
-  })
+  });
 
   error = (error: Error) => ({
     payload: error,
     type: this.ERROR,
-  })
+  });
 
-  start = () => ({type: this.START})
+  start = () => ({ type: this.START });
 
   api: () => Promise<T>;
 }
 
 export function getSaga(state: State<any>) {
-  function *internalsaga() {
+  function* internalsaga() {
     try {
       const response = yield call(state.api);
       yield put(state.success(response));
-    } catch(e) {
+    } catch (e) {
       yield put(state.error(e));
     }
   }
-  
+
   function* saga() {
     yield takeEvery(state.START, internalsaga);
   }

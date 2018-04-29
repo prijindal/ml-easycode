@@ -1,5 +1,5 @@
-import { graphql } from 'react-apollo'
-import gql from 'graphql-tag'
+import { graphql } from 'react-apollo';
+import gql from 'graphql-tag';
 
 export default graphql(gql`
   fragment InputParametersList on Parameters {
@@ -18,11 +18,11 @@ export default graphql(gql`
     }
   }
 
-  query($templateid: ID!){
+  query($templateid: ID!) {
     template: Template(id: $templateid) {
       parameters {
         ...InputParametersList
       }
     }
   }
-`)
+`);

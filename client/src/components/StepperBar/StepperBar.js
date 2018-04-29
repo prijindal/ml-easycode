@@ -6,64 +6,69 @@ import * as React from 'react';
 import { RouterState } from 'react-router-redux';
 import StepperBarStep from './StepperBarStep';
 
-const decorate = withStyles((theme) => ({
+const decorate = withStyles(theme => ({
   root: {
-    marginBottom: 20
+    marginBottom: 20,
   },
   stepper: {
     display: 'flex',
     flexDirection: 'row',
     width: 960,
     justifyContent: 'flex-start',
-    margin: "0 auto",
+    margin: '0 auto',
   },
 }));
 
 export type StepperBarComponentProps = {
-  router: RouterState;
+  router: RouterState,
 };
 
-class StepperBarComponent extends React.PureComponent<StepperBarComponentProps & WithStyles<'root' | 'stepper'>, null> {
+class StepperBarComponent extends React.PureComponent<
+  StepperBarComponentProps & WithStyles<'root' | 'stepper'>,
+  null
+> {
   static defaultProps = {
     router: {
-      location: null
-    }
-  }
+      location: null,
+    },
+  };
 
-  getState = (stepnumber: number): "active" | "pending" | "done" => {
-    const { router: {  location } } = this.props;
-    if(location === null) {
-      return "pending";
+  getState = (stepnumber: number): 'active' | 'pending' | 'done' => {
+    const {
+      router: { location },
+    } = this.props;
+    if (location === null) {
+      return 'pending';
     }
     const { pathname } = location;
-    if (pathname === "/") {
+    if (pathname === '/') {
       if (stepnumber === 1) {
-        return "active";
+        return 'active';
       } else {
-        return "pending";
+        return 'pending';
       }
     }
-    if(pathname === "/inputs") {
+    if (pathname === '/inputs') {
       if (stepnumber < 2) {
-        return "done";
+        return 'done';
       } else if (stepnumber === 2) {
-          return "active";
+        return 'active';
       } else {
-        return "pending";
+        return 'pending';
       }
     }
-    if(pathname === "/training") {
+    if (pathname === '/training') {
       if (stepnumber < 3) {
-        return "done";
+        return 'done';
       } else {
-        return "active";
+        return 'active';
       }
     }
-    return "pending";
-  }
+    return 'pending';
+  };
 
   render() {
-    const { classes } = this.props;    
+    const { classes } = this.props;
     return (
       <AppBar position="sticky" color="default" className={classes.root}>
         <Toolbar>

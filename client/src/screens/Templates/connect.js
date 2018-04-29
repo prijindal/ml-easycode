@@ -10,15 +10,12 @@ import { type Dispatch } from 'redux';
 
 const mapStateToProps = (state: State) => ({
   search: state.search,
-})
+});
 
-export default connect(
-  mapStateToProps,
-  (dispatch: Dispatch<any>) => ({
-    setSearch: (term: string) => dispatch(searchCreators.setSearch(term)),    
-    selectTemplate: (template: Template) => {
-      dispatch(selectedtemplateCreators.setTemplate(template.id));
-      return dispatch(push('/inputs'))
-    },
-  })
-);
+export default connect(mapStateToProps, (dispatch: Dispatch<any>) => ({
+  setSearch: (term: string) => dispatch(searchCreators.setSearch(term)),
+  selectTemplate: (template: Template) => {
+    dispatch(selectedtemplateCreators.setTemplate(template.id));
+    return dispatch(push('/inputs'));
+  },
+}));

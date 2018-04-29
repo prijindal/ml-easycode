@@ -8,11 +8,11 @@ const INITIAL_STATE = Immutable('');
 export const { Types, Creators } = createActions({
   resetSearch: [],
   setSearch: ['search'],
-})
+});
 
 const HANDLERS: Handlers = {
-  [Types.RESET_SEARCH]: (state = INITIAL_STATE, action: any) => (''),
-  [Types.SET_SEARCH]: (state = INITIAL_STATE, action: any) => (action.search),
+  [Types.RESET_SEARCH]: (state = INITIAL_STATE, action: any) => '',
+  [Types.SET_SEARCH]: (state = INITIAL_STATE, action: any) => action.search,
 };
 
 export default createReducer(INITIAL_STATE, HANDLERS);

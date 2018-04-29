@@ -1,10 +1,10 @@
 /* @flow */
 
-import createSagaMiddleware from 'redux-saga'
+import createSagaMiddleware from 'redux-saga';
 // import { getSaga } from '../models/state';
 
-const sagaMiddleware = createSagaMiddleware()
+const sagaMiddleware = createSagaMiddleware();
 
-export const registerSagas = () => {}
+export const registerSagas = () => {};
 
 export default sagaMiddleware;

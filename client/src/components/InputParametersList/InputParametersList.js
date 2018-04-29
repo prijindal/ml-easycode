@@ -1,11 +1,28 @@
 /* @flow */
 
 import CloseIcon from '@material-ui/icons/Close';
-import { Button, FormControl, FormControlLabel, FormLabel, IconButton, InputLabel, List, ListItem, ListItemSecondaryAction, ListItemText, MenuItem, Radio, RadioGroup, Select, Switch, TextField } from 'material-ui';
+import {
+  Button,
+  FormControl,
+  FormControlLabel,
+  FormLabel,
+  IconButton,
+  InputLabel,
+  List,
+  ListItem,
+  ListItemSecondaryAction,
+  ListItemText,
+  MenuItem,
+  Radio,
+  RadioGroup,
+  Select,
+  Switch,
+  TextField,
+} from 'material-ui';
 import { WithStyles, withStyles } from 'material-ui/styles';
 import * as React from 'react';
 
-const decorate = withStyles((theme) => ({
+const decorate = withStyles(theme => ({
   root: {
     minWidth: 280,
     flex: 1,
@@ -17,21 +34,21 @@ const decorate = withStyles((theme) => ({
     marginTop: 20,
   },
   listitem: {
-    paddingLeft: 8
-  }
+    paddingLeft: 8,
+  },
 }));
 
 export type InputParametersListProps = {};
 
-class InputParametersList extends React.PureComponent<InputParametersListProps & WithStyles<'root' | 'subheading' | 'listitem'>, null> {
-
+class InputParametersList extends React.PureComponent<
+  InputParametersListProps & WithStyles<'root' | 'subheading' | 'listitem'>,
+  null
+> {
   render() {
-    const { classes } = this.props;    
+    const { classes } = this.props;
     return (
       <div className={classes.root}>
-        <Button variant="raised">
-          Upload Code
-        </Button>
+        <Button variant="raised">Upload Code</Button>
         <FormLabel component="legend" className={classes.subheading}>
           Problem Type
         </FormLabel>
@@ -43,12 +60,17 @@ class InputParametersList extends React.PureComponent<InputParametersListProps &
             </Select>
           </FormControl>
         </div>
-        <RadioGroup
-          aria-label="gender"
-          name="gender1"
-        >
-          <FormControlLabel value="classification" control={<Radio />} label="Classification" />
-          <FormControlLabel value="regression" control={<Radio />} label="Regression" />
+        <RadioGroup aria-label="gender" name="gender1">
+          <FormControlLabel
+            value="classification"
+            control={<Radio />}
+            label="Classification"
+          />
+          <FormControlLabel
+            value="regression"
+            control={<Radio />}
+            label="Regression"
+          />
         </RadioGroup>
         <TextField
           id="inputs"
@@ -58,7 +80,11 @@ class InputParametersList extends React.PureComponent<InputParametersListProps &
           required
         />
         <div className={classes.subheading}>
-          <FormControlLabel value="normalize" control={<Switch />} label="Normalize Input data" />
+          <FormControlLabel
+            value="normalize"
+            control={<Switch />}
+            label="Normalize Input data"
+          />
         </div>
         <FormLabel component="legend" className={classes.subheading}>
           Layers
@@ -66,10 +92,10 @@ class InputParametersList extends React.PureComponent<InputParametersListProps &
         <List>
           <ListItem button dense className={classes.listitem}>
             <ListItemText primary="Hidden, Dense, 4, Sigmoid" />
-            <ListItemSecondaryAction> 
+            <ListItemSecondaryAction>
               <IconButton>
                 <CloseIcon />
-              </IconButton>         
+              </IconButton>
             </ListItemSecondaryAction>
           </ListItem>
           <Button variant="raised" size="small">
@@ -77,10 +103,10 @@ class InputParametersList extends React.PureComponent<InputParametersListProps &
           </Button>
           <ListItem button dense className={classes.listitem}>
             <ListItemText primary="Output, Dense, 2, Linear" />
-            <ListItemSecondaryAction> 
+            <ListItemSecondaryAction>
               <IconButton>
                 <CloseIcon />
-              </IconButton>         
+              </IconButton>
             </ListItemSecondaryAction>
           </ListItem>
         </List>

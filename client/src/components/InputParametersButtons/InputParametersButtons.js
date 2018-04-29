@@ -4,7 +4,7 @@ import { AppBar, Button, Toolbar } from 'material-ui';
 import { WithStyles, withStyles } from 'material-ui/styles';
 import * as React from 'react';
 
-const decorate = withStyles((theme) => ({
+const decorate = withStyles(theme => ({
   root: {
     position: 'fixed',
     bottom: 0,
@@ -17,20 +17,23 @@ const decorate = withStyles((theme) => ({
     flexDirection: 'row',
     width: 960,
     justifyContent: 'flex-start',
-    margin: "0 auto",
-  }
+    margin: '0 auto',
+  },
 }));
 
 export type InputParametersButtonsProps = {
-  goToTraining: () => void;
+  goToTraining: () => void,
 };
 
-class InputParametersButtons extends React.PureComponent<InputParametersButtonsProps & WithStyles<'root' | 'toolbar'>, null> {
+class InputParametersButtons extends React.PureComponent<
+  InputParametersButtonsProps & WithStyles<'root' | 'toolbar'>,
+  null
+> {
   downloadCode = () => {
     alert('Downloaded');
-  }
+  };
   render() {
-    const { classes } = this.props;    
+    const { classes } = this.props;
     return (
       <AppBar position="fixed" color="default" className={classes.root}>
         <Toolbar className={classes.toolbar}>

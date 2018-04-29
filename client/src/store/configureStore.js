@@ -9,16 +9,10 @@ import reducer from './reducers';
 import sagaMiddleware, { registerSagas } from './sagas';
 
 export default () => {
-  const history = createHistory()
+  const history = createHistory();
   const routerMid = routerMiddleware(history);
-  const middleware = applyMiddleware(
-    ...[
-      logger,
-      sagaMiddleware,
-      routerMid,
-    ]
-  );
+  const middleware = applyMiddleware(...[logger, sagaMiddleware, routerMid]);
   const store = createStore(reducer, middleware);
   registerSagas();
   return { store, history };
-}
+};

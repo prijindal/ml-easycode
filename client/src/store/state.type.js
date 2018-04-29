@@ -5,7 +5,7 @@ import { RouterState } from 'react-router-redux';
 
 // TODO: Move this to store folder
 export type State = {
-  router: RouterState;
-  search: string;
-  selectedtemplate: string;
-}
+  router: RouterState,
+  search: string,
+  selectedtemplate: string,
+};
