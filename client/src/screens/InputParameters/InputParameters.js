@@ -5,6 +5,7 @@ import { WithStyles, withStyles } from 'material-ui/styles';
 import * as React from 'react';
 import InputParametersButtons from '../../components/InputParametersButtons';
 import InputParametersList from '../../components/InputParametersList';
+import Loading from '../../components/Loading';
 import NeuralNetworkDiagram from '../../components/NeuralNetworkDiagram';
 
 const decorate = withStyles((theme) => ({
@@ -19,16 +20,19 @@ const decorate = withStyles((theme) => ({
 }));
 
 export type InputParametersScreenProps = {
-  fetchParameters: (t: string) => ({ type: string });
   runCode?: () => ({type: string}); // TODO
   downloadCode?: () => ({type: string}); // TODO
   templateid: string;
-  parameters?: any; // TODO
-  isLoading?: boolean; // TODO
+  data: {
+    template: {
+      parameters: any,
+    },
+    loading: boolean
+  },
   history: any; // TODO: Better type
 };
 
-class InputParametersScreen extends React.PureComponent<InputParametersScreenProps & WithStyles<'root'>, null> {
+class InputParametersScreen extends React.Component<InputParametersScreenProps & WithStyles<'root'>, null> {
   static defaultProps = {
     history: {
       push: (a: string) => ({}),
@@ -39,7 +43,16 @@ class InputParametersScreen extends React.PureComponent<InputParametersScreenPro
     // if(this.props.templateid == null || this.props.templateid === "") {
     //   this.props.history.push('/')
     // }
-    this.props.fetchParameters(this.props.templateid);
+  }
+
+  shouldComponentUpdate(newProps: InputParametersScreenProps, newState) {
+    const { data, templateid } = newProps;
+    const { template } = data;
+    if(templateid == null || template == null) {
+      this.props.history.push('/')
+      return false;
+    }
+    return true;
   }
 
   goToTraining = () => {
@@ -47,7 +60,12 @@ class InputParametersScreen extends React.PureComponent<InputParametersScreenPro
   }
 
   render() {
-    const { classes } = this.props;    
+    const { classes, data } = this.props;    
+    const { template, loading } = data;
+    if (loading) {
+      return <Loading />
+    }
+    console.log(template.parameters)
     return (
       <div className={classes.root}>
         <InputParametersList />
