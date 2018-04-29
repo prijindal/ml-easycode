@@ -39,19 +39,12 @@
     "lint-staged": "^7.0.5",
     "prettier": "1.12.1",
     "source-map-explorer": "^1.5.0",
-    "stylelint": "^9.2.0",
-    "stylelint-config-standard": "^18.2.0",
     "webpack": "3.8.1",
     "worker-loader": "^1.1.1"
   },
   "lint-staged": {
     "src/**/*.{js,jsx,json}": [
       "eslint --fix",
-      "prettier --write",
-      "git add"
-    ],
-    "src/**/*.{css}": [
-      "stylelint --fix",
       "prettier --write",
       "git add"
     ]
@@ -65,8 +58,7 @@
     "postbuild": "cp _redirects build/",
     "test:lint:flow": "flow",
     "test:lint:js": "eslint src/",
-    "test:lint:css": "stylelint 'src/**/*.css'",
-    "test:lint": "npm run test:lint:css && npm run test:lint:js && npm run test:lint:flow",
+    "test:lint": "npm run test:lint:js && npm run test:lint:flow",
     "test:unit": "react-scripts test --env=jsdom",
     "test": "npm run test:lint && npm run test:unit",
     "predeploy": "npm run build",
