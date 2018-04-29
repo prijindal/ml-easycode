@@ -16,7 +16,7 @@ script:
   - yarn run coverage
 
 after_success:
-- coveralls-lcov flow-coverage/flow-coverage
+- coveralls-lcov flow-coverage/flow-coverage.json
 
 after_failure:
-- coveralls-lcov flow-coverage/flow-coverage
+- coveralls-lcov flow-coverage/flow-coverage.json
