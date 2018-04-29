@@ -1,42 +1,24 @@
 /* @flow */
 
 import { AppBar, Button, Toolbar } from 'material-ui';
-import { WithStyles, withStyles } from 'material-ui/styles';
 import * as React from 'react';
-
-const decorate = withStyles(theme => ({
-  root: {
-    position: 'fixed',
-    bottom: 0,
-    width: '100%',
-    height: 72,
-    top: 'initial',
-  },
-  toolbar: {
-    display: 'flex',
-    flexDirection: 'row',
-    width: 960,
-    justifyContent: 'flex-start',
-    margin: '0 auto',
-  },
-}));
+import styles from './styles.css';
 
 export type InputParametersButtonsProps = {
   goToTraining: () => void,
 };
 
 class InputParametersButtons extends React.PureComponent<
-  InputParametersButtonsProps & WithStyles<'root' | 'toolbar'>,
+  InputParametersButtonsProps,
   null
 > {
   downloadCode = () => {
     alert('Downloaded');
   };
   render() {
-    const { classes } = this.props;
     return (
-      <AppBar position="fixed" color="default" className={classes.root}>
-        <Toolbar className={classes.toolbar}>
+      <AppBar position="fixed" color="default" className={styles.root}>
+        <Toolbar className={styles.toolbar}>
           <Button onClick={this.props.goToTraining} variant="raised">
             Run Code
           </Button>
@@ -49,4 +31,4 @@ class InputParametersButtons extends React.PureComponent<
   }
 }
 
-export default decorate(InputParametersButtons);
+export default InputParametersButtons;

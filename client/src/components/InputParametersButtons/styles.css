@@ -1,0 +1,15 @@
+.root {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 72px;
+  top: initial;
+}
+
+.toolbar {
+  display: flex;
+  flex-direction: row;
+  width: 960px;
+  justify-content: flex-start;
+  margin: 0 auto;
+}
