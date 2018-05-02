@@ -6,7 +6,7 @@ import InputParametersList from '../../components/InputParametersList';
 import Loading from '../../components/Loading';
 import NeuralNetworkDiagram from '../../components/NeuralNetworkDiagram';
 
-import { Parameters } from '../../models/parameters';
+import { type Parameters } from '../../models/parameters';
 
 const styles = {
   root: {
@@ -22,7 +22,7 @@ const styles = {
 export type InputParametersScreenProps = {
   runCode?: () => { type: string }, // TODO
   downloadCode?: () => { type: string }, // TODO
-  setParameters: parameters => { type: string },
+  setParameters: (parameters: Parameters) => { type: string },
   templateid: string,
   data: {
     template: {

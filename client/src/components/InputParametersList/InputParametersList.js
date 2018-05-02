@@ -22,7 +22,9 @@ import {
 import * as React from 'react';
 import injectSheet, { type JSSProps } from 'react-jss';
 
-import { Parameters } from '../../models/parameters';
+import Loading from '../Loading';
+
+import { type Parameters, type EnumType } from '../../models/parameters';
 
 const styles = {
   root: {
@@ -42,13 +44,19 @@ const styles = {
 
 export type InputParametersListProps = {
   data: {
-    typeoftypes: string[],
+    typeoftypes: EnumType,
+    typeoflosses: EnumType,
     template: {
       parameters: Parameters,
     },
     loading: boolean,
   },
+  setParameters: (paramaters: Parameters) => { type: string },
   parameters: Parameters,
+  changeProperty: (
+    parametername: string,
+    parametervalue: string
+  ) => { type: string },
 };
 
 class InputParametersList extends React.Component<
@@ -57,13 +65,16 @@ class InputParametersList extends React.Component<
 > {
   componentWillMount() {
     this.props.setParameters(this.props.data.template.parameters);
-    console.log(this.props.data);
   }
 
   render() {
     const { classes } = this.props;
     const { parameters } = this.props;
-    const { typeoftypes } = this.props.data;
+    if (parameters.loss == null) {
+      return <Loading />;
+    }
+    const { typeoftypes, typeoflosses } = this.props.data;
+    console.log(parameters);
     return (
       <div className={classes.root}>
         <Button variant="raised">Upload Code</Button>
@@ -80,12 +91,13 @@ class InputParametersList extends React.Component<
         </div>
         <RadioGroup
           value={parameters.type}
-          onChange={(event: object) =>
+          onChange={(event: Object) =>
             this.props.changeProperty('type', event.target.value)
           }
         >
           {typeoftypes.enumValues.map(typeoftype => (
             <FormControlLabel
+              key={typeoftype.name}
               value={typeoftype.name}
               control={<Radio />}
               label={typeoftype.name}
@@ -139,9 +151,17 @@ class InputParametersList extends React.Component<
         <div className={classes.subheading}>
           <FormControl>
             <InputLabel>Loss Function</InputLabel>
-            <Select value="msa">
-              <MenuItem value="crossentropy">Cross Entropy</MenuItem>
-              <MenuItem value="msa">Mean Squared Error</MenuItem>
+            <Select
+              value={parameters.loss}
+              onChange={(event: Object) =>
+                this.props.changeProperty('loss', event.target.value)
+              }
+            >
+              {typeoflosses.enumValues.map(typeoftype => (
+                <MenuItem key={typeoftype.name} value={typeoftype.name}>
+                  {typeoftype.name}
+                </MenuItem>
+              ))}
             </Select>
           </FormControl>
         </div>

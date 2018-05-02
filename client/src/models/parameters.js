@@ -1,5 +1,12 @@
 /* @flow */
 
+export type EnumType = {
+  name: string,
+  enumValues: {
+    name: string,
+  }[],
+};
+
 export type Parameters = {
   regularizer: string,
   epochs: number,
