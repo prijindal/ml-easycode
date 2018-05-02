@@ -6,6 +6,8 @@ import InputParametersList from '../../components/InputParametersList';
 import Loading from '../../components/Loading';
 import NeuralNetworkDiagram from '../../components/NeuralNetworkDiagram';
 
+import { Parameters } from '../../models/parameters';
+
 const styles = {
   root: {
     display: 'flex',
@@ -20,10 +22,11 @@ const styles = {
 export type InputParametersScreenProps = {
   runCode?: () => { type: string }, // TODO
   downloadCode?: () => { type: string }, // TODO
+  setParameters: parameters => { type: string },
   templateid: string,
   data: {
     template: {
-      parameters: any,
+      parameters: Parameters,
     },
     loading: boolean,
   },
@@ -39,12 +42,6 @@ class InputParametersScreen extends React.Component<
       push: (a: string) => ({}),
     },
   };
-
-  componentWillMount() {
-    // if(this.props.templateid == null || this.props.templateid === "") {
-    //   this.props.history.push('/')
-    // }
-  }
 
   shouldComponentUpdate(newProps: InputParametersScreenProps, newState) {
     const { data, templateid } = newProps;
@@ -72,7 +69,7 @@ class InputParametersScreen extends React.Component<
     // console.log(template.parameters);
     return (
       <div className={classes.root}>
-        <InputParametersList />
+        <InputParametersList data={data} />
         <NeuralNetworkDiagram />
         <InputParametersButtons goToTraining={this.goToTraining} />
       </div>

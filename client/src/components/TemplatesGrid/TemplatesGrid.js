@@ -12,7 +12,7 @@ const styles = {
     justifyContent: 'center',
   },
   additionaldiv: {
-    flex: 1,
+    // flex: 1,
     display: 'inline-block',
     minWidth: 320,
   },

@@ -20,7 +20,9 @@ import {
   TextField,
 } from 'material-ui';
 import * as React from 'react';
-import injectSheet, { type JSSProps, type FunctionComponent } from 'react-jss';
+import injectSheet, { type JSSProps } from 'react-jss';
+
+import { Parameters } from '../../models/parameters';
 
 const styles = {
   root: {
@@ -38,122 +40,144 @@ const styles = {
   },
 };
 
-export type InputParametersListProps = {};
+export type InputParametersListProps = {
+  data: {
+    typeoftypes: string[],
+    template: {
+      parameters: Parameters,
+    },
+    loading: boolean,
+  },
+  parameters: Parameters,
+};
 
-const InputParametersList = ({
-  classes,
-}: InputParametersListProps & JSSProps<typeof styles>) => (
-  <div className={classes.root}>
-    <Button variant="raised">Upload Code</Button>
-    <FormLabel component="legend" className={classes.subheading}>
-      Problem Type
-    </FormLabel>
-    <div className={classes.subheading}>
-      <FormControl disabled={true}>
-        <InputLabel>Method</InputLabel>
-        <Select value="ann">
-          <MenuItem value="ann">Artificial Neural Network</MenuItem>
-        </Select>
-      </FormControl>
-    </div>
-    <RadioGroup aria-label="gender" name="gender1">
-      <FormControlLabel
-        value="classification"
-        control={<Radio />}
-        label="Classification"
-      />
-      <FormControlLabel
-        value="regression"
-        control={<Radio />}
-        label="Regression"
-      />
-    </RadioGroup>
-    <TextField
-      id="inputs"
-      label="No. of inputs"
-      placeholder="inputs"
-      type="number"
-      required
-    />
-    <div className={classes.subheading}>
-      <FormControlLabel
-        value="normalize"
-        control={<Switch />}
-        label="Normalize Input data"
-      />
-    </div>
-    <FormLabel component="legend" className={classes.subheading}>
-      Layers
-    </FormLabel>
-    <List>
-      <ListItem button dense className={classes.listitem}>
-        <ListItemText primary="Hidden, Dense, 4, Sigmoid" />
-        <ListItemSecondaryAction>
-          <IconButton>
-            <CloseIcon />
-          </IconButton>
-        </ListItemSecondaryAction>
-      </ListItem>
-      <Button variant="raised" size="small">
-        Add Layer
-      </Button>
-      <ListItem button dense className={classes.listitem}>
-        <ListItemText primary="Output, Dense, 2, Linear" />
-        <ListItemSecondaryAction>
-          <IconButton>
-            <CloseIcon />
-          </IconButton>
-        </ListItemSecondaryAction>
-      </ListItem>
-    </List>
-    <TextField
-      id="epochs"
-      label="No. of epochs"
-      placeholder="epochs"
-      type="number"
-    />
-    <div className={classes.subheading}>
-      <FormControl>
-        <InputLabel>Loss Function</InputLabel>
-        <Select value="msa">
-          <MenuItem value="crossentropy">Cross Entropy</MenuItem>
-          <MenuItem value="msa">Mean Squared Error</MenuItem>
-        </Select>
-      </FormControl>
-    </div>
-    <div className={classes.subheading}>
-      <FormControl>
-        <InputLabel>Optimizer</InputLabel>
-        <Select value="sgd">
-          <MenuItem value="sgd">Stochastic Gradient Descent</MenuItem>
-          <MenuItem value="RMSprop">RMSProp</MenuItem>
-        </Select>
-      </FormControl>
-    </div>
-    <div className={classes.subheading}>
-      <FormControl>
-        <InputLabel>Regularizer</InputLabel>
-        <Select value="l1">
-          <MenuItem value="l1">l1</MenuItem>
-          <MenuItem value="l2">l2</MenuItem>
-          <MenuItem value="l1_l2">l1_l2</MenuItem>
-        </Select>
-      </FormControl>
-    </div>
-    <div className={classes.subheading}>
-      <FormControl>
-        <InputLabel>Initializer</InputLabel>
-        <Select value="glorot_uniform">
-          <MenuItem value="glorot_uniform">Glorot Uniform</MenuItem>
-          <MenuItem value="random_uniform">Random Uniform</MenuItem>
-          <MenuItem value="zeroes">Zeros</MenuItem>
-          <MenuItem value="ones">Ones</MenuItem>
-        </Select>
-      </FormControl>
-    </div>
-  </div>
-);
+class InputParametersList extends React.Component<
+  InputParametersListProps & JSSProps<typeof styles>,
+  void
+> {
+  componentWillMount() {
+    this.props.setParameters(this.props.data.template.parameters);
+    console.log(this.props.data);
+  }
 
-export default (injectSheet(styles)(InputParametersList): FunctionComponent<
-  InputParametersListProps
->);
+  render() {
+    const { classes } = this.props;
+    const { parameters } = this.props;
+    const { typeoftypes } = this.props.data;
+    return (
+      <div className={classes.root}>
+        <Button variant="raised">Upload Code</Button>
+        <FormLabel component="legend" className={classes.subheading}>
+          Problem Type
+        </FormLabel>
+        <div className={classes.subheading}>
+          <FormControl disabled={true}>
+            <InputLabel>Method</InputLabel>
+            <Select value="ann">
+              <MenuItem value="ann">Artificial Neural Network</MenuItem>
+            </Select>
+          </FormControl>
+        </div>
+        <RadioGroup
+          value={parameters.type}
+          onChange={(event: object) =>
+            this.props.changeProperty('type', event.target.value)
+          }
+        >
+          {typeoftypes.enumValues.map(typeoftype => (
+            <FormControlLabel
+              value={typeoftype.name}
+              control={<Radio />}
+              label={typeoftype.name}
+            />
+          ))}
+        </RadioGroup>
+        <TextField
+          id="inputs"
+          label="No. of inputs"
+          placeholder="inputs"
+          type="number"
+          required
+        />
+        <div className={classes.subheading}>
+          <FormControlLabel
+            value="normalize"
+            control={<Switch />}
+            label="Normalize Input data"
+          />
+        </div>
+        <FormLabel component="legend" className={classes.subheading}>
+          Layers
+        </FormLabel>
+        <List>
+          <ListItem button dense className={classes.listitem}>
+            <ListItemText primary="Hidden, Dense, 4, Sigmoid" />
+            <ListItemSecondaryAction>
+              <IconButton>
+                <CloseIcon />
+              </IconButton>
+            </ListItemSecondaryAction>
+          </ListItem>
+          <Button variant="raised" size="small">
+            Add Layer
+          </Button>
+          <ListItem button dense className={classes.listitem}>
+            <ListItemText primary="Output, Dense, 2, Linear" />
+            <ListItemSecondaryAction>
+              <IconButton>
+                <CloseIcon />
+              </IconButton>
+            </ListItemSecondaryAction>
+          </ListItem>
+        </List>
+        <TextField
+          id="epochs"
+          label="No. of epochs"
+          placeholder="epochs"
+          type="number"
+        />
+        <div className={classes.subheading}>
+          <FormControl>
+            <InputLabel>Loss Function</InputLabel>
+            <Select value="msa">
+              <MenuItem value="crossentropy">Cross Entropy</MenuItem>
+              <MenuItem value="msa">Mean Squared Error</MenuItem>
+            </Select>
+          </FormControl>
+        </div>
+        <div className={classes.subheading}>
+          <FormControl>
+            <InputLabel>Optimizer</InputLabel>
+            <Select value="sgd">
+              <MenuItem value="sgd">Stochastic Gradient Descent</MenuItem>
+              <MenuItem value="RMSprop">RMSProp</MenuItem>
+            </Select>
+          </FormControl>
+        </div>
+        <div className={classes.subheading}>
+          <FormControl>
+            <InputLabel>Regularizer</InputLabel>
+            <Select value="l1">
+              <MenuItem value="l1">l1</MenuItem>
+              <MenuItem value="l2">l2</MenuItem>
+              <MenuItem value="l1_l2">l1_l2</MenuItem>
+            </Select>
+          </FormControl>
+        </div>
+        <div className={classes.subheading}>
+          <FormControl>
+            <InputLabel>Initializer</InputLabel>
+            <Select value="glorot_uniform">
+              <MenuItem value="glorot_uniform">Glorot Uniform</MenuItem>
+              <MenuItem value="random_uniform">Random Uniform</MenuItem>
+              <MenuItem value="zeroes">Zeros</MenuItem>
+              <MenuItem value="ones">Ones</MenuItem>
+            </Select>
+          </FormControl>
+        </div>
+      </div>
+    );
+  }
+}
+
+export default injectSheet(styles)(InputParametersList);
