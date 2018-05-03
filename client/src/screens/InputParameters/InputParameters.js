@@ -65,7 +65,7 @@ class InputParametersScreen extends React.Component<
   };
 
   render() {
-    const { classes, data } = this.props;
+    let { classes, data } = this.props;
     const {
       // template,
       loading,
@@ -73,6 +73,20 @@ class InputParametersScreen extends React.Component<
     } = data;
     if (loading || error) {
       return <Loading />;
+    }
+    if (!data.template) {
+      data.template = {
+        initializer: 'GLOROT_UNIFORM',
+        optimizer: { function: 'SGD', __typename: 'Optimizer' },
+        hiddenlayers: [],
+        outputlayer: {
+          __typename: 'Layer',
+          id: 'cjgq8joc4111c0111yvj651o5',
+          nodes: 4,
+          activationFunction: 'SIGMOID',
+          type: 'INPUT',
+        },
+      };
     }
     // console.log(template.parameters);
     return (

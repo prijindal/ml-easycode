@@ -114,14 +114,15 @@ class InputParametersList extends React.Component<
               this.props.changeProperty('type', event.target.value)
             }
           >
-            {typeoftypes.enumValues.map(typeoftype => (
-              <FormControlLabel
-                key={typeoftype.name}
-                value={typeoftype.name}
-                control={<Radio />}
-                label={typeoftype.name}
-              />
-            ))}
+            {typeoftypes != null &&
+              typeoftypes.enumValues.map(typeoftype => (
+                <FormControlLabel
+                  key={typeoftype.name}
+                  value={typeoftype.name}
+                  control={<Radio />}
+                  label={typeoftype.name}
+                />
+              ))}
           </RadioGroup>
         </div>
         <TextField
@@ -153,16 +154,17 @@ class InputParametersList extends React.Component<
           Layers
         </FormLabel>
         <List>
-          {parameters.hiddenlayers.map(hiddenlayer => (
-            <ListItem button dense className={classes.listitem}>
-              <ListItemText primary="Hidden, Dense, 4, Sigmoid" />
-              <ListItemSecondaryAction>
-                <IconButton>
-                  <CloseIcon />
-                </IconButton>
-              </ListItemSecondaryAction>
-            </ListItem>
-          ))}
+          {parameters.hiddenlayers != null &&
+            parameters.hiddenlayers.map(hiddenlayer => (
+              <ListItem button dense className={classes.listitem}>
+                <ListItemText primary="Hidden, Dense, 4, Sigmoid" />
+                <ListItemSecondaryAction>
+                  <IconButton>
+                    <CloseIcon />
+                  </IconButton>
+                </ListItemSecondaryAction>
+              </ListItem>
+            ))}
           <Button variant="raised" size="small">
             Add Layer
           </Button>
@@ -196,11 +198,12 @@ class InputParametersList extends React.Component<
                 this.props.changeProperty('loss', event.target.value)
               }
             >
-              {typeoflosses.enumValues.map(typeoftype => (
-                <MenuItem key={typeoftype.name} value={typeoftype.name}>
-                  {typeoftype.name}
-                </MenuItem>
-              ))}
+              {typeoflosses != null &&
+                typeoflosses.enumValues.map(typeoftype => (
+                  <MenuItem key={typeoftype.name} value={typeoftype.name}>
+                    {typeoftype.name}
+                  </MenuItem>
+                ))}
             </Select>
           </FormControl>
         </div>
@@ -216,14 +219,15 @@ class InputParametersList extends React.Component<
                 )
               }
             >
-              {typeofoptimizers.enumValues.map(typeofoptimizer => (
-                <MenuItem
-                  key={typeofoptimizer.name}
-                  value={typeofoptimizer.name}
-                >
-                  {typeofoptimizer.name}
-                </MenuItem>
-              ))}
+              {typeofoptimizers != null &&
+                typeofoptimizers.enumValues.map(typeofoptimizer => (
+                  <MenuItem
+                    key={typeofoptimizer.name}
+                    value={typeofoptimizer.name}
+                  >
+                    {typeofoptimizer.name}
+                  </MenuItem>
+                ))}
             </Select>
           </FormControl>
         </div>
@@ -236,14 +240,15 @@ class InputParametersList extends React.Component<
                 this.props.changeProperty('regularizer', event.target.value)
               }
             >
-              {typeofregularizers.enumValues.map(typeofregularizer => (
-                <MenuItem
-                  key={typeofregularizer.name}
-                  value={typeofregularizer.name}
-                >
-                  {typeofregularizer.name}
-                </MenuItem>
-              ))}
+              {typeofregularizers != null &&
+                typeofregularizers.enumValues.map(typeofregularizer => (
+                  <MenuItem
+                    key={typeofregularizer.name}
+                    value={typeofregularizer.name}
+                  >
+                    {typeofregularizer.name}
+                  </MenuItem>
+                ))}
             </Select>
           </FormControl>
         </div>
@@ -256,14 +261,15 @@ class InputParametersList extends React.Component<
                 this.props.changeProperty('initializer', event.target.value)
               }
             >
-              {typeofinitializers.enumValues.map(typeofinitializer => (
-                <MenuItem
-                  key={typeofinitializer.name}
-                  value={typeofinitializer.name}
-                >
-                  {typeofinitializer.name}
-                </MenuItem>
-              ))}
+              {typeofinitializers != null &&
+                typeofinitializers.enumValues.map(typeofinitializer => (
+                  <MenuItem
+                    key={typeofinitializer.name}
+                    value={typeofinitializer.name}
+                  >
+                    {typeofinitializer.name}
+                  </MenuItem>
+                ))}
             </Select>
           </FormControl>
         </div>

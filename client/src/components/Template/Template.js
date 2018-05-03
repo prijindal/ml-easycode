@@ -112,7 +112,7 @@ class TemplateComponent extends React.Component<
             </CardContent>
             <CardActions>
               <Button disableRipple={true}>Choose Template</Button>
-              {template.about && template.about.length > 50 ? (
+              {template.about && template.about.length > 40 ? (
                 <IconButton
                   className={classnames(classes.expand, {
                     [classes.expandOpen]: this.state.expanded,
