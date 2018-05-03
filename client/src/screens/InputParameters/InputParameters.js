@@ -29,6 +29,7 @@ export type InputParametersScreenProps = {
       parameters: Parameters,
     },
     loading: boolean,
+    error: Object,
   },
   history: any, // TODO: Better type
 };

@@ -8,6 +8,7 @@ import { type Parameters } from '../models/parameters';
 export type State = {
   router: RouterState,
   search: string,
+  trainfile: File | Object,
   selectedtemplate: string,
   parameters: Parameters,
 };
