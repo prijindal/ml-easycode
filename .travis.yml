@@ -8,10 +8,12 @@ cache:
 before_script:
   - cd client
   - yarn install
+  - cd ../
   - gem install coveralls-lcov
   
 script:
   - sh scripts/prefetch.sh
+  - cd client
   - yarn run test:lint
   - yarn run test:unit --coverage
 
