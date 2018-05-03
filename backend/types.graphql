@@ -17,7 +17,9 @@ enum ParameterType {
 type Parameters @model {
   id: ID! @isUnique
   template: Template! @relation(name: "TemplateParameter")
-  layers: [Layer!]! @relation(name: "ParameterLayers")
+  hiddenlayers: [Layer!]! @relation(name: "ParameterHiddenLayers")
+  inputlayer: Layer! @relation(name: "ParameterInputLayer")
+  outputlayer: Layer! @relation(name: "ParameterOutputLayer")
   type: ParameterType!
   shouldNormalize: Boolean!
   epochs: Int!
@@ -30,6 +32,8 @@ type Parameters @model {
 enum Initializer {
   GLOROT_UNIFORM
   RANDOM_UNIFORM
+  ZEROS
+  ONES
 }
 
 enum Regularizer {
@@ -62,7 +66,7 @@ enum ActivationFunction {
 
 type Optimizer @model {
   id: ID! @isUnique
-  function: OptimizerFunction!  
+  function: OptimizerFunction!
   learningRate: Float!
   momentum: Float
   decay: Float
@@ -81,14 +85,20 @@ type DataSet @model {
 type Layer @model {
   id: ID! @isUnique
   activationFunction: ActivationFunction!
+  nodes: Int!
   type: LayerType!
-  associatedParameter: Parameters @relation(name: "ParameterLayers")
+
+  associatedHiddenLayerParameter: Parameters
+    @relation(name: "ParameterHiddenLayers")
+  associatedInputLayerParameter: Parameters
+    @relation(name: "ParameterInputLayer")
+  associatedOutputLayerParameter: Parameters
+    @relation(name: "ParameterOutputLayer")
 }
 
 type User @model {
   id: ID! @isUnique
 }
-
 
 type File @model {
   contentType: String!
@@ -102,7 +112,6 @@ type File @model {
 
   dataset: DataSet @relation(name: "DatasetFile")
 }
-
 
 # # Uncomment the model below as well
 
