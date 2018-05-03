@@ -11,6 +11,7 @@ before_script:
   - gem install coveralls-lcov
   
 script:
+  - sh scripts/prefetch.sh
   - yarn run test:lint
   - yarn run test:unit --coverage
 

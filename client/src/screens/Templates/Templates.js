@@ -7,6 +7,7 @@ import { RouterAction } from 'react-router-redux';
 import SearchBar from '../../components/SearchBar/SearchBar';
 import TemplatesGrid from '../../components/TemplatesGrid';
 import { type Template } from '../../models/template';
+import prefetchedData from '../../api/templates.json';
 
 const decorate = withStyles(({ palette, spacing }) => ({
   root: {
@@ -34,7 +35,10 @@ class TemplatesPage extends React.PureComponent<
   };
 
   render() {
-    const { templates } = this.props.data;
+    let { data } = this.props;
+    if (!data.templates) {
+      data.templates = prefetchedData.data.templates;
+    }
     return (
       <div className={this.props.classes.root}>
         <SearchBar
@@ -42,7 +46,7 @@ class TemplatesPage extends React.PureComponent<
           setSearch={this.props.setSearch}
         />
         <TemplatesGrid
-          templates={templates}
+          templates={data.templates}
           onTemplateSelected={this.onTemplateSelected}
         />
       </div>

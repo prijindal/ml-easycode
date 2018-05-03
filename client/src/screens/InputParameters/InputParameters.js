@@ -43,14 +43,21 @@ class InputParametersScreen extends React.Component<
     },
   };
 
-  shouldComponentUpdate(newProps: InputParametersScreenProps, newState) {
-    const { data, templateid } = newProps;
-    const { template } = data;
-    if (templateid == null || template == null) {
+  componentWillMount() {
+    this.checkProps(this.props);
+  }
+
+  checkProps(props) {
+    const { templateid } = props;
+    if (templateid == null || templateid === '') {
       this.props.history.push('/');
       return false;
     }
     return true;
+  }
+
+  shouldComponentUpdate(newProps: InputParametersScreenProps, newState) {
+    return this.checkProps(newProps);
   }
 
   goToTraining = () => {
