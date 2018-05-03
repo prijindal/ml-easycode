@@ -24,7 +24,11 @@ import injectSheet, { type JSSProps } from 'react-jss';
 
 import Loading from '../Loading';
 
-import { type Parameters, type EnumType } from '../../models/parameters';
+import {
+  type Parameters,
+  type EnumType,
+  type Layer,
+} from '../../models/parameters';
 
 const styles = {
   root: {
@@ -46,6 +50,9 @@ export type InputParametersListProps = {
   data: {
     typeoftypes: EnumType,
     typeoflosses: EnumType,
+    typeofinitializers: EnumType,
+    typeofoptimizers: EnumType,
+    typeofregularizers: EnumType,
     template: {
       parameters: Parameters,
     },
@@ -55,7 +62,7 @@ export type InputParametersListProps = {
   parameters: Parameters,
   changeProperty: (
     parametername: string,
-    parametervalue: string
+    parametervalue: any
   ) => { type: string },
 };
 
@@ -67,20 +74,26 @@ class InputParametersList extends React.Component<
     this.props.setParameters(this.props.data.template.parameters);
   }
 
+  layerString = (type: string, layer: Layer) =>
+    `${type}, Dense, ${layer.nodes}, ${layer.activationFunction}`;
+
   render() {
     const { classes } = this.props;
     const { parameters } = this.props;
     if (parameters.loss == null) {
       return <Loading />;
     }
-    const { typeoftypes, typeoflosses } = this.props.data;
+    const {
+      typeoftypes,
+      typeoflosses,
+      typeofoptimizers,
+      typeofinitializers,
+      typeofregularizers,
+    } = this.props.data;
     console.log(parameters);
     return (
       <div className={classes.root}>
-        <Button variant="raised">Upload Code</Button>
-        <FormLabel component="legend" className={classes.subheading}>
-          Problem Type
-        </FormLabel>
+        <Button variant="raised">Upload Training Data</Button>
         <div className={classes.subheading}>
           <FormControl disabled={true}>
             <InputLabel>Method</InputLabel>
@@ -89,26 +102,35 @@ class InputParametersList extends React.Component<
             </Select>
           </FormControl>
         </div>
-        <RadioGroup
-          value={parameters.type}
-          onChange={(event: Object) =>
-            this.props.changeProperty('type', event.target.value)
-          }
-        >
-          {typeoftypes.enumValues.map(typeoftype => (
-            <FormControlLabel
-              key={typeoftype.name}
-              value={typeoftype.name}
-              control={<Radio />}
-              label={typeoftype.name}
-            />
-          ))}
-        </RadioGroup>
+        <FormLabel component="legend" className={classes.subheading}>
+          Problem Type
+        </FormLabel>
+        <div className={classes.subheading}>
+          <RadioGroup
+            value={parameters.type}
+            onChange={(event: Object) =>
+              this.props.changeProperty('type', event.target.value)
+            }
+          >
+            {typeoftypes.enumValues.map(typeoftype => (
+              <FormControlLabel
+                key={typeoftype.name}
+                value={typeoftype.name}
+                control={<Radio />}
+                label={typeoftype.name}
+              />
+            ))}
+          </RadioGroup>
+        </div>
         <TextField
           id="inputs"
           label="No. of inputs"
           placeholder="inputs"
           type="number"
+          value={parameters.inputlayer.nodes}
+          onChange={(event: Object) =>
+            this.props.changeProperty('inputlayer.nodes', event.target.value)
+          }
           required
         />
         <div className={classes.subheading}>
@@ -116,25 +138,36 @@ class InputParametersList extends React.Component<
             value="normalize"
             control={<Switch />}
             label="Normalize Input data"
+            checked={parameters.shouldNormalize}
+            onChange={(event: Object) =>
+              this.props.changeProperty(
+                'shouldNormalize',
+                !parameters.shouldNormalize
+              )
+            }
           />
         </div>
         <FormLabel component="legend" className={classes.subheading}>
           Layers
         </FormLabel>
         <List>
-          <ListItem button dense className={classes.listitem}>
-            <ListItemText primary="Hidden, Dense, 4, Sigmoid" />
-            <ListItemSecondaryAction>
-              <IconButton>
-                <CloseIcon />
-              </IconButton>
-            </ListItemSecondaryAction>
-          </ListItem>
+          {parameters.hiddenlayers.map(hiddenlayer => (
+            <ListItem button dense className={classes.listitem}>
+              <ListItemText primary="Hidden, Dense, 4, Sigmoid" />
+              <ListItemSecondaryAction>
+                <IconButton>
+                  <CloseIcon />
+                </IconButton>
+              </ListItemSecondaryAction>
+            </ListItem>
+          ))}
           <Button variant="raised" size="small">
             Add Layer
           </Button>
           <ListItem button dense className={classes.listitem}>
-            <ListItemText primary="Output, Dense, 2, Linear" />
+            <ListItemText
+              primary={this.layerString('Output', parameters.outputlayer)}
+            />
             <ListItemSecondaryAction>
               <IconButton>
                 <CloseIcon />
@@ -147,6 +180,10 @@ class InputParametersList extends React.Component<
           label="No. of epochs"
           placeholder="epochs"
           type="number"
+          value={parameters.epochs}
+          onChange={(event: Object) =>
+            this.props.changeProperty('epochs', event.target.value)
+          }
         />
         <div className={classes.subheading}>
           <FormControl>
@@ -168,30 +205,63 @@ class InputParametersList extends React.Component<
         <div className={classes.subheading}>
           <FormControl>
             <InputLabel>Optimizer</InputLabel>
-            <Select value="sgd">
-              <MenuItem value="sgd">Stochastic Gradient Descent</MenuItem>
-              <MenuItem value="RMSprop">RMSProp</MenuItem>
+            <Select
+              value={parameters.optimizer.function}
+              onChange={(event: Object) =>
+                this.props.changeProperty(
+                  'optimizer.function',
+                  event.target.value
+                )
+              }
+            >
+              {typeofoptimizers.enumValues.map(typeofoptimizer => (
+                <MenuItem
+                  key={typeofoptimizer.name}
+                  value={typeofoptimizer.name}
+                >
+                  {typeofoptimizer.name}
+                </MenuItem>
+              ))}
             </Select>
           </FormControl>
         </div>
         <div className={classes.subheading}>
           <FormControl>
             <InputLabel>Regularizer</InputLabel>
-            <Select value="l1">
-              <MenuItem value="l1">l1</MenuItem>
-              <MenuItem value="l2">l2</MenuItem>
-              <MenuItem value="l1_l2">l1_l2</MenuItem>
+            <Select
+              value={parameters.regularizer}
+              onChange={(event: Object) =>
+                this.props.changeProperty('regularizer', event.target.value)
+              }
+            >
+              {typeofregularizers.enumValues.map(typeofregularizer => (
+                <MenuItem
+                  key={typeofregularizer.name}
+                  value={typeofregularizer.name}
+                >
+                  {typeofregularizer.name}
+                </MenuItem>
+              ))}
             </Select>
           </FormControl>
         </div>
         <div className={classes.subheading}>
           <FormControl>
             <InputLabel>Initializer</InputLabel>
-            <Select value="glorot_uniform">
-              <MenuItem value="glorot_uniform">Glorot Uniform</MenuItem>
-              <MenuItem value="random_uniform">Random Uniform</MenuItem>
-              <MenuItem value="zeroes">Zeros</MenuItem>
-              <MenuItem value="ones">Ones</MenuItem>
+            <Select
+              value={parameters.initializer}
+              onChange={(event: Object) =>
+                this.props.changeProperty('initializer', event.target.value)
+              }
+            >
+              {typeofinitializers.enumValues.map(typeofinitializer => (
+                <MenuItem
+                  key={typeofinitializer.name}
+                  value={typeofinitializer.name}
+                >
+                  {typeofinitializer.name}
+                </MenuItem>
+              ))}
             </Select>
           </FormControl>
         </div>

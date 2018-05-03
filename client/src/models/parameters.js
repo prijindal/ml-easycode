@@ -7,6 +7,12 @@ export type EnumType = {
   }[],
 };
 
+export type Layer = {
+  activationFunction: string,
+  nodes: number,
+  type: string,
+};
+
 export type Parameters = {
   regularizer: string,
   epochs: number,
@@ -14,10 +20,9 @@ export type Parameters = {
   type: string,
   loss: string,
   shouldNormalize: boolean,
-  layers: {
-    activationFunction: string,
-    type: string,
-  },
+  hiddenlayers: Layer[],
+  inputlayer: Layer,
+  outputlayer: Layer,
   optimizer: {
     function: string,
   },

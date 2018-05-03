@@ -4,6 +4,13 @@ import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
 
 export default graphql(gql`
+  fragment InputParameterLayer on Layer {
+    id
+    nodes
+    activationFunction
+    type
+  }
+
   fragment InputParametersList on Parameters {
     id
     regularizer
@@ -12,10 +19,14 @@ export default graphql(gql`
     type
     loss
     shouldNormalize
-    layers {
-      id
-      activationFunction
-      type
+    hiddenlayers {
+      ...InputParameterLayer
+    }
+    inputlayer {
+      ...InputParameterLayer
+    }
+    outputlayer {
+      ...InputParameterLayer
     }
     optimizer {
       function
@@ -43,6 +54,9 @@ export default graphql(gql`
       ...getEnumValues
     }
     typeofregularizers: __type(name: "Regularizer") {
+      ...getEnumValues
+    }
+    typeoflayers: __type(name: "LayerType") {
       ...getEnumValues
     }
     template: Template(id: $templateid) {

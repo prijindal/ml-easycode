@@ -1,6 +1,6 @@
 /* @flow */
 
-import { Parameters } from './parameters';
+import { type Parameters } from './parameters';
 
 export type Template = {
   id: string,

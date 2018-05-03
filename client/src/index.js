@@ -11,10 +11,14 @@ import './registerServiceWorker';
 //   module.hot.accept();
 // }
 
-const root = document.getElementById('root');
+let root = document.getElementById('root');
 
 if (root == null) {
   throw new Error("Can't Find root element");
 } else {
-  ReactDOM.render(<App />, root);
+  try {
+    ReactDOM.render(<App />, root);
+  } catch (e) {
+    ReactDOM.render(<div>Some Error Occured</div>, root);
+  }
 }

@@ -1,7 +1,7 @@
 /* @flow */
 
 import { RouterState } from 'react-router-redux';
-import { Parameters } from '../models/parameters';
+import { type Parameters } from '../models/parameters';
 // import { type GenericState } from '../models/state';
 
 // TODO: Move this to store folder
