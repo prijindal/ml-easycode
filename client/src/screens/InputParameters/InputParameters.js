@@ -69,8 +69,9 @@ class InputParametersScreen extends React.Component<
     const {
       // template,
       loading,
+      error,
     } = data;
-    if (loading) {
+    if (loading || error) {
       return <Loading />;
     }
     // console.log(template.parameters);

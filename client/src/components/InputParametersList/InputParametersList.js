@@ -30,6 +30,8 @@ import {
   type Layer,
 } from '../../models/parameters';
 
+import TrainingDataUpload from '../TrainingDataUpload';
+
 const styles = {
   root: {
     minWidth: 280,
@@ -93,7 +95,7 @@ class InputParametersList extends React.Component<
     console.log(parameters);
     return (
       <div className={classes.root}>
-        <Button variant="raised">Upload Training Data</Button>
+        <TrainingDataUpload />
         <div className={classes.subheading}>
           <FormControl disabled={true}>
             <InputLabel>Method</InputLabel>

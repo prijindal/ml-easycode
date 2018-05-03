@@ -2,11 +2,13 @@
   "name": "ml-easycode-client-js",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://ml.easycode.club",
   "dependencies": {
     "@material-ui/icons": "^1.0.0-beta.42",
     "@tensorflow/tfjs": "^0.9.1",
     "apollo-boost": "^0.1.4",
     "apollo-cache-inmemory": "^1.2.0",
+    "apollo-cache-persist": "^0.1.1",
     "apollo-client": "^2.2.8",
     "apollo-link-http": "^1.5.4",
     "axios": "^0.18.0",
