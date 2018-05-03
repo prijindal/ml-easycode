@@ -1,7 +1,7 @@
 /* @flow */
 
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import * as classnames from 'classnames';
+import classnames from 'classnames';
 import Button from 'material-ui/Button';
 import ButtonBase from 'material-ui/ButtonBase';
 import Card, { CardActions, CardContent } from 'material-ui/Card';
