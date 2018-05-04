@@ -3,7 +3,7 @@ import { Button } from 'material-ui';
 import Dialog, { DialogTitle } from 'material-ui/Dialog';
 import Card, { CardActions, CardContent } from 'material-ui/Card';
 import Typography from 'material-ui/Typography';
-import * as Papa from 'papaparse';
+// import * as Papa from 'papaparse';
 
 import { type Parameters } from '../../models/parameters';
 
