@@ -25,7 +25,17 @@ after_script:
   - coveralls-lcov client/coverage/lcov.info
 
 deploy:
-  provider: firebase
-  skip_cleanup: true
-  token:
-    secure: "grY2BN1k0kMJDGkNndCLmOcyReWFTV2wIwWzwNqhOz/mHN9bGWREren+buAooFj9F6NrSZBKITkj/KKmDEXu8U2M6SmwVRnfuXme5Cw8KWACeamKr4g9zR+rcs0Y091TdAcCBpqzvpDr/+iM1Xo/vjzwtaS39nYvbQggYK3Tw+isXbanpMsZ8glfQNxsHrN72ujVqNBR/jNoMp06iH5EzFwCkaaqAItpvy44kGAmjc4U3m+Fp8oDUS0fO+vS3/QFvlBWOBw9aaHIPHNqIjgnJvdGpFJ0IGtlmof4biR38ZBu63/a4M/WI85fYAhZjjrs8Kc03xJHIfAn1zoWf7qeK5E8Hw3Qtp7Jius0UHGkdR0mpvsxY+Xx46GIHEfPdimzQTu6wlXfCRwITVg6w1UuBhTG3DBa5lB6aS+xLrmmi1HDvcxozVvcnmYafO38ZBfMJcUaNqxlh6eixKUwJR5rNv8intBiIXVSzoBYndyoUfqw4oTh15z9whbtE10iXJLQ/kkWINus+iP28/+TJXFmpc0ElUSj6NPlvlnnanYLpcOpXUlZ69WTMJyAp4S5bPApvLHbDMNmevNVW1CTtd5xHD5DAULIFmW957LyxIcpIm8Fw736GUpc5PIe+1i6p5LrNs0afpg6OaW5WeP8p+PK32wxEuAnVkW2ur/5UFkDDaw="
+  - provider: firebase
+    skip_cleanup: true
+    on:
+      branch: master
+    token:
+      secure: "grY2BN1k0kMJDGkNndCLmOcyReWFTV2wIwWzwNqhOz/mHN9bGWREren+buAooFj9F6NrSZBKITkj/KKmDEXu8U2M6SmwVRnfuXme5Cw8KWACeamKr4g9zR+rcs0Y091TdAcCBpqzvpDr/+iM1Xo/vjzwtaS39nYvbQggYK3Tw+isXbanpMsZ8glfQNxsHrN72ujVqNBR/jNoMp06iH5EzFwCkaaqAItpvy44kGAmjc4U3m+Fp8oDUS0fO+vS3/QFvlBWOBw9aaHIPHNqIjgnJvdGpFJ0IGtlmof4biR38ZBu63/a4M/WI85fYAhZjjrs8Kc03xJHIfAn1zoWf7qeK5E8Hw3Qtp7Jius0UHGkdR0mpvsxY+Xx46GIHEfPdimzQTu6wlXfCRwITVg6w1UuBhTG3DBa5lB6aS+xLrmmi1HDvcxozVvcnmYafO38ZBfMJcUaNqxlh6eixKUwJR5rNv8intBiIXVSzoBYndyoUfqw4oTh15z9whbtE10iXJLQ/kkWINus+iP28/+TJXFmpc0ElUSj6NPlvlnnanYLpcOpXUlZ69WTMJyAp4S5bPApvLHbDMNmevNVW1CTtd5xHD5DAULIFmW957LyxIcpIm8Fw736GUpc5PIe+1i6p5LrNs0afpg6OaW5WeP8p+PK32wxEuAnVkW2ur/5UFkDDaw="
+
+  - provider: pages
+    skip_cleanup: true
+    keep-history: true
+    github-token: $GITHUB_TOKEN
+    local-dir: client/build
+    on:
+      branch: master
