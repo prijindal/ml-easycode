@@ -56,6 +56,7 @@ export type InputParametersListProps = {
     typeofoptimizers: EnumType,
     typeofregularizers: EnumType,
     template: {
+      sampleData: Object,
       parameters: Parameters,
     },
     loading: boolean,
@@ -95,7 +96,7 @@ class InputParametersList extends React.Component<
     console.log(parameters);
     return (
       <div className={classes.root}>
-        <TrainingDataUpload />
+        <TrainingDataUpload sampleData={this.props.data.template.sampleData} />
         <div className={classes.subheading}>
           <FormControl disabled={true}>
             <InputLabel>Method</InputLabel>

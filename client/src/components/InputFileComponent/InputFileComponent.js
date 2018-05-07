@@ -1,19 +1,42 @@
 import React from 'react';
-import Button from 'material-ui/Button';
+import injectSheet, { type JSSProps } from 'react-jss';
 
-class InputFileComponent extends React.PureComponent {
+const styles = {
+  root: {
+    color: 'rgba(0, 0, 0, 0.87)',
+    padding: '8px 16px',
+    minWidth: 88,
+    fontSize: '0.875rem',
+    boxSizing: 'border-box',
+    minHeight: '36px',
+    transition:
+      'background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms',
+    lineHeight: '1.4em',
+    fontGamily: '"Roboto", "Helvetica", "Arial", sans-serif',
+    fontWeight: 500,
+    borderRadius: '2px',
+    textTransform: 'uppercase',
+  },
+};
+
+class InputFileComponent extends React.PureComponent<JSSProps<typeof styles>> {
+  onButtonClick = () => {
+    console.log(this.refs);
+  };
+
   render() {
     return (
-      <Button size="small">
+      <div className={this.props.classes.root}>
         <input
           type="file"
-          id="trainfile"
-          name="trainfile"
+          id={this.props.id}
+          name={this.props.id}
+          ref="file-input"
           onChange={this.props.handleFileInput}
         />
-      </Button>
+      </div>
     );
   }
 }
 
-export default InputFileComponent;
+export default injectSheet(styles)(InputFileComponent);

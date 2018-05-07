@@ -2,7 +2,7 @@
 
 import { createActions, createReducer, Handlers } from 'reduxsauce';
 
-const INITIAL_STATE = {};
+const INITIAL_STATE = '';
 
 export const { Types, Creators } = createActions({
   resetFile: [],

@@ -7,7 +7,6 @@ import { type State } from '../../store/state.type';
 
 const mapStateToProps = (state: State) => ({
   parameters: state.parameters,
-  trainfile: state.trainfile,
 });
 
 const mapDispatchToProps = (dispatch: Dispatch<any>) => ({

@@ -33,6 +33,15 @@ export default graphql(gql`
     }
   }
 
+  fragment InputParametersSampleData on DataSet {
+    trainingfile {
+      contentType
+      name
+      size
+      url
+    }
+  }
+
   fragment getEnumValues on __Type {
     name
     enumValues {
@@ -60,6 +69,9 @@ export default graphql(gql`
       ...getEnumValues
     }
     template: Template(id: $templateid) {
+      sampleData {
+        ...InputParametersSampleData
+      }
       parameters {
         ...InputParametersList
       }

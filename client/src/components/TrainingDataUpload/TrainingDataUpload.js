@@ -10,11 +10,16 @@ import InputFileComponent from '../InputFileComponent';
 
 import injectSheet, { type JSSProps } from 'react-jss';
 
-const styles = {};
+const styles = {
+  actions: {
+    flexWrap: 'wrap',
+  },
+};
 
 export type TrainingDataUploadProps = {
   parameters: Parameters,
   setTrainFile: (file: File) => { type: String },
+  sampleData: Object,
 };
 
 class TrainingDataUpload extends React.Component<
@@ -23,6 +28,7 @@ class TrainingDataUpload extends React.Component<
 > {
   state = {
     open: false,
+    file: null,
   };
 
   openDialog = () => {
@@ -41,29 +47,52 @@ class TrainingDataUpload extends React.Component<
     console.log(e);
   };
 
-  handleFileInput = (e: Object) => {
+  handleFileInput = (e: Object): boolean => {
     const { files } = e.target;
     if (files.length > 0) {
       let file = files[0];
       console.log(file);
       if (file.type === 'text/csv') {
-        this.props.setTrainFile(file);
+        this.setState({
+          file,
+        });
+        return true;
       } else {
+        e.target.files = undefined;
+        e.target.value = '';
         alert('Please upload a csv file');
+        return false;
       }
       // Papa.parse(file, {
       //   worker: false,
       //   complete: this.onFileReadComplete,
       //   error: console.log,
       // });
+    } else {
+      return false;
     }
+  };
+
+  onConfirm = () => {
+    this.props.setTrainFile(this.state.file);
+    this.setState({
+      file: null,
+    });
+    this.handleClose();
+  };
+
+  onCancel = () => {
+    this.setState({
+      file: null,
+    });
+    this.handleClose();
   };
 
   render() {
     return (
       <div>
         <Dialog onClose={this.handleClose} open={this.state.open}>
-          <DialogTitle>Upload Training Data</DialogTitle>
+          <DialogTitle>Select Training Data</DialogTitle>
           <Card>
             <CardContent>
               <Typography variant="title" component="h2">
@@ -77,8 +106,21 @@ class TrainingDataUpload extends React.Component<
                 columns
               </Typography>
             </CardContent>
-            <CardActions>
-              <InputFileComponent handleFileInput={this.handleFileInput} />
+            <CardActions className={this.props.classes.actions}>
+              <InputFileComponent
+                id="trainfile"
+                handleFileInput={this.handleFileInput}
+              />
+              {this.props.sampleData != null && <Button>Use Demo Data</Button>}
+            </CardActions>
+            <CardActions className={this.props.classes.actions}>
+              <Button onClick={this.onCancel}>Cancel</Button>
+              <Button
+                onClick={this.onConfirm}
+                disabled={this.state.file == null}
+              >
+                Confirm
+              </Button>
             </CardActions>
           </Card>
         </Dialog>
