@@ -6,6 +6,7 @@ import Typography from 'material-ui/Typography';
 // import * as Papa from 'papaparse';
 
 import { type Parameters } from '../../models/parameters';
+import InputFileComponent from '../InputFileComponent';
 
 import injectSheet, { type JSSProps } from 'react-jss';
 
@@ -77,14 +78,7 @@ class TrainingDataUpload extends React.Component<
               </Typography>
             </CardContent>
             <CardActions>
-              <Button size="small">
-                <input
-                  type="file"
-                  id="trainfile"
-                  name="trainfile"
-                  onChange={this.handleFileInput}
-                />
-              </Button>
+              <InputFileComponent handleFileInput={this.handleFileInput} />
             </CardActions>
           </Card>
         </Dialog>
