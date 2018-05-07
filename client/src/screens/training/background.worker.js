@@ -1,6 +1,9 @@
 /* @flow */
 
 import * as tf from '@tensorflow/tfjs';
+import { type Parameters } from '../../models/parameters';
+import parametersToModel from '../../api/parametersToModel';
+
 const ctx: Worker = (self: Worker); //eslint-disable-line no-restricted-globals
 
 // Post data to parent thread
@@ -18,8 +21,8 @@ ctx.addEventListener('message', (event: any) => {
   const data: EventResponseData = event.data;
   const type = data.type;
   if (type === 'train') {
-    const { epochs, testinputs } = data;
-    startTraining(epochs, testinputs);
+    const { parameters, epochs, testinputs } = data;
+    startTraining(parameters, epochs, testinputs);
   } else if (type === 'generateNumbers') {
     ctx.postMessage({
       numbers: generateNumbers(data.length).xs.map((y: number[]) =>
@@ -44,15 +47,12 @@ const generateNumbers = (N: number = 1000) => {
   return { xs, ys };
 };
 
-const startTraining = async (epochs: number, testinputs: number[][]) => {
-  const model = tf.sequential();
-  model.add(tf.layers.dense({ units: 1, inputShape: [2] }));
-
-  model.compile({
-    loss: 'meanSquaredError',
-    optimizer: 'sgd',
-    metrics: ['accuracy', 'MSE'],
-  });
+const startTraining = async (
+  parameters: Parameters,
+  epochs: number,
+  testinputs: number[][]
+) => {
+  const model = parametersToModel(parameters);
 
   const { xs, ys } = generateNumbers();
 
