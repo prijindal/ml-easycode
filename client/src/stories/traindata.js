@@ -2,8 +2,6 @@ import React from 'react';
 import { Provider } from 'react-redux';
 
 import { storiesOf } from '@storybook/react';
-import { action } from '@storybook/addon-actions';
-import { linkTo } from '@storybook/addon-links';
 
 import TrainingDataUpload from '../components/TrainingDataUpload';
 import configureStore from '../store/configureStore';
@@ -43,6 +41,4 @@ store.dispatch({
 
 storiesOf('TrainingData', module)
   .addDecorator(story => <Provider store={store}>{story()}</Provider>)
-  .add('Upload Component', () => (
-    <TrainingDataUpload parameters={parameters} setTrainFile={() => ({})} />
-  ));
+  .add('Upload Component', () => <TrainingDataUpload />);
