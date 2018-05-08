@@ -27,6 +27,7 @@ class TrainingPage extends React.Component<any, any> {
     showTestCases: false,
     testX: [[1, 2]],
     testY: [[1]],
+    values: [],
   };
 
   worker: Worker;

@@ -13,6 +13,7 @@ ctx.postMessage({ foo: 'foo' });
 type EventResponseData = {
   type: 'train',
   epochs: number,
+  parameters: Parameters,
   testinputs: number[][],
   trainfile: File,
   length: number,
@@ -26,7 +27,7 @@ function filterWithIndex(arr1, arr2, shouldInclude) {
   }
 }
 
-function train_test_split(xs, ys, split_factor = 0.2) {
+function train_test_split(xs, ys, split_factor = 0.01) {
   const random_values = [];
   const N = xs.length;
   const test_n_values = Math.floor(N * split_factor);
@@ -78,20 +79,6 @@ ctx.addEventListener('message', (event: any) => {
   }
 });
 
-const HIGHEST = 10;
-
-const generateNumbers = (N: number = 1000) => {
-  const xs: number[][] = [];
-  const ys: number[] = [];
-  for (let i = 0; i < N; i += 1) {
-    const a = Math.floor(Math.random() * HIGHEST) / HIGHEST;
-    const b = Math.floor(Math.random() * HIGHEST) / HIGHEST;
-    xs.push([a, b]);
-    ys.push(a + b);
-  }
-  return { xs, ys };
-};
-
 const startTraining = async (
   parameters: Parameters,
   epochs: number,
@@ -129,7 +116,7 @@ const startTraining = async (
               type: 'trainingepochend',
               epoch,
               logs,
-              values: values.dataSync().map((value: any) => value * HIGHEST),
+              values: values.dataSync(),
             });
           },
         },
@@ -140,7 +127,7 @@ const startTraining = async (
         const values: any = model.predict(tf.tensor(testX));
         ctx.postMessage({
           type: 'trainingcompleted',
-          values: values.dataSync().map((value: any) => value * HIGHEST),
+          values: values.dataSync(),
         });
       });
   } catch (e) {

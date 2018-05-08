@@ -20,7 +20,8 @@ type SampleTestInputsProps = {
 const SampleTestInputs = ({
   toggleTestCases,
   showTestCases,
-  testinputs,
+  testX,
+  testY,
   values,
   classes,
 }: SampleTestInputsProps) => (
@@ -38,12 +39,10 @@ const SampleTestInputs = ({
           </tr>
         </thead>
         <tbody>
-          {testinputs.map((testinput: number[], index: number) => (
+          {testX.map((testinput: number[], index: number) => (
             <tr key={index}>
-              <td>
-                {testinput[0]} + {testinput[1]}
-              </td>
-              <td>{testinput[0] + testinput[1]}</td>
+              <td>{testinput.map(value => `${value}, `)}</td>
+              <td>{testY[index]}</td>
               <td>{values[index]}</td>
             </tr>
           ))}

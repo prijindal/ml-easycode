@@ -91,6 +91,7 @@ const TrainingComponent = decorate(
     showTestCases,
     testX,
     testY,
+    values,
     epochs,
     progress,
     logs,
@@ -135,10 +136,11 @@ const TrainingComponent = decorate(
           {isTraining ? 'Training in progress' : 'Download Model'}
         </Button>
         <SampleTestInputs
-          testinputs={testX}
+          testX={testX}
+          testY={testY}
           showTestCases={showTestCases}
           toggleTestCases={toggleTestCases}
-          values={testY}
+          values={values}
         />
         {!isTraining && <CustomSnackBar open={!isTraining} />}
       </div>
