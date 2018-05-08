@@ -49,8 +49,8 @@ export type TrainingPageProps = {
   isWaiting: boolean,
   progress: number,
   showTestCases: boolean,
-  testinputs: number[][],
-  values: number[],
+  testX: number[][],
+  testY: number[],
   classes: decorate.classes,
   toggleTestCases: () => void,
   downloadModel: () => void,
@@ -89,8 +89,8 @@ const TrainingComponent = decorate(
     classes,
     isTraining,
     showTestCases,
-    testinputs,
-    values,
+    testX,
+    testY,
     epochs,
     progress,
     logs,
@@ -135,10 +135,10 @@ const TrainingComponent = decorate(
           {isTraining ? 'Training in progress' : 'Download Model'}
         </Button>
         <SampleTestInputs
-          testinputs={testinputs}
+          testinputs={testX}
           showTestCases={showTestCases}
           toggleTestCases={toggleTestCases}
-          values={values}
+          values={testY}
         />
         {!isTraining && <CustomSnackBar open={!isTraining} />}
       </div>

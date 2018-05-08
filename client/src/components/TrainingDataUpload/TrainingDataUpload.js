@@ -3,7 +3,6 @@ import { Button } from 'material-ui';
 import Dialog, { DialogTitle } from 'material-ui/Dialog';
 import Card, { CardActions, CardContent } from 'material-ui/Card';
 import Typography from 'material-ui/Typography';
-// import * as Papa from 'papaparse';
 
 import { type Parameters } from '../../models/parameters';
 import InputFileComponent from '../InputFileComponent';
@@ -63,11 +62,6 @@ class TrainingDataUpload extends React.Component<
         alert('Please upload a csv file');
         return false;
       }
-      // Papa.parse(file, {
-      //   worker: false,
-      //   complete: this.onFileReadComplete,
-      //   error: console.log,
-      // });
     } else {
       return false;
     }

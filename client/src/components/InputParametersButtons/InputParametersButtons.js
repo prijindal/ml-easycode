@@ -23,6 +23,7 @@ const styles = {
 
 export type InputParametersButtonsProps = {
   goToTraining: () => void,
+  trainfile: any,
 };
 
 class InputParametersButtons extends React.PureComponent<
@@ -33,11 +34,15 @@ class InputParametersButtons extends React.PureComponent<
     alert('Downloaded');
   };
   render() {
-    const { classes } = this.props;
+    const { classes, trainfile } = this.props;
     return (
       <AppBar position="fixed" color="default" className={classes.root}>
         <Toolbar className={classes.toolbar}>
-          <Button onClick={this.props.goToTraining} variant="raised">
+          <Button
+            disabled={trainfile == null || trainfile === ''}
+            onClick={this.props.goToTraining}
+            variant="raised"
+          >
             Run Code
           </Button>
           <Button onClick={this.downloadCode} variant="raised">

@@ -25,8 +25,8 @@ class TrainingPage extends React.Component<any, any> {
     // maxY: 100,
     progress: 0,
     showTestCases: false,
-    testinputs: [[1, 2]],
-    values: [],
+    testX: [[1, 2]],
+    testY: [[1]],
   };
 
   worker: Worker;
@@ -63,23 +63,28 @@ class TrainingPage extends React.Component<any, any> {
     }
     this.worker = new TFWorker();
     this.worker.postMessage({
-      type: 'generateNumbers',
+      type: 'train',
+      trainfile: this.props.trainfile,
+      epochs: this.state.epochs,
+      parameters: this.props.parameters,
       length: 10,
     });
     this.worker.addEventListener('message', (event: any) => {
       const {
         data: { type, ...data },
       } = event;
-      if (type === 'generated') {
+      if (type === 'readdatasuccess') {
+        const { testX, testY } = data;
         this.setState({
-          testinputs: data.numbers,
+          testX,
+          testY,
         });
-        this.worker.postMessage({
-          type: 'train',
-          parameters: this.props.parameters,
-          epochs: this.state.epochs,
-          testinputs: data.numbers,
-        });
+        // this.worker.postMessage({
+        //   type: 'train',
+        //   parameters: this.props.parameters,
+        //   epochs: this.state.epochs,
+        //   testinputs: data.testdata,
+        // });
       } else if (type === 'trainingepochend') {
         const { epoch, logs, values } = data;
         this.setState((prevState: any) => ({
