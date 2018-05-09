@@ -93,7 +93,6 @@ class InputParametersList extends React.Component<
       typeofinitializers,
       typeofregularizers,
     } = this.props.data;
-    console.log(parameters);
     return (
       <div className={classes.root}>
         <TrainingDataUpload sampleData={this.props.data.template.sampleData} />

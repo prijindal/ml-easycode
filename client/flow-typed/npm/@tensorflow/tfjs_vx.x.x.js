@@ -10,11 +10,11 @@ declare module '@tensorflow/tfjs' {
     layers: {
       dense: ({
         units: number,
-        inputShape: any,
+        inputShape?: any,
       }) => Layer,
     },
     tensor2d: (a: number[][] | number[]) => Tensor,
-    tensor: (a: number[][] | number[]) => Tensor,
+    tensor: (a: number[][] | number[], shape?: any, dtype?: string) => Tensor,
   };
 
   declare type Tensor = any;

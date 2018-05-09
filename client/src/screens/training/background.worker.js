@@ -3,6 +3,7 @@
 import * as tf from '@tensorflow/tfjs';
 import { type Parameters } from '../../models/parameters';
 import parametersToModel from '../../api/parametersToModel';
+import axios from 'axios';
 import * as Papa from 'papaparse';
 
 const ctx: Worker = (self: Worker); //eslint-disable-line no-restricted-globals
@@ -10,12 +11,17 @@ const ctx: Worker = (self: Worker); //eslint-disable-line no-restricted-globals
 // Post data to parent thread
 ctx.postMessage({ foo: 'foo' });
 
+interface FileType {
+  url: string;
+  __typename: string;
+}
+
 type EventResponseData = {
   type: 'train',
   epochs: number,
   parameters: Parameters,
   testinputs: number[][],
-  trainfile: File,
+  trainfile: File | FileType,
   length: number,
 };
 
@@ -52,32 +58,55 @@ ctx.addEventListener('message', (event: any) => {
   const type = data.type;
   if (type === 'train') {
     const { parameters, epochs, trainfile } = data;
-    Papa.parse(trainfile, {
-      worker: false,
-      complete: ({ data, errors }) => {
-        if (data[data.length - 1][0] === '') {
-          data.splice(data.length - 1);
-        }
-        const Xs = data.map(row => row.slice(0, parameters.inputlayer.nodes));
-        const Ys = data.map(row =>
-          row.slice(
-            parameters.inputlayer.nodes,
-            parameters.inputlayer.nodes + parameters.outputlayer.nodes
-          )
-        );
-        const { trainX, trainY, testX, testY } = train_test_split(Xs, Ys);
-        // Split data into trainX, trainY, testX, testY
-        ctx.postMessage({
-          testX,
-          testY,
-          type: 'readdatasuccess',
-        });
-        startTraining(parameters, epochs, trainX, trainY, testX, testY);
-      },
-      error: console.log,
-    });
+    if (
+      trainfile.__typename != null &&
+      trainfile.__typename === 'File' &&
+      trainfile.url != null &&
+      !(trainfile instanceof File) &&
+      typeof trainfile.url === 'string'
+    ) {
+      const url: string = trainfile.url;
+      axios(url).then(({ data }) => {
+        data = data.split('\n');
+        data = data.map(row => row.split(','));
+        parseDataAndStartTraining(data, parameters, epochs);
+      });
+    } else {
+      Papa.parse(trainfile, {
+        worker: false,
+        complete: ({ data, errors }) => {
+          parseDataAndStartTraining(data, parameters, epochs);
+        },
+        error: console.log,
+      });
+    }
   }
 });
+
+const parseDataAndStartTraining = (
+  data,
+  parameters: Parameters,
+  epochs: number
+) => {
+  if (data[data.length - 1][0] === '') {
+    data.splice(data.length - 1);
+  }
+  const Xs = data.map(row => row.slice(0, parameters.inputlayer.nodes));
+  const Ys = data.map(row =>
+    row.slice(
+      parameters.inputlayer.nodes,
+      parameters.inputlayer.nodes + parameters.outputlayer.nodes
+    )
+  );
+  const { trainX, trainY, testX, testY } = train_test_split(Xs, Ys);
+  // Split data into trainX, trainY, testX, testY
+  ctx.postMessage({
+    testX,
+    testY,
+    type: 'readdatasuccess',
+  });
+  startTraining(parameters, epochs, trainX, trainY, testX, testY);
+};
 
 const startTraining = async (
   parameters: Parameters,
@@ -91,8 +120,8 @@ const startTraining = async (
 
   // const { xs, ys } = generateNumbers();
 
-  console.log(trainX);
-  console.log(trainY);
+  // console.log(trainX);
+  // console.log(trainY);
 
   try {
     const xvalues = tf.tensor(
@@ -100,12 +129,12 @@ const startTraining = async (
       [trainX.length, parameters.inputlayer.nodes],
       'float32'
     );
-    console.log(xvalues);
+    // console.log(xvalues);
     const yvalues = tf.tensor(trainY, [
       trainY.length,
       parameters.outputlayer.nodes,
     ]);
-    console.log(yvalues);
+    // console.log(yvalues);
 
     await model
       .fit(xvalues, yvalues, {

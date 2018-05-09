@@ -4,7 +4,7 @@ import * as tf from '@tensorflow/tfjs';
 import { type Parameters } from '../models/parameters';
 
 export const parametersToModel = (parameters: Parameters) => {
-  console.log(parameters);
+  // console.log(parameters);
   const model = tf.sequential();
   // First Layer
   const inputLayerNodes =

@@ -42,15 +42,11 @@ class TrainingDataUpload extends React.Component<
     });
   };
 
-  onFileReadComplete = e => {
-    console.log(e);
-  };
-
   handleFileInput = (e: Object): boolean => {
     const { files } = e.target;
     if (files.length > 0) {
       let file = files[0];
-      console.log(file);
+      // console.log(file);
       if (file.type === 'text/csv') {
         this.setState({
           file,
@@ -82,6 +78,21 @@ class TrainingDataUpload extends React.Component<
     this.handleClose();
   };
 
+  onUseSampleData = async () => {
+    try {
+      const { trainingfile } = this.props.sampleData;
+      // console.log(trainingfile);
+      this.setState(
+        {
+          file: trainingfile,
+        },
+        this.props.onConfirm
+      );
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
   render() {
     return (
       <div>
@@ -105,7 +116,9 @@ class TrainingDataUpload extends React.Component<
                 id="trainfile"
                 handleFileInput={this.handleFileInput}
               />
-              {this.props.sampleData != null && <Button>Use Demo Data</Button>}
+              {this.props.sampleData != null && (
+                <Button onClick={this.onUseSampleData}>Use Demo Data</Button>
+              )}
             </CardActions>
             <CardActions className={this.props.classes.actions}>
               <Button onClick={this.onCancel}>Cancel</Button>

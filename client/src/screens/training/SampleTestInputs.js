@@ -15,6 +15,8 @@ type SampleTestInputsProps = {
   values: number[],
   classes: decorate.classes,
   toggleTestCases: () => void,
+  testX: any,
+  testY: any,
 };
 
 const SampleTestInputs = ({
