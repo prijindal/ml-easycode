@@ -12,7 +12,6 @@ class TrainingPage extends React.Component<any, any> {
       loss: [[], []],
       acc: [[], []],
     },
-    epochs: 200,
     isTraining: true,
     logs: {
       MSE: 0,
@@ -66,7 +65,6 @@ class TrainingPage extends React.Component<any, any> {
     this.worker.postMessage({
       type: 'train',
       trainfile: this.props.trainfile,
-      epochs: this.state.epochs,
       parameters: this.props.parameters,
       length: 10,
     });
@@ -83,11 +81,11 @@ class TrainingPage extends React.Component<any, any> {
         // this.worker.postMessage({
         //   type: 'train',
         //   parameters: this.props.parameters,
-        //   epochs: this.state.epochs,
         //   testinputs: data.testdata,
         // });
       } else if (type === 'trainingepochend') {
         const { epoch, logs, values } = data;
+        console.log(epoch, this.props.parameters.epochs);
         this.setState((prevState: any) => ({
           chartData: {
             loss: this.reduceChartData(
@@ -110,7 +108,6 @@ class TrainingPage extends React.Component<any, any> {
             ),
           },
           logs,
-          // maxY: (epoch%(this.state.epochs/10) === 0 && epoch > 0) ? prevState.chartData[0].slice(prevState.chartData[0].length - this.state.epochs/10)[0].y : prevState.maxY,
           progress: epoch,
           values,
         }));
@@ -133,6 +130,7 @@ class TrainingPage extends React.Component<any, any> {
     return (
       <TrainingComponent
         {...this.state}
+        parameters={this.props.parameters}
         toggleTestCases={this.toggleTestCases}
       />
     );

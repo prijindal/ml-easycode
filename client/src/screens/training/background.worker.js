@@ -18,9 +18,7 @@ interface FileType {
 
 type EventResponseData = {
   type: 'train',
-  epochs: number,
   parameters: Parameters,
-  testinputs: number[][],
   trainfile: File | FileType,
   length: number,
 };
@@ -57,7 +55,7 @@ ctx.addEventListener('message', (event: any) => {
   const data: EventResponseData = event.data;
   const type = data.type;
   if (type === 'train') {
-    const { parameters, epochs, trainfile } = data;
+    const { parameters, trainfile } = data;
     if (
       trainfile.__typename != null &&
       trainfile.__typename === 'File' &&
@@ -69,13 +67,13 @@ ctx.addEventListener('message', (event: any) => {
       axios(url).then(({ data }) => {
         data = data.split('\n');
         data = data.map(row => row.split(','));
-        parseDataAndStartTraining(data, parameters, epochs);
+        parseDataAndStartTraining(data, parameters);
       });
     } else {
       Papa.parse(trainfile, {
         worker: false,
         complete: ({ data, errors }) => {
-          parseDataAndStartTraining(data, parameters, epochs);
+          parseDataAndStartTraining(data, parameters);
         },
         error: console.log,
       });
@@ -83,11 +81,7 @@ ctx.addEventListener('message', (event: any) => {
   }
 });
 
-const parseDataAndStartTraining = (
-  data,
-  parameters: Parameters,
-  epochs: number
-) => {
+const parseDataAndStartTraining = (data, parameters: Parameters) => {
   if (data[data.length - 1][0] === '') {
     data.splice(data.length - 1);
   }
@@ -105,12 +99,11 @@ const parseDataAndStartTraining = (
     testY,
     type: 'readdatasuccess',
   });
-  startTraining(parameters, epochs, trainX, trainY, testX, testY);
+  startTraining(parameters, trainX, trainY, testX, testY);
 };
 
 const startTraining = async (
   parameters: Parameters,
-  epochs: number,
   trainX,
   trainY,
   testX,
@@ -149,7 +142,7 @@ const startTraining = async (
             });
           },
         },
-        epochs,
+        epochs: parameters.epochs,
         validationSplit: 0.2,
       })
       .then(() => {

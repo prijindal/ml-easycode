@@ -8,6 +8,7 @@ import * as React from 'react';
 
 import Graph from './Graph';
 import SampleTestInputs from './SampleTestInputs';
+import { type Parameters } from '../../models/parameters';
 
 const decorate = withStyles(theme => ({
   root: {
@@ -43,7 +44,7 @@ export type TrainingPageProps = {
     loss: number[][],
     acc: number[][],
   },
-  epochs: number,
+  parameters: Parameters,
   isTraining: boolean,
   logs: Logs,
   isWaiting: boolean,
@@ -93,9 +94,9 @@ const TrainingComponent = decorate(
     testX,
     testY,
     values,
-    epochs,
     progress,
     logs,
+    parameters,
     chartData,
     toggleTestCases,
     downloadModel,
@@ -131,7 +132,7 @@ const TrainingComponent = decorate(
         <LinearProgress
           className={classes.progress}
           variant="determinate"
-          value={isTraining ? progress * 100 / epochs : 100}
+          value={isTraining ? progress * 100 / parameters.epochs : 100}
         />
         <Button disabled={isTraining} onClick={downloadModel}>
           {isTraining ? 'Training in progress' : 'Download Model'}
