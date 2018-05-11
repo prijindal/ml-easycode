@@ -1,6 +1,7 @@
 /* @flow */
 
 import * as tf from '@tensorflow/tfjs';
+import math from 'mathjs';
 import { type Parameters } from '../../models/parameters';
 import parametersToModel from '../../api/parametersToModel';
 import axios from 'axios';
@@ -102,6 +103,18 @@ const parseDataAndStartTraining = (data, parameters: Parameters) => {
   startTraining(parameters, trainX, trainY, testX, testY);
 };
 
+const normalize = (arr: any[]): any[] => {
+  const newArr = [];
+  for (let i = 0; i < arr[0].length; i += 1) {
+    let subarr = arr.map(row => parseInt(row[i], 10));
+    let subArrPos = subarr.map(row => Math.abs(row));
+    const maximum = Math.max(...subArrPos);
+    subarr = subarr.map(row => row / maximum);
+    newArr.push(subarr);
+  }
+  return math.transpose(newArr);
+};
+
 const startTraining = async (
   parameters: Parameters,
   trainX,
@@ -111,13 +124,20 @@ const startTraining = async (
 ) => {
   const model = parametersToModel(parameters);
 
+  // if (parameters.shouldNormalize) {
+  //   trainX = normalize(trainX);
+  //   trainY = normalize(trainY);
+  //   testX = normalize(testX);
+  //   testY = normalize(testY);
+  // }
+
   // const { xs, ys } = generateNumbers();
 
   // console.log(trainX);
   // console.log(trainY);
 
   try {
-    const xvalues = tf.tensor(
+    let xvalues = tf.tensor(
       trainX,
       [trainX.length, parameters.inputlayer.nodes],
       'float32'

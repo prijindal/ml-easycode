@@ -17,6 +17,10 @@ export const parametersToModel = (parameters: Parameters) => {
   });
   model.add(inputLayer);
 
+  // if (parameters.shouldNormalize) {
+  //   model.add(tf.layers.batchNormalization({}));
+  // }
+
   if (parameters.hiddenlayers.length > 0) {
     for (let index = 1; index < parameters.hiddenlayers.length; index++) {
       const hiddenlayer = parameters.hiddenlayers[index];

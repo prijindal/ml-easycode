@@ -38,21 +38,13 @@ class TrainingPage extends React.Component<any, any> {
     key: string
   ) => {
     return [
+      ...prevChartData,
       [
-        ...prevChartData[0],
-        {
-          x: epoch + 1,
-          y: isNaN(logs[`val_${key}`]) ? 1e40 : logs[`val_${key}`] * 100,
-        },
+        epoch + 1,
+        isNaN(logs[`val_${key}`]) ? 1e40 : logs[`val_${key}`] * 100,
+        isNaN(logs[key]) ? 1e40 : logs[key] * 100,
       ],
-      [
-        ...prevChartData[1],
-        {
-          x: epoch + 1,
-          y: isNaN(logs[key]) ? 1e40 : logs[key] * 100,
-        },
-      ],
-    ];
+    ].filter(row => row.length > 0);
   };
 
   componentWillMount() {
@@ -85,7 +77,6 @@ class TrainingPage extends React.Component<any, any> {
         // });
       } else if (type === 'trainingepochend') {
         const { epoch, logs, values } = data;
-        console.log(epoch, this.props.parameters.epochs);
         this.setState((prevState: any) => ({
           chartData: {
             loss: this.reduceChartData(

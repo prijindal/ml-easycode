@@ -16,7 +16,7 @@ import {
   Radio,
   RadioGroup,
   Select,
-  Switch,
+  // Switch,
   TextField,
 } from 'material-ui';
 import * as React from 'react';
@@ -136,7 +136,7 @@ class InputParametersList extends React.Component<
           }
           required
         />
-        <div className={classes.subheading}>
+        {/* <div className={classes.subheading}>
           <FormControlLabel
             value="normalize"
             control={<Switch />}
@@ -149,7 +149,7 @@ class InputParametersList extends React.Component<
               )
             }
           />
-        </div>
+        </div> */}
         <FormLabel component="legend" className={classes.subheading}>
           Layers
         </FormLabel>

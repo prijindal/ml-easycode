@@ -116,14 +116,12 @@ const TrainingComponent = decorate(
         <Graph
           axisLabels={{ x: 'No. of Epochs', y: 'Loss' }}
           chartData={chartData.loss}
-          legends={['Validation Loss', 'Loss']}
           testing={logs.loss}
           validation={logs.val_loss}
         />
         <Graph
           axisLabels={{ x: 'No. of Epochs', y: 'Accuracy' }}
           chartData={chartData.acc}
-          legends={['Validation Accuracy', 'Accuracy']}
           testing={logs.acc}
           validation={logs.val_acc}
         />

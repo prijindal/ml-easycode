@@ -5,7 +5,7 @@ import * as ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 
-import register from './registerServiceWorker';
+import registerServiceWorker from './registerServiceWorker';
 
 // if (module.hot) {
 //   module.hot.accept();
@@ -23,4 +23,4 @@ if (root == null) {
   }
 }
 
-register();
+registerServiceWorker();
