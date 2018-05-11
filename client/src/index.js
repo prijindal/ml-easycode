@@ -5,7 +5,7 @@ import * as ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 
-import './registerServiceWorker';
+import register from './registerServiceWorker';
 
 // if (module.hot) {
 //   module.hot.accept();
@@ -22,3 +22,5 @@ if (root == null) {
     ReactDOM.render(<div>Some Error Occured</div>, root);
   }
 }
+
+register();

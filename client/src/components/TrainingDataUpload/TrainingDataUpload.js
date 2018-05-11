@@ -1,3 +1,5 @@
+/* @flow */
+
 import React from 'react';
 import { Button } from 'material-ui';
 import Dialog, { DialogTitle } from 'material-ui/Dialog';
@@ -19,11 +21,15 @@ export type TrainingDataUploadProps = {
   parameters: Parameters,
   setTrainFile: (file: File) => { type: String },
   sampleData: Object,
+  onConfirm: any => any,
 };
 
 class TrainingDataUpload extends React.Component<
   TrainingDataUploadProps & JSSProps<typeof styles>,
-  void
+  {
+    open: boolean,
+    file: ?File,
+  }
 > {
   state = {
     open: false,
@@ -42,7 +48,7 @@ class TrainingDataUpload extends React.Component<
     });
   };
 
-  handleFileInput = (e: Object): boolean => {
+  handleFileInput = (e: Object) => {
     const { files } = e.target;
     if (files.length > 0) {
       let file = files[0];
@@ -51,24 +57,22 @@ class TrainingDataUpload extends React.Component<
         this.setState({
           file,
         });
-        return true;
       } else {
         e.target.files = undefined;
         e.target.value = '';
         alert('Please upload a csv file');
-        return false;
       }
-    } else {
-      return false;
     }
   };
 
   onConfirm = () => {
-    this.props.setTrainFile(this.state.file);
-    this.setState({
-      file: null,
-    });
-    this.handleClose();
+    if (this.state.file != null) {
+      this.props.setTrainFile(this.state.file);
+      this.setState({
+        file: null,
+      });
+      this.handleClose();
+    }
   };
 
   onCancel = () => {

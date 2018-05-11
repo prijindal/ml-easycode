@@ -1,3 +1,5 @@
+/* @flow */
+
 import connect from './connect';
 import Training from './Training';
 

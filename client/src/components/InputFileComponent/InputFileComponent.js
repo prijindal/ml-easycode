@@ -1,3 +1,5 @@
+/* @flow */
+
 import React from 'react';
 import injectSheet, { type JSSProps } from 'react-jss';
 
@@ -19,7 +21,14 @@ const styles = {
   },
 };
 
-class InputFileComponent extends React.PureComponent<JSSProps<typeof styles>> {
+type InputFileComponentProps = {
+  id: string,
+  handleFileInput: (e: Object) => void,
+};
+
+class InputFileComponent extends React.PureComponent<
+  InputFileComponentProps & JSSProps<typeof styles>
+> {
   onButtonClick = () => {
     console.log(this.refs);
   };
