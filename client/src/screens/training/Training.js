@@ -36,7 +36,7 @@ class TrainingPage extends React.Component<any, any> {
     epoch: number,
     logs: Logs,
     key: string
-  ) => {
+  ): any => {
     const newChartData = [
       ...prevChartData,
       [
