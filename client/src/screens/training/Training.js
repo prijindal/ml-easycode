@@ -37,14 +37,15 @@ class TrainingPage extends React.Component<any, any> {
     logs: Logs,
     key: string
   ) => {
-    return [
+    const newChartData = [
       ...prevChartData,
       [
         epoch + 1,
         isNaN(logs[`val_${key}`]) ? 1e40 : logs[`val_${key}`] * 100,
         isNaN(logs[key]) ? 1e40 : logs[key] * 100,
       ],
-    ].filter(row => row.length > 0);
+    ];
+    return newChartData.filter(row => row.length > 0);
   };
 
   componentWillMount() {
